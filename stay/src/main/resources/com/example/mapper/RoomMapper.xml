@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.example.mapper.RoomMapper">
+
+ 
+ 	<select id="getList" resultType="com.example.domain.RoomDTO">
+ 		select*from room where ro_type>0
+ 	</select>
+ 	
+	<!-- 객실 등록 -->
+ 	<insert id="insertroom">
+		INSERT INTO 
+			room (ro_type, ac_id, ro_name, ro_basic_count, ro_max_count, ro_info, ro_count)
+		VALUES 
+			(#{ro_type}, #{ac_id}, #{ro_name}, #{ro_basic_count}, #{ro_max_count}, #{ro_info}, #{ro_count})
+ 	</insert>
+ 	
+
+	<update id="updateroom">
+		update
+ 			room
+ 		set
+ 			ac_id=#{ac_id}, ro_name=#{ro_name}, ro_basic_count=#{ro_basic_count}, 
+ 			ro_max_count=#{ro_max_count}, ro_info=#{ro_info}, ro_count=#{ro_count}
+ 		where
+ 			ro_type=#{ro_type}
+ 	</update>
+	
+	
+	<delete id="deleteroom">
+		delete room where ro_type=#{ro_type}
+ 	</delete>
+ 	
+ 	
+ 	<!-- 숙소 상세페이지에서 방을 클릭했을 때 특정 방 1개를 보여준다 -->
+	<select id="searchByac_id" resultType="com.example.domain.AccommodationDTO">
+        select * from accommodation
+        where
+        	ro_type =#{ro_type}
+    </select>
+ </mapper>
+ 
+ 
+ 
+ 
+ 

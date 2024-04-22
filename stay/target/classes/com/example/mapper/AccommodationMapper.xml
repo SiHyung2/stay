@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.mapper.AccommodationMapper">
+
+    <select id="getList" resultType="com.example.domain.AccommodationDTO">
+        select * from accommodation
+    </select>
+    
+	<!-- 숙소(사업체) 등록 -->
+ 	<insert id="insertaccommdation">
+		INSERT INTO ACCOMMODATION
+			(ac_id, email_id, ac_title, ac_type, ac_address, ac_info, checkin, checkout, bu_name)
+		VALUES 
+			(#{ac_id}, #{email_id}, #{ac_title}, #{ac_type}, #{ac_address}, #{ac_info}, #{checkin}, #{checkout}, #{bu_name})
+ 	</insert>
+
+	<update id="updateaccommdation">
+		update 
+			accommodation
+ 		set 
+ 			email_id=#{email_id}, ac_title=#{ac_title}, ac_type=#{ac_type}, 
+ 			ac_address=#{ac_address}, ac_info=#{ac_info}, checkin=#{checkin}, checkout=#{checkout}
+ 		where 
+ 			ac_id=#{ac_id}
+ 	</update>
+	
+	<delete id="deleteaccommdation">
+		delete accommodation where ac_id=#{ac_id}
+ 	</delete>
+ 	
+ 	
+	<!-- 숙소 검색 (숙소 아이디로) (숙소목록 중에서 숙소 상세보기 페이지로 들어갈 때 방을 보여준다)-->
+	<select id="searchByac_id" resultType="com.example.domain.AccommodationDTO">
+        select * from accommodation
+        where
+        	ac_id =#{ac_id}
+    </select>
+    
+    <!-- 숙소 검색 (숙소 제목, checkin, checkout 시간으로) -->
+	<select id="searchListByTitle" resultType="com.example.domain.AccommodationDTO">
+	    select * from accommodation
+	    where
+	        ac_title LIKE '%' || #{ac_title} || '%'
+	</select>
+    
+    <select id="searchByac_type" resultType="com.example.domain.AccommodationDTO">
+        select * from accommodation
+        where
+        	ac_type = #{ac_type}
+    </select>
+
+</mapper>

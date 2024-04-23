@@ -1,5 +1,7 @@
 package com.example.domain;
 
+import java.util.Date;
+
 import lombok.Data;
 
 @Data
@@ -14,6 +16,4 @@ public class BookingDTO {
     private int status;
     private int payment_code;
     private String reg_date;
-    
 }
-

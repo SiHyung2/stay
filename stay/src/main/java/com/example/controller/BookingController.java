@@ -16,13 +16,23 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class BookingController {
 
     private final BookingService bookingService;
-
-    @GetMapping("/form")
-    public String showBookingForm(Model model) {
-        model.addAttribute("booking", new BookingDTO());
-        return "booking/form";
+    
+    //getall
+    @GetMapping("/list")
+    public String getAllBookings(Model model) {
+        model.addAttribute("bookings", bookingService.getAllBooking()); 
+        return "booking/list";
     }
-
+    
+    //get
+    @GetMapping("/{bo_num}")
+    public String getBooking(@PathVariable String bo_num, Model model) {
+        BookingDTO booking = bookingService.getBooking(bo_num);
+        model.addAttribute("booking", booking);
+        return "bookingDetails";
+    }
+    
+    //add
     @PostMapping("/add")
     public String addBooking(@ModelAttribute("booking") BookingDTO booking, RedirectAttributes redirectAttributes) {
         bookingService.addBooking(booking);
@@ -30,19 +40,9 @@ public class BookingController {
         return "redirect:/booking";
     }
 
-    @GetMapping
-    public String getAllBookings(Model model) {
-        model.addAttribute("bookings", bookingService.getAllBooking());
-        return "bookingList";
-    }
+    
 
-    @GetMapping("/{bo_num}")
-    public String getBooking(@PathVariable String bo_num, Model model) {
-        BookingDTO booking = bookingService.getBooking(bo_num);
-        model.addAttribute("booking", booking);
-        return "bookingDetails";
-    }
-
+    //update
     @PostMapping("/{bo_num}/update")
     public String updateBooking(@PathVariable String bo_num, @ModelAttribute("booking") BookingDTO booking, RedirectAttributes redirectAttributes) {
         booking.setBo_num(bo_num);
@@ -51,10 +51,11 @@ public class BookingController {
         return "redirect:/booking";
     }
 
+    //delete
     @GetMapping("/{bo_num}/delete")
     public String deleteBooking(@PathVariable String bo_num, RedirectAttributes redirectAttributes) {
         bookingService.deleteBooking(bo_num);
         redirectAttributes.addFlashAttribute("message", "Booking deleted successfully!");
-        return "redirect:/booking";
+        return "redirect:/booking/add";
     }
 }

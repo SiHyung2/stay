@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.example.domain.AccommodationDTO;
 import com.example.domain.RoomDTO;
 import com.example.mapper.RoomMapper;
 
@@ -21,7 +20,7 @@ public class RoomServicelmpl implements RoomService {
 	@Override
 	public List<RoomDTO> getList() {
 		mapper.getList();
-		return null;
+		return mapper.getList();
 	}
 
 	@Override
@@ -41,10 +40,11 @@ public class RoomServicelmpl implements RoomService {
 		
 	}
 
-//	@Override
-//	public void searchByac_id(AccommodationDTO accommodation) {
-//		mapper.searchByac_id(accommodation);
-//		
-//	}
+
+	@Override
+	public List<RoomDTO> searchByac_id(String ac_id) {
+//		mapper.searchByac_id(ac_id);
+		return mapper.searchByac_id(ac_id);
+	}
 
 }

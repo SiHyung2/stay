@@ -13,7 +13,7 @@
 <!-- input의 name에 넣어야할 열이름은 각각 -->
 <%-- (#{ro_type}, #{ac_id}, #{ro_name}, #{ro_basic_count}, #{ro_max_count}, #{ro_info}, #{ro_count}) --%>
 
-
+		
 
         <div class="card o-hidden border-0 shadow-lg my-5">
             <div class="card-body p-5">
@@ -22,7 +22,7 @@
                 		<div class="panel panel-default">
                 			<div class="panel-heading">Room Register</div>
                 			<div class="panel-body">
-                				<form role="form" action="room/insert" method="post">
+                				<form role="form" action="/room/insert" method="post">
                 					<div class="form-group">
                 						<label>ro_type</label> <input class="form-control" name='ro_type'>
                 					</div>

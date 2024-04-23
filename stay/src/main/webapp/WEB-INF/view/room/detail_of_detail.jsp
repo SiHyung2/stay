@@ -8,6 +8,7 @@
 <title>객실 목록</title>
 </head>
 <body>
+	<h1>detail_of_detail test...</h1>
     <table class="table table-bordered">
         <thead>
             <tr>

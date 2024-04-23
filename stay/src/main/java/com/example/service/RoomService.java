@@ -11,6 +11,6 @@ public interface RoomService {
 	public void updateroom(RoomDTO room);
 	public void deleteroom(RoomDTO room);
 	
-//	public void searchByac_id(AccommodationDTO accommodation);
+	public List<RoomDTO> searchByac_id(String ac_id);
 	
 }

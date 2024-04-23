@@ -32,29 +32,40 @@ public class RoomControllerTest {
 		this.mockMvc=MockMvcBuilders.webAppContextSetup(ctx).build();
 	}
 	
-	@Test //1.입력 테스트
-	public void testRegister() throws Exception{
+	@Test
+	public void testList() throws Exception{
 		
-		String resultPage=mockMvc.perform(MockMvcRequestBuilders
-											.get("/room/insert")
-											.param("ro_type", "33")
-											.param("ac_id", "asd33")
-											.param("ro_name", "user00")
-											.param("ro_basic_count", "2")
-											.param("ro_max_count", "8")
-											.param("ro_info", "asd33")
-											.param("ro_count", "33")
-											)
-									.andReturn()
-									.getModelAndView()
-									.getViewName();
-		log.info(resultPage);
+		log.info(mockMvc.perform(
+				MockMvcRequestBuilders.get("/room/list")
+				.param("pageNum","2")
+				.param("amount","5"))
+				.andReturn().getModelAndView().getModelMap());
 	}
+	
+	
+//	@Test //1.입력 테스트
+//	public void testRegister() throws Exception{
+//		
+//		String resultPage=mockMvc.perform(MockMvcRequestBuilders
+//											.get("/room/insert")
+//											.param("ro_type", "33")
+//											.param("ac_id", "asd33")
+//											.param("ro_name", "user00")
+//											.param("ro_basic_count", "2")
+//											.param("ro_max_count", "8")
+//											.param("ro_info", "asd33")
+//											.param("ro_count", "33")
+//											)
+//									.andReturn()
+//									.getModelAndView()
+//									.getViewName();
+//		log.info(resultPage);
+//	}
 //	@Test //2.조회 테스트
 	public void tetGet() throws Exception{
 		
 		log.info(mockMvc.perform(MockMvcRequestBuilders
-								.get("/board/get")
+								.get("/board/list")
 								.param("bno", "1"))
 							.andReturn()
 							.getModelAndView()

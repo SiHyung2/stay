@@ -12,7 +12,7 @@ public interface RoomMapper {
 	public void updateroom(RoomDTO room);
 	public void deleteroom(RoomDTO room);
 	
-	public List<AccommodationDTO> searchByac_id(AccommodationDTO accommodation);
+	public List<RoomDTO> searchByac_id(String ac_id);
 	
 	
 }

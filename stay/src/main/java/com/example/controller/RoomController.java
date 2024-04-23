@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import com.example.domain.RoomDTO;
 import com.example.service.RoomService;
 
 
@@ -24,9 +25,8 @@ public class RoomController {
 
 
     @GetMapping("/list")   //1.모든 목록 조회
-//	public void list(RoomDTO room, Model model) {
-    	public void list() {
-//    	 model.addAttribute("roomlist" ,service.getList());
+	public void list(RoomDTO room, Model model) {
+    	 model.addAttribute("roomlist" ,service.getList());
     	 log.info("컨트롤러에서 list 실행 테스트");
 		 
 		
@@ -36,16 +36,21 @@ public class RoomController {
     
     
     
-    
-//	@PostMapping("/insert")//2.방 추가
-//	public String InsertRoom(RoomDTO room) {
-//		service.insertroom(room);
-//		
+//	@PostMapping("/insert")
+    @RequestMapping(value="/insert", method= { RequestMethod.GET, RequestMethod.POST})//2.방 추가
+	public String InsertRoom(RoomDTO room) {
+		service.insertroom(room);
+		
 //		목록 화면으로 돌아갈 때(리다이랙트 할 때) rttr이 필요하지만 아직 목록화면을 제작하지 않아 주석처리
 //		rttr.addFlashAttribute("result", service.getBno());
-//		return "redirect:room/list";
-//	}
+		log.info("insert: "+room);
+		return "redirect:/room/list";
+	}
 	
+	@GetMapping("/insert_view")//2-1.방 추가하는 뷰
+	public void InsertRoom_view() {
+		//방 추가하는 뷰와 연결하기만 하는 메서드
+	}
 	
 	
 	
@@ -91,8 +96,8 @@ public class RoomController {
 		 
 		
 	}
+	
 //	매개변수 넣는 법
-//	뷰에서 컨트롤러로 값 가져오기
 //	에이젝스 json 가져오는법
     
     

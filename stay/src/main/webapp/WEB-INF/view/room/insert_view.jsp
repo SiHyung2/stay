@@ -22,7 +22,7 @@
                 		<div class="panel panel-default">
                 			<div class="panel-heading">Room Register</div>
                 			<div class="panel-body">
-                				<form role="form" action="/room/insert" method="post">
+                				<form role="form" action="/stay/room/insert" method="post">
                 					<div class="form-group">
                 						<label>ro_type</label> <input class="form-control" name='ro_type'>
                 					</div>
@@ -67,8 +67,8 @@
             </div>
         </div>
 
-    </div>
+<!--     </div> -->
 
-</body>
+<!-- </body> -->
 
-</html>
+<!-- </html>1111 -->

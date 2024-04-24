@@ -36,8 +36,8 @@ public class RoomController {
     
     
     
-//	@PostMapping("/insert")
-    @RequestMapping(value="/insert", method= { RequestMethod.GET, RequestMethod.POST})//2.방 추가
+	@PostMapping("/insert")
+//    @RequestMapping(value="/insert", method= { RequestMethod.GET, RequestMethod.POST})//2.방 추가
 	public String InsertRoom(RoomDTO room) {
 		service.insertroom(room);
 		
@@ -54,48 +54,70 @@ public class RoomController {
 	
 	
 	
-//	@GetMapping("/modify")   //3.방 수정
-//	public String ModifyRoom(RoomDTO room, AccommodationDTO accommodation, Model model) {
-//    	model.addAttribute("roomlist" ,service.getList());
-//    	service.updateroom(room);
-//    	
-//		model.addAttribute("list",service.searchByac_id(accommodation));    bno로 방 하나만 불러오려고했는데 어째서인지  service.getList()만 모델로 넘길 수
-//    						있었다.. 뭐.. 에러는 안 날테지만 목록을 전부 넘기는건 비효율적이다
-//    	
-//    	
-//    	마찬가지로 목록 화면에 돌아갈 떄 rttr이 필요할지도 모르지만 일단 주석처리
-//		목록 화면으로 돌아갈 때(리다이랙트 할 때) rttr이 필요하지만 아직 목록화면을 제작하지 않아 주석처리
-//		rttr.addFlashAttribute("result", service.getBno());
-//		 
-//		 return "room/modify";
-//	}
+	
+	@PostMapping("/modify")   //3.방 수정
+	public String ModifyRoom(RoomDTO room, Model model) {
+		
+    	service.updateroom(room);
+		 
+		return "redirect:/room/list";
+	}
+	
+	
+	@GetMapping("/modify_and_delete_view")//3-1.방 수정 및 삭제하는 뷰
+	public void ModifyRoom_view(Model model, RoomDTO room, @RequestParam("ac_id") String ac_id, @RequestParam("ro_type") int ro_type) {
+		room.setAc_id(ac_id);
+		room.setRo_type(ro_type);
+		model.addAttribute("room" ,service.searchByac_id_And_ro_type(room));
+	}
 //   
 //	
-//	@GetMapping("/delete")   //4.방 삭제
-//	public String DeleteRoom(RoomDTO room, Model model) {
-//	 	model.addAttribute("roomlist" ,service.getList());
-//		service.deleteroom(room);
-//		 
-//		return "redirect:/test1.jsp";
-//	}
-	
-    @GetMapping("/detail")   //5.숙소 상세보기(한 숙소의 모든 방을 조회)
-	public void DetailRoom(Model model, String ac_id) {
-		 ac_id="asd123";  //테스트중
-		 log.info("ac_id"+ac_id);
-    	 model.addAttribute("roomlist" ,service.searchByac_id(ac_id));
-		 
-    }
-    
-    
-	@GetMapping("/detail/{ac_id}")   //5.숙소 상세보기(한 숙소의 모든 방을 조회)
-	public void DetailRoom2(Model model,@PathVariable("ac_id") String ac_id) {
+	@PostMapping("/delete")   //4.방 삭제
+	public String DeleteRoom(RoomDTO room, Model model) {
 		
-		 log.info("ac_id"+ac_id);
-    	 model.addAttribute("roomlist" ,service.searchByac_id(ac_id));
+		service.deleteroom(room);
 		 
-		
+		return "redirect:/room/list";
 	}
+	
+	
+	
+	
+    
+	@GetMapping("/detail")
+	public String All_Room_in_on_Accommodation(Model model, @RequestParam("ac_id") String ac_id) {
+		log.info("ac_id: "+ac_id);
+		model.addAttribute("roomlist" ,service.searchByac_id(ac_id));
+		return "room/detail";
+	}
+	
+	
+	@GetMapping("/detail_of_detail")
+	public String One_Room_in_on_Accommodation(Model model, RoomDTO room, @RequestParam("ac_id") String ac_id, @RequestParam("ro_type") int ro_type) {
+		log.info("ac_id: "+ac_id);
+		log.info("ro_type: "+ro_type);
+		
+		room.setAc_id(ac_id);
+		room.setRo_type(ro_type);
+		model.addAttribute("room" ,service.searchByac_id_And_ro_type(room));
+		log.info(room);
+		return "room/detail_of_detail";
+	}
+	
+	
+	
+	
+	
+    
+//	매개변수 테스트 하는데 실패한 코드
+//	@GetMapping("/detail/{ac_id}")   //5.숙소 상세보기(한 숙소의 모든 방을 조회)   @PathVariable을 사용하면 리턴값으로 detail과 연결해주는 작업이 필요하다
+//	public String DetailRoom2(Model model,@PathVariable("ac_id") String ac_id) {
+//		
+//		 log.info("ac_id"+ac_id);
+//    	 model.addAttribute("roomlist" ,service.searchByac_id(ac_id));
+//		 
+//		return "/room/detail";
+//	}
 	
 //	매개변수 넣는 법
 //	에이젝스 json 가져오는법

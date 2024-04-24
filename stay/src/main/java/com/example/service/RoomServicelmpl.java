@@ -47,4 +47,10 @@ public class RoomServicelmpl implements RoomService {
 		return mapper.searchByac_id(ac_id);
 	}
 
+	@Override
+	public RoomDTO searchByac_id_And_ro_type(RoomDTO room) {
+		// TODO Auto-generated method stub
+		return mapper.searchByac_id_And_ro_type(room);
+	}
+
 }

@@ -24,19 +24,19 @@ public class AccommodationServiceImpl implements AccommodationService {
 	}
 
 	@Override
-	public void insertaccommdation(AccommodationDTO accommdation) {
+	public void insertaccommodation(AccommodationDTO accommdation) {
 		mapper.insertaccommdation(accommdation);
 		
 	}
 
 	@Override
-	public void updateaccommdation(AccommodationDTO accommdation) {
+	public void updateaccommodation(AccommodationDTO accommdation) {
 		mapper.updateaccommdation(accommdation);
 		
 	}
 
 	@Override
-	public void deleteaccommdation(AccommodationDTO accommdation) {
+	public void deleteaccommodation(AccommodationDTO accommdation) {
 		mapper.deleteaccommdation(accommdation);
 		
 	}

@@ -48,8 +48,8 @@ public class RoomServicetest {
 	
 //  @Test
   public void testUpdateRoom() {
-  	RoomDTO room=new RoomDTO();
-  	room.setRo_type(3);
+	  	RoomDTO room=new RoomDTO();
+	  	room.setRo_type(3);
 		room.setAc_id("asd123");
 		room.setRo_name("스탠다드_수정_서비스2");
 		room.setRo_basic_count(2);
@@ -80,4 +80,14 @@ public class RoomServicetest {
 		list.forEach(room -> log.info(room));
   	}
 	
+  	@Test
+	public void searchByac_id_And_ro_type() {
+  		
+  		RoomDTO room=new RoomDTO();
+  		room.setAc_id("asd33");
+		room.setRo_type(33);
+		service.searchByac_id_And_ro_type(room);
+		
+		log.info(room);
+  	}
 }

@@ -10,7 +10,7 @@ public interface AccommodationService {
 	public void insertaccommodation(AccommodationDTO accommdation);
 	public void updateaccommodation(AccommodationDTO accommdation);
 	public void deleteaccommodation(AccommodationDTO accommdation);
-	
+	 
 	public List<AccommodationDTO> searchByac_id(AccommodationDTO accommdation);
 	public List<AccommodationDTO> searchListByTitle(AccommodationDTO accommdation);
 	public List<AccommodationDTO> searchByac_type(AccommodationDTO accommdation);

@@ -14,5 +14,6 @@ public interface RoomMapper {
 	
 	public List<RoomDTO> searchByac_id(String ac_id);
 	
+	public RoomDTO searchByac_id_And_ro_type(RoomDTO room);
 	
 }

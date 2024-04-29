@@ -46,7 +46,7 @@ public class AccommodationServiceTest {
 	  	accommodation.setBu_name("사업자 이름");
 		
 		
-		service.insertaccommdation(accommodation);
+		service.insertaccommodation(accommodation);
 		
 		log.info(accommodation);
 	}
@@ -72,7 +72,7 @@ public class AccommodationServiceTest {
 	  	accommodation.setBu_name("사업자 이름");
 		
 		
-		service.updateaccommdation(accommodation);
+		service.updateaccommodation(accommodation);
 		
 		log.info(accommodation);
 	}
@@ -83,7 +83,7 @@ public class AccommodationServiceTest {
 	  	accommodation.setAc_id(4);
 		
 		
-		service.deleteaccommdation(accommodation);
+		service.deleteaccommodation(accommodation);
 		
 		log.info(accommodation);
 	}

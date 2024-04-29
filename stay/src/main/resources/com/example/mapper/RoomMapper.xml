@@ -6,6 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  <mapper namespace="com.example.mapper.RoomMapper">
 
  
+ 
  	<select id="getList" resultType="com.example.domain.RoomDTO">
  		select * from room where ro_type>0
  	</select>
@@ -35,11 +36,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	</delete>
  	
  	
- 	<!-- 숙소 상세페이지에서 방을 클릭했을 때 특정 방 1개를 보여준다 -->
+ 	<!-- 숙소 목록페이지에서 숙소를 클릭했을 때 숙소의 모든 방을 보여준다(숙소 상세페이지) -->
 	<select id="searchByac_id" resultType="com.example.domain.RoomDTO">
         select * from room
         where
         	ac_id =#{ac_id}
+    </select>
+    
+    <!-- 숙소 상세페이지에서 방을 클릭했을 때 특정 방 1개를 보여준다(방 상세페이지) -->
+    <select id="searchByac_id_And_ro_type" resultType="com.example.domain.RoomDTO">
+        select * from room
+        where
+        	ac_id =#{ac_id} and ro_type=#{ro_type}
     </select>
  </mapper>
  

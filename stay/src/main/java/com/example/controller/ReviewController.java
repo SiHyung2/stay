@@ -45,7 +45,7 @@ public class ReviewController {
         log.info("total: " + total);
         model.addAttribute("pageMaker", new PageDTO(cri, total));
     }
-
+ 
 
 	@PostMapping("/insert")
 	public String insert(ReviewDTO review) {

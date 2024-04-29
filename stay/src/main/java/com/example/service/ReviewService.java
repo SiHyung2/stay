@@ -33,7 +33,7 @@ public interface ReviewService {
 	public Object getList(Criteria cri);
 	public Object getPageDTO(Criteria cri, int total);
 
-	    
+	     
 	 
 	} 
 

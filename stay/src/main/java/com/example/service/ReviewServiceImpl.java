@@ -41,7 +41,7 @@ public class ReviewServiceImpl implements ReviewService {
 	public List<ReviewDTO> selectAll(Criteria cri) { 
 	    log.info("get List with criteria: " + cri);
 	    return mapper.getListWithPaging(cri, 0);
-	    // TODO: 전체 리뷰 조회 기능 구현 
+	    // TODO: 전체 리뷰 조회 기능 구현  
 	}
 
   

@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<h2>테스트 검색</h2>
 </body>
 </html>

@@ -9,4 +9,4 @@
 <body>
  	<h2>테스트 푸터</h2>
 </body>
-</html> 
+</html>  

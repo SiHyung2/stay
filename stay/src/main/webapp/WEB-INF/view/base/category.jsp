@@ -41,6 +41,6 @@
 <%-- 										value="${booking.reg_date}" /></td> --%>
 							</tr>
 						</c:forEach>
-					</table> 
+					</table>  
 </body>
 </html>

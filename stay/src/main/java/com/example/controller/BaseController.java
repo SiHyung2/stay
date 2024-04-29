@@ -48,6 +48,6 @@ public class BaseController {
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public String search(Locale locale, Model model) {
         // search.jsp 실행 로직
-        return "base/search";
+        return "base/search"; 
     }
 }

@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
- 	<h2>테스트 메인</h2>
+ 	<%@include file="./menu.jsp" %>
+ 	<img src="../" ">
 </body>
 </html>

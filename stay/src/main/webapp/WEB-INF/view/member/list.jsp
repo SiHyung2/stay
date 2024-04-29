@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 
-<%@include file="../include/header.jsp"%>
+
 
 <body id="page-top">
 

@@ -41,7 +41,7 @@ public class MemberController {
 	public void insertview() {
 
 	}
-
+ 
 	@GetMapping("/select")
 	public ResponseEntity<MemberDTO> selectMember(@RequestParam("email_id") String email_Id) {
 		// MemberService를 사용하여 요청된 이메일 ID에 해당하는 회원 정보를 가져오는 로직을 작성

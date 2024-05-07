@@ -11,7 +11,7 @@
 <body>
 	<div class="registration-form">
 		<h1>회원가입</h1>
-		<form action="/member/insert" method="post">
+		<form action="/stay/member/insert" method="post">
 
 
 

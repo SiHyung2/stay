@@ -22,7 +22,7 @@ import com.example.service.MemberService;
 
 import lombok.AllArgsConstructor;
 
-@RequestMapping("/member/*")
+@RequestMapping("/member")
 @AllArgsConstructor
 @Controller
 

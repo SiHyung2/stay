@@ -9,11 +9,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.domain.RoomDTO;
 import com.example.domain.SearchWordDTO;
 import com.example.service.AccommodationService;
+import com.example.service.RoomService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -25,6 +29,7 @@ public class BaseController {
     private static final Logger logger = LoggerFactory.getLogger(BaseController.class);
 
     private final AccommodationService accommodationservice;
+    private final RoomService roomservice;
     
     @RequestMapping(value = "/main", method = RequestMethod.GET)
     public String main(Locale locale, Model model) {
@@ -65,10 +70,12 @@ public class BaseController {
     }
     
     
+    
+//    이거 테스트하려면 ac_type까지 꼭 넘겨줘야한다. 주소창에 넣어주자
     @RequestMapping(value = "/ac_list", method = RequestMethod.GET)
     public void search_process(Locale locale, Model model, SearchWordDTO searchword) {
         
-    	List<String> accommodation_list = accommodationservice.rest_room_search(searchword);
+    	List<SearchWordDTO> accommodation_list = accommodationservice.rest_room_search(searchword);
     	model.addAttribute("accommodation_list", accommodation_list);
     	
     	accommodation_list.forEach(result -> log.info(result));
@@ -83,6 +90,15 @@ public class BaseController {
 //    @RequestMapping(value = "/base/ac_list", method = RequestMethod.GET)
 //    public void search(Locale locale, Model model) {
 //    }
+    
+//	@GetMapping("/detail")
+//	public void All_Room_in_on_Accommodation(Model model, RoomDTO room) {
+//		log.info("ac_id: "+ac_id);
+//	
+//		
+//		model.addAttribute("roomlist" ,roomservice.searchByac_id(ac_id));
+//		
+//	}
     
     
 }

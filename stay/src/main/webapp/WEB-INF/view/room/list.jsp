@@ -23,7 +23,7 @@
         
         <c:forEach items="${roomlist}" var="room">
             <tr>
-                <td><c:out value="${room.ro_type}" /></td>
+                <td><c:out value="${room.ac_id}" /></td>
                 <td><a href="/stay/room/detail?ac_id=${room.ac_id}"><c:out value="${room.ac_id}" /></a></td>
                 <td><c:out value="${room.ro_name}" /></td>
                 <td><c:out value="${room.ro_basic_count}" /></td>

@@ -92,14 +92,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 	만약 null이라면 아무도 방을 사용하지 않으므로 room테이블의 남은 방 수를 가져오고 만약 remaing 테이블의 남은 방 수가 0이라면 남은 방이 없으므로 가져오지않는다 -->
 <!-- 	일단 ac_id는 asd123 이고 room_num=2인 방의 남은방을 계산한다 -->
 <!-- 	날짜는 2024-04-10부터 2024-04-30까지의 기간 중 남은 방이 있다면 남은 방의 수를 출력한다 -->
+<!-- 	날짜 처리할 때 에러나서 일단 제외하였음... -->
 	<select id="rest_room_search" resultType="com.example.domain.SearchWordDTO">
 	
 		<![CDATA[
 	        SELECT  DISTINCT a.ac_title, a.ac_address, a.ac_info
 			FROM (
-			    SELECT #{checkout} + LEVEL - 1 AS day 
+			    SELECT TO_DATE('2024-05-10', 'YYYY-MM-DD') + LEVEL - 1 AS day 
 			    FROM dual 
-			    CONNECT BY #{checkin} + LEVEL - 1 <= #{checkout}
+			    CONNECT BY TO_DATE('2024-04-01', 'YYYY-MM-DD') + LEVEL - 1 <= TO_DATE('2024-05-10', 'YYYY-MM-DD')
 			) d 
 			LEFT JOIN remaingroom rm ON d.day = rm.day 
 			LEFT JOIN (
@@ -115,7 +116,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			) r ON r.ac_id = a.ac_id
 			WHERE  nvl(rm.remaingroom,r.v_ro_count) != 0
 				AND
-                   a.ac_type = 1
+                   a.ac_type = #{ac_type}
 		]]>
     </select>
     

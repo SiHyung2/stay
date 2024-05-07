@@ -12,4 +12,5 @@ public class RoomDTO {
 	private int ro_max_count;
 	private String ro_info;
 	private int ro_count;
+	private int room_price;
 }

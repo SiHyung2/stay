@@ -1,6 +1,6 @@
 package com.example.mapper;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
@@ -124,14 +124,13 @@ public class AccommodationMapperTest {
 	
 	@Test
 	public void rest_room_searchTest() {
-	    SearchWordDTO searchword = new SearchWordDTO();
-	    searchword.setAc_title("호텔");
+		SearchWordDTO searchword=new SearchWordDTO();
+		searchword.setAc_title("텔");
+		searchword.setAc_type(1);
+		searchword.setCheckout(new Date());
 
 	    List<SearchWordDTO> resultList = mapper.rest_room_search(searchword);
 
-	    for (SearchWordDTO result : resultList) {
-	        System.out.println("day: " + result.getDay() + ", rest_count: " + result.getRest_count());
-	    }
 	}
 
 

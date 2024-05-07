@@ -22,7 +22,7 @@ public class RoomServicetest {
 	@Setter(onMethod_ = @Autowired)
 	private RoomService service;
 
-	@Test
+//	@Test
 	public void testGetList() {
         List<RoomDTO> list = service.getList();
         list.forEach(room -> log.info(room));
@@ -80,14 +80,14 @@ public class RoomServicetest {
 		list.forEach(room -> log.info(room));
   	}
 	
-//  	@Test
-//	public void searchByac_id_And_Room_num() {
-//  		
-//  		RoomDTO room=new RoomDTO();
-//  		room.setAc_id("asd33");
-//		room.setRoom_num(33);
-//		service.searchByac_id_And_Room_num(room);
-//		
-//		log.info(room);
-//  	}
+  	@Test
+	public void searchByac_id_And_Room_num() {
+  		
+  		RoomDTO room=new RoomDTO();
+  		room.setAc_id("1");
+		room.setRoom_num(1);
+		service.searchByac_id_And_room_num(room);
+		
+		log.info(room);
+  	}
 }

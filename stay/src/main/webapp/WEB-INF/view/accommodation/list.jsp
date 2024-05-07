@@ -28,7 +28,7 @@
             <tr>
                 <td><c:out value="${accommodation.ac_id}" /></td>
 <!--                 숙소 목록에서 한 숙소의 모든방을 보여주는 상세페이지로 이동한다 -->
-<%--                 <td><a href="/stay/room/detail?ac_id=${accommodation.ac_id}"><c:out value="${accommodation.email_id}" /></a></td> --%>
+                <td><a href="/stay/room/detail?ac_id=${accommodation.ac_id}"><c:out value="${accommodation.email_id}" /></a></td>
                 <td><c:out value="${accommodation.ac_title}" /></td>
                 <td><c:out value="${accommodation.ac_type}" /></td>
                 <td><c:out value="${accommodation.ac_address}" /></td>

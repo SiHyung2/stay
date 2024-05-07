@@ -12,7 +12,7 @@
 </head>
 
 <body>
-	<%@include file="../base/menu.jsp" %> 
+<%-- 	<%@include file="../base/menu.jsp" %>  --%>
 <%-- 	<%@include file="<c:url value="/WEB-INF/base/menu.jsp" />" %>  --%>
     <div class="container">
 <!--     	미완 -->
@@ -109,7 +109,7 @@
 		                    <div class="accommodation-title"><h3>${accommodation.ac_title}</h3></div>
 		                    <div class="accommodation-infomation"><h4>${accommodation.ac_info}</h4></div>
 		                    <div class="accommodation-price"><h2>숙소 가격</h2></div>
-		                    <button class="accommodation-button"><a href="#">이동 버튼</a></button>
+		                    <button class="accommodation-button"><a href="/stay/accommodation/detail?ac_id=${accommodation.ac_id}">이동 버튼</a></button>
 		                </div>
 	            </div>
 	        </section>        

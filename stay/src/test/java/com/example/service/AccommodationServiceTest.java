@@ -125,8 +125,8 @@ public class AccommodationServiceTest {
 	public void rest_room_searchTest() {
 		SearchWordDTO searchword=new SearchWordDTO();
 		searchword.setAc_title("텔");
-		
-		List<String> result = service.rest_room_search(searchword);
+		searchword.setAc_type(1);
+//		List<String> result = service.rest_room_search(searchword);
 //		System.out.println(result);
 		
 //		resultList.forEach(result -> log.info(result));

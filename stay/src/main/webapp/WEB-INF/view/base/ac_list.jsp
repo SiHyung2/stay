@@ -10,15 +10,19 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>111</th>
+                <th>이름</th>
+                <th>정보</th>
+                <th>주소</th>
             </tr>
         </thead>
 
-		<c:out value="1115" />
+<%-- 		<c:out value="1115" /> --%>
 		
         <c:forEach items="${accommodation_list}" var="accommodation">
             <tr>
-            	<td><c:out value="${accommodation}" /></td>
+            	<td><c:out value="${accommodation.ac_title}" /></td>
+            	<td><c:out value="${accommodation.ac_info}" /></td>
+            	<td><c:out value="${accommodation.ac_address}" /></td>
             </tr>
         </c:forEach>
     </table>

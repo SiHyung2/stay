@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class RoomDTO {
 
-	private int ro_type;
+	private int room_num;
 	private String ac_id;
 	private String ro_name;
 	private int ro_basic_count;

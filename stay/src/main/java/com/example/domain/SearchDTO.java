@@ -7,20 +7,16 @@ import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Data;
 
 @Data
-public class SearchWordDTO {
+public class SearchDTO {
+
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date checkin;
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date checkout;
+	private String bu_name;
 	
+	private String search_word;
+//	카테고리 입력은 체크박스이므로 배열로 되어야한다.
+	private int ac_id;  
 	
-	private String ac_id;
-	private int ac_type;
-	private String ac_info;
-	private int room_num;	
-	private String ac_title;
-	private String ac_address;
-	
-	private Date day;
-	private int rest_count;
 }

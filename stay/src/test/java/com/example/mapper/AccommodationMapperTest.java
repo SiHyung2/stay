@@ -10,6 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.example.domain.AccommodationDTO;
+import com.example.domain.SearchWordDTO;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -21,7 +22,7 @@ public class AccommodationMapperTest {
 	@Autowired
 	private AccommodationMapper mapper;
 
-	@Test
+//	@Test
 	public void testGetList() {
 	    List<AccommodationDTO> list = mapper.getList();
 	    list.forEach(accommodation -> log.info(accommodation));
@@ -37,7 +38,7 @@ public class AccommodationMapperTest {
     	
     	
     	
-    	accommodation.setAc_id(10);
+    	accommodation.setAc_id("1");
     	accommodation.setEmail_id("testemail");
     	accommodation.setAc_title("방제1");
     	accommodation.setAc_type(2);
@@ -63,7 +64,7 @@ public class AccommodationMapperTest {
 	  	
 	  	
 	  	
-	  	accommodation.setAc_id(2);
+	  	accommodation.setAc_id("2");
 	  	accommodation.setEmail_id("testemail");
 	  	accommodation.setAc_title("변경된 방제33");
 	  	accommodation.setAc_type(2);
@@ -82,7 +83,7 @@ public class AccommodationMapperTest {
 //	@Test
 	public void testdeleteAccommodation() {
 		AccommodationDTO accommodation=new AccommodationDTO();
-	  	accommodation.setAc_id(2);
+	  	accommodation.setAc_id("2");
 		
 		
 		mapper.deleteaccommdation(accommodation);
@@ -93,7 +94,7 @@ public class AccommodationMapperTest {
 //	@Test
 	public void testsearchByac_id() {
 		AccommodationDTO accommodation=new AccommodationDTO();
-		accommodation.setAc_id(2);
+		accommodation.setAc_id("2");
 		mapper.searchByac_id(accommodation);
 		
 		log.info(accommodation);
@@ -111,16 +112,27 @@ public class AccommodationMapperTest {
 	}
 	
 
-	
-	
 //	@Test
-	public void testsearchByac_type() {
-		AccommodationDTO accommodation=new AccommodationDTO();
-		accommodation.setAc_type(1);
-		mapper.searchByac_type(accommodation);
-		
-		log.info(accommodation);
-		
+//	public void aside_search() {
+//		AccommodationDTO accommodation=new AccommodationDTO();
+//		accommodation.setAc_type(1);
+//		mapper.searchByac_type(accommodation);
+//		
+//		log.info(accommodation);
+//	}
+	
+	
+	@Test
+	public void rest_room_searchTest() {
+	    SearchWordDTO searchword = new SearchWordDTO();
+	    searchword.setAc_title("호텔");
+
+	    List<SearchWordDTO> resultList = mapper.rest_room_search(searchword);
+
+	    for (SearchWordDTO result : resultList) {
+	        System.out.println("day: " + result.getDay() + ", rest_count: " + result.getRest_count());
+	    }
 	}
+
 
 }

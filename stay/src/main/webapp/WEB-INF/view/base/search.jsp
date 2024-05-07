@@ -63,25 +63,27 @@
             <div style="font-size: 24px;">모텔</div>
             <div style="font-size: 24px;">펜션</div>
             <div style="font-size: 24px;">리조트</div>
-
-            <div class="input1">
-                <input type='date' id="checkin" min="${today }" value="${today }"
-                    class="main_checkin_1" name="checkin" onchange="dateChk()" required>
-            </div>
-            <div class="input2">
-                <input type='date' id="checkout" min="${tomorrow }"
-                    value="${tomorrow }" class="main_checkout_1" name="checkout"
-                    onchange="dateChk()" required>
-            </div>
-            <div class="input3">
-                <input type=search class=main_search_text placeholder=지역,숙소명
-                    name="bu_address" required>
-            </div>
-            <div class="input4">
-                <div class="input4">
-                    <button type=submit class="btn btn-primary">STAY</button>
-                </div>
-            </div>
+			
+			<form role="form" action="/stay/base/ac_list" method="GET">
+	            <div class="input1">
+	                <input type='date' id="checkin" min="${today }" value="${today }"
+	                    class="main_checkin_1" name="checkin" onchange="dateChk()" required>
+	            </div>
+	            <div class="input2">
+	                <input type='date' id="checkout" min="${tomorrow }"
+	                    value="${tomorrow }" class="main_checkout_1" name="checkout"
+	                    onchange="dateChk()" required>
+	            </div>
+	            <div class="input3">
+	                <input type='search' class='main_search_text' placeholder='지역,숙소명'
+	                    name="ac_title" required>
+	            </div>
+	            <div class="input4">
+	                <div class="input4">
+	                    <button type='submit' class="btn btn-primary">STAY</button>
+	                </div>
+	            </div>
+	         </form>
         </div>
     </div>
 </body>

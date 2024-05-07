@@ -1,18 +1,22 @@
 package com.example.controller;
 
-//import com.stay.domain.AccommodationDTO;
-//import com.stay.domain.RoomDTO;
-//import com.stay.service.RoomService;
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.example.domain.AccommodationDTO;
+import com.example.domain.TodoDTO;
+import com.example.service.AccommodationService;
+
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
-
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-
-import com.example.domain.AccommodationDTO;
-import com.example.service.AccommodationService;
 
 @Controller
 @RequestMapping("/accommodation")
@@ -32,15 +36,35 @@ public class AccommodationController {
     
     
 	@PostMapping("/insert")
-//    @RequestMapping(value="/insert", method= { RequestMethod.GET, RequestMethod.POST})//2.방 추가
 	public String InsertRoom(AccommodationDTO accommodation) {
+		log.info("insert: "+accommodation);
 		service.insertaccommodation(accommodation);
 		
-//		목록 화면으로 돌아갈 때(리다이랙트 할 때) rttr이 필요하지만 아직 목록화면을 제작하지 않아 주석처리
-//		rttr.addFlashAttribute("result", service.getBno());
-		log.info("insert: "+accommodation);
 		return "redirect:/accommodation/list";
 	}
+    
+    
+//    @PostMapping("/insert")
+//    public String InsertRoom(AccommodationDTO accommodation,
+//                             @RequestParam("checkin") @DateTimeFormat(pattern = "yyyy-MM-dd") Date checkin,
+//                             @RequestParam("checkout") @DateTimeFormat(pattern = "yyyy-MM-dd") Date checkout) {
+//        accommodation.setCheckin(checkin);
+//        accommodation.setCheckout(checkout);
+//        service.insertaccommodation(accommodation);
+//
+//        log.info("insert: " + accommodation);
+//        return "redirect:/accommodation/list";
+//    }
+//	
+	
+	@GetMapping("/ex03")
+	public String ex03(TodoDTO todo) {
+		
+		log.info("todo: "+todo);
+		return "ex02";
+	}
+	
+	
 	
 	@GetMapping("/insert_view")//2-1.방 추가하는 뷰
 	public void InsertRoom_view() {

@@ -1,6 +1,7 @@
 package com.example.service;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
@@ -10,6 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.example.domain.AccommodationDTO;
+import com.example.domain.SearchWordDTO;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -32,10 +34,11 @@ public class AccommodationServiceTest {
 	public void testInsertAccommodation() {
 		AccommodationDTO accommodation=new AccommodationDTO();
   	
-	  	Date day1 = new Date(System.currentTimeMillis());  	
+//	  	Date day1 = new Date(System.currentTimeMillis());
+		Date day1 = new Date(System.currentTimeMillis());
 	  	Date day2 = new Date(System.currentTimeMillis());
   	
-	  	accommodation.setAc_id(4);
+	  	accommodation.setAc_id("1");
 	  	accommodation.setEmail_id("testemail");
 	  	accommodation.setAc_title("방제1");
 	  	accommodation.setAc_type(2);
@@ -61,7 +64,7 @@ public class AccommodationServiceTest {
 	  	
 	  	
 	  	
-	  	accommodation.setAc_id(2);
+	  	accommodation.setAc_id("2");
 	  	accommodation.setEmail_id("testemail");
 	  	accommodation.setAc_title("변경된 방제1_서비스");
 	  	accommodation.setAc_type(2);
@@ -80,7 +83,7 @@ public class AccommodationServiceTest {
 //	@Test
 	public void testdeleteAccommodation() {
 		AccommodationDTO accommodation=new AccommodationDTO();
-	  	accommodation.setAc_id(4);
+	  	accommodation.setAc_id("3");
 		
 		
 		service.deleteaccommodation(accommodation);
@@ -91,14 +94,14 @@ public class AccommodationServiceTest {
 //	@Test
 	public void testsearchByac_id() {
 		AccommodationDTO accommodation=new AccommodationDTO();
-		accommodation.setAc_id(3);
+		accommodation.setAc_id("3");
 		service.searchByac_id(accommodation);
 		
 		log.info(accommodation);
 		
 	}
 	
-	@Test
+//	@Test
 	public void testSearchListByTitleAndDateRange() {
 		AccommodationDTO accommodation=new AccommodationDTO();
 		accommodation.setAc_title("검색 테스트1");
@@ -117,4 +120,20 @@ public class AccommodationServiceTest {
 		log.info(accommodation);
 		
 	}
+	
+	@Test
+	public void rest_room_searchTest() {
+		SearchWordDTO searchword=new SearchWordDTO();
+		searchword.setAc_title("텔");
+		
+		List<String> result = service.rest_room_search(searchword);
+//		System.out.println(result);
+		
+//		resultList.forEach(result -> log.info(result));
+	}
+	
+	
+	
+
+
 }

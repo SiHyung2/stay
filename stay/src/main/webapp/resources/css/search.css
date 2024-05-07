@@ -1,0 +1,173 @@
+/* 검색바와 숙소 목록 전체를 아우르는 컨테이너 */
+/* .container{
+    display: flex;
+     flex를 사용하면 왼쪽 사이드 검색바가 상대크기로 변하는 현상 발견  
+        무조건 float 속성을 사용하도록 해야한다 
+} 
+*/
+
+
+.container *{
+/*     border: 1px solid black; */
+}
+
+/* 왼쪽 사이드 검색 바 */
+.left-aside{
+    width: 250px;
+    height: 1100px;
+    background-color: lightgray;
+    /* position: fixed; */
+    margin-left: 40px;
+    float:left;
+}
+
+.left-aside>div{
+	margin-left: 20px;
+}
+
+/* 날짜 선택창 디자인 */
+.datepicker {
+    font-family: Arial, sans-serif;
+    width: 190px;
+  }
+  .datepicker label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  .datepicker input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+
+
+/* 인원수 입력 창 디자인 */
+.people_number {
+    display: flex;
+    align-items: center;
+  }
+  
+  .input-field {
+    width: 90px;
+    height: 25px;
+    border-radius: 2px;
+    font-size: 20px;
+    border: none;
+    text-align: center;
+    background-color: transparent;
+    text-align: left;
+    padding-left: 12px;
+  }
+  
+  .people_number_button {
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    margin-left: 5px;
+    border-radius: 3px;
+    font-size: x-large;
+    font-weight: 600;
+  }
+  
+  .people_number_button:hover {
+    background-color: white;
+  }
+  
+
+/* 검색어 창 디자인 */
+.search_word{
+  width: 190px;
+  height: 40px;
+  text-align: left;
+  border : none;
+
+}
+
+/* 검색 버튼 디자인 */
+.search_button{
+  width: 100px;
+  height: 40px;
+  background-color: skyblue;
+  color: white;
+  border: none;
+  font-size: medium;
+  font-weight: 900;
+  border-radius: 10%;
+  margin-top: 10px;
+  float: right;
+}
+
+.search_button:hover{
+  background-color: rgb(108, 190, 223);
+}
+/* 숙소 목록 디자인 */
+.accommodation-list{
+    margin-left: 120px;
+    width: 600px;
+    height: auto;
+    border:1px double red;
+    float:left;
+    border : 2px dashed purple;
+}
+
+
+/* 숙소 목록 안의 박스 디자인 */
+.accommodation-list>div{
+    display: flex;
+    width: 100%;
+    height: 200px;
+    margin-bottom: 20px;
+    border: 1px dashed blue;
+    position: relative;
+}
+
+/* 숙소 목록 안의 박스 안의 이미지 디지인 */
+.accommodation-list .accommodation-img{
+    width: 180px;
+    height: 120%;
+    margin-right: 30px;
+}
+
+/* 숙소 목록 안의 박스 안의 왼쪽 박스 디자인 */
+.accommodation-list .accommodation-content{
+    width: 100%;
+}
+
+/* 숙소 목록 안의 박스 안의 왼쪽 박스안의 디자인 (차례대로 제목, 정보, 가격 버튼 디자인) */
+.accommodation-list .accommodation-title{
+    width: 100%;
+    height: 50px;
+}
+
+
+.accommodation-list .accommodation-infomation{
+    width: 100%;
+    height: 40px;
+}
+
+.accommodation-list .accommodation-price{
+    width: 100%;
+    height: 70px;
+}
+
+
+.accommodation-list .accommodation-button{
+    width: 290px;
+    height: 45px;
+    /* 하단 고정을 위해 position과 bottom속성 사용 */
+    position: absolute;
+    color: white;
+    font-weight: 700;
+    border: none;
+    border-radius: 5%;
+    bottom: 0;
+    background-color: skyblue;
+}
+.accommodation-list .accommodation-button:hover{
+  background-color: rgb(108, 190, 223);
+}

@@ -3,6 +3,7 @@ package com.example.service;
 import java.util.List;
 
 import com.example.domain.AccommodationDTO;
+import com.example.domain.SearchWordDTO;
 
 public interface AccommodationService {
 	 
@@ -14,5 +15,6 @@ public interface AccommodationService {
 	public List<AccommodationDTO> searchByac_id(AccommodationDTO accommdation);
 	public List<AccommodationDTO> searchListByTitle(AccommodationDTO accommdation);
 	public List<AccommodationDTO> searchByac_type(AccommodationDTO accommdation);
+	public List<String> rest_room_search(SearchWordDTO searchword);
 	
 }

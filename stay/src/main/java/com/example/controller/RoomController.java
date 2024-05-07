@@ -28,9 +28,6 @@ public class RoomController {
 	public void list(RoomDTO room, Model model) {
     	 model.addAttribute("roomlist" ,service.getList());
     	 log.info("컨트롤러에서 list 실행 테스트");
-		 
-		
-//		 return "redirect:/WEB-INF-/room/";
 	}
 	
     
@@ -65,10 +62,10 @@ public class RoomController {
 	
 	
 	@GetMapping("/modify_and_delete_view")//3-1.방 수정 및 삭제하는 뷰
-	public void ModifyRoom_view(Model model, RoomDTO room, @RequestParam("ac_id") String ac_id, @RequestParam("ro_type") int ro_type) {
+	public void ModifyRoom_view(Model model, RoomDTO room, @RequestParam("ac_id") String ac_id, @RequestParam("room_num") int room_num) {
 		room.setAc_id(ac_id);
-		room.setRo_type(ro_type);
-		model.addAttribute("room" ,service.searchByac_id_And_ro_type(room));
+		room.setRoom_num(room_num);
+		model.addAttribute("room" ,service.searchByac_id_And_room_num(room));
 	}
 //   
 //	
@@ -93,13 +90,13 @@ public class RoomController {
 	
 	
 	@GetMapping("/detail_of_detail")
-	public String One_Room_in_on_Accommodation(Model model, RoomDTO room, @RequestParam("ac_id") String ac_id, @RequestParam("ro_type") int ro_type) {
+	public String One_Room_in_on_Accommodation(Model model, RoomDTO room, @RequestParam("ac_id") String ac_id, @RequestParam("room_num") int room_num) {
 		log.info("ac_id: "+ac_id);
-		log.info("ro_type: "+ro_type);
+		log.info("room_num: "+room_num);
 		
 		room.setAc_id(ac_id);
-		room.setRo_type(ro_type);
-		model.addAttribute("room" ,service.searchByac_id_And_ro_type(room));
+		room.setRoom_num(room_num);
+		model.addAttribute("room" ,service.searchByac_id_And_room_num(room));
 		log.info(room);
 		return "room/detail_of_detail";
 	}

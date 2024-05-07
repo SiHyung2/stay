@@ -22,7 +22,7 @@ public class RoomServicetest {
 	@Setter(onMethod_ = @Autowired)
 	private RoomService service;
 
-//	@Test
+	@Test
 	public void testGetList() {
         List<RoomDTO> list = service.getList();
         list.forEach(room -> log.info(room));
@@ -31,7 +31,7 @@ public class RoomServicetest {
 //	@Test
     public void testInsertRoom() {
     	RoomDTO room=new RoomDTO();
-		room.setRo_type(4);
+		room.setRoom_num(4);
 		room.setAc_id("asd123");
 		room.setRo_name("스탠다드");
 		room.setRo_basic_count(2);
@@ -49,7 +49,7 @@ public class RoomServicetest {
 //  @Test
   public void testUpdateRoom() {
 	  	RoomDTO room=new RoomDTO();
-	  	room.setRo_type(3);
+	  	room.setRoom_num(3);
 		room.setAc_id("asd123");
 		room.setRo_name("스탠다드_수정_서비스2");
 		room.setRo_basic_count(2);
@@ -65,7 +65,7 @@ public class RoomServicetest {
 //  @Test
   public void testDeleteRoom() {
   	RoomDTO room=new RoomDTO();
-		room.setRo_type(4);
+		room.setRoom_num(4);
 		
 		service.deleteroom(room);
 		
@@ -73,21 +73,21 @@ public class RoomServicetest {
 	}
   
   
-  	@Test
+//  	@Test
 	public void testSerchBy_ac_id() {
   		String ac_id="asd33";
 		List<RoomDTO> list = service.searchByac_id(ac_id);
 		list.forEach(room -> log.info(room));
   	}
 	
-  	@Test
-	public void searchByac_id_And_ro_type() {
-  		
-  		RoomDTO room=new RoomDTO();
-  		room.setAc_id("asd33");
-		room.setRo_type(33);
-		service.searchByac_id_And_ro_type(room);
-		
-		log.info(room);
-  	}
+//  	@Test
+//	public void searchByac_id_And_Room_num() {
+//  		
+//  		RoomDTO room=new RoomDTO();
+//  		room.setAc_id("asd33");
+//		room.setRoom_num(33);
+//		service.searchByac_id_And_Room_num(room);
+//		
+//		log.info(room);
+//  	}
 }

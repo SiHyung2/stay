@@ -65,7 +65,7 @@ public class AccommodationServiceImpl implements AccommodationService {
 
 //	rest_room_search로 검색어와 일치하며 남은방이 있는 숙소의 리스트를 넘긴다
 	@Override
-	public List<String> rest_room_search(SearchWordDTO searchword) {
+	public List<AccommodationDTO> rest_room_search(SearchWordDTO searchword) {
 		
 		List<SearchWordDTO> resultList = mapper.rest_room_search(searchword);
 		List<String> accommodation_list = new ArrayList<>();		//남은 방이 있는 숙소이름을 담을 배열                

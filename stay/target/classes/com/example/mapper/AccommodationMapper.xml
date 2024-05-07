@@ -97,22 +97,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<![CDATA[
 	        SELECT  DISTINCT a.ac_title, a.ac_address, a.ac_info
 			FROM (
-			    SELECT TO_DATE('2024-04-10', 'YYYY-MM-DD') + LEVEL - 1 AS day 
+			    SELECT #{checkout} + LEVEL - 1 AS day 
 			    FROM dual 
-			    CONNECT BY TO_DATE('2024-04-10', 'YYYY-MM-DD') + LEVEL - 1 <= TO_DATE('2024-04-30', 'YYYY-MM-DD') 
+			    CONNECT BY #{checkin} + LEVEL - 1 <= #{checkout}
 			) d 
-			
 			LEFT JOIN remaingroom rm ON d.day = rm.day 
 			LEFT JOIN (
-			    SELECT ac_id, ac_title, ac_address, ac_info
+			    SELECT ac_id, ac_title, ac_address, ac_info, ac_type
 			    FROM accommodation 
 			    WHERE ac_title LIKE '%' || #{ac_title} || '%'
+			    	OR
+                      ac_address LIKE '%' || #{ac_title} || '%'
 			) a ON 1 = 1
 			LEFT JOIN (
 			    SELECT ro_count AS v_ro_count, ac_id
 			    FROM room 
 			) r ON r.ac_id = a.ac_id
-			WHERE nvl(rm.remaingroom,r.v_ro_count) != 0
+			WHERE  nvl(rm.remaingroom,r.v_ro_count) != 0
+				AND
+                   a.ac_type = 1
 		]]>
     </select>
     

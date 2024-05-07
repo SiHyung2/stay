@@ -17,10 +17,7 @@ public class SearchWordDTO {
 	private String ac_id;
 	private int ac_type;
 	private String ac_info;
-	private int room_num;	
 	private String ac_title;
 	private String ac_address;
 	
-	private Date day;
-	private int rest_count;
 }

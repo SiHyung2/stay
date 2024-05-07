@@ -25,11 +25,11 @@
 				<c:choose>
 					<c:when test="${empty sessionScope.sessionId}">
 						<li class="nav-item active"><a class="nav-link"
-							href="#" style="margin-right: 5px; color: black;">회원가입</a></li>
+							href="../member/joinview" style="margin-right: 5px; color: black;">회원가입</a></li>
 						<li class="nav-item active"><a class="nav-link"
 							href="#" style="margin-right: 5px; color: black;">지도검색</a></li>
 						<li class="nav-item active"><a class="nav-link"
-							href="#" style="margin-right: 5px; color: black;">로그인</a></li>
+							href="../member/loginview" style="margin-right: 5px; color: black;">로그인</a></li>
 					</c:when>
 					<c:otherwise>
 						<c:if test="${sessionScope.sessionTypeCode eq '1'}">

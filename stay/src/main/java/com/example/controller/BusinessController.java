@@ -10,9 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
-@RequestMapping("/buisness")
-public class BuisnessController {
-    private static final Logger logger = LoggerFactory.getLogger(BuisnessController.class);
+@RequestMapping("/business")
+public class BusinessController {
+    private static final Logger logger = LoggerFactory.getLogger(BusinessController.class);
 
     @RequestMapping(value = "/main", method = RequestMethod.GET)
     public String main(Locale locale, Model model) {
@@ -24,19 +24,19 @@ public class BuisnessController {
         String formattedDate = dateFormat.format(date);
 
         model.addAttribute("serverTime", formattedDate);
-        return "buisness/main";
+        return "business/main";
     }
 
     @RequestMapping(value = "/footer", method = RequestMethod.GET)
     public String footer(Locale locale, Model model) {
         // footer.jsp 실행 로직
-        return "buisness/footer";
+        return "business/footer";
     }
 
     @RequestMapping(value = "/menu", method = RequestMethod.GET)
     public String menu(Locale locale, Model model) {
         // menu.jsp 실행 로직
-        return "buisness/menu";
+        return "business/menu";
     }
 
     

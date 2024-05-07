@@ -8,7 +8,7 @@
 </head>
 <body>
 	<%@include file="./menu.jsp"%>
-	<%@include file="./buisness_menu.jsp"%>
+	<%@include file="./business_menu.jsp"%>
 	
 	
 </body>

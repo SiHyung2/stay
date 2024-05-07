@@ -32,7 +32,7 @@
                     font-size: 20px; margin-right: 30px;">체크아웃</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#" style="color: black;
+                    <a class="nav-link" href="../review/business_review" style="color: black;
                     font-size: 20px; margin-right: 20px;">리뷰관리</a>
                 </li>
             </ul>

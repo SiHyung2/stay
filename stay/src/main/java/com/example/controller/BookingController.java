@@ -4,6 +4,9 @@ import com.example.domain.BookingDTO;
 import com.example.service.BookingService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
+
+import java.util.Locale;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -57,5 +60,11 @@ public class BookingController {
         bookingService.deleteBooking(bo_num);
         redirectAttributes.addFlashAttribute("message", "Booking deleted successfully!");
         return "redirect:/booking/add";
+    }
+    
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    public String search(Locale locale, Model model) {
+        // search.jsp 실행 로직
+        return "booking/test"; 
     }
 }

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.MemberMapper"> 
+
+ 
+<select id="getList" resultType="com.example.domain.MemberDTO">
+ 		select*from MEMBER 
+ 	</select>
+
+
+  <insert id="insert" parameterType="com.example.domain.MemberDTO">
+        INSERT INTO MEMBER (email_id, password, name, tel, type_code)
+        VALUES (#{email_id}, #{password}, #{name}, #{tel}, #{type_code})
+    </insert>
+    
+    <select id="select" resultType="com.example.domain.MemberDTO" parameterType="String">
+        SELECT * FROM MEMBER WHERE email_id = #{email_id}
+    </select>
+    
+    <select id="selectAll" resultType="com.example.domain.MemberDTO">
+        SELECT * FROM MEMBER
+    </select>
+    
+    <update id="update" parameterType="com.example.domain.MemberDTO">
+        UPDATE MEMBER
+        SET password = #{password}, name = #{name}, tel = #{tel}, type_code = #{type_code}
+        WHERE email_id = #{email_id}
+    </update>
+    
+    <delete id="delete" parameterType="String">
+        DELETE FROM MEMBER WHERE email_id = #{email_id}
+    </delete>
+    
+    <select id="validateMember"   resultType="com.example.domain.LoginVO" >
+        SELECT EMAIL_ID, PASSWORD FROM MEMBER WHERE email_id = #{email_id} and password = #{password}
+    </select>
+
+
+
+ 
+	
+
+</mapper>  
+
+
+
+
+
+ 
+
+

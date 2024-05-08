@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.mapper.AccommodationMapper">
+
+	<sql id="criteria">
+ 		<trim prefix="(" suffix=") AND" prefixOverrides="OR">
+			<foreach item='type' collection="typeArr">
+				<trim prefix="OR">
+					<choose>
+						<when test="type=='C'.toString()">
+							R.ro_basic_count like '%'||#{keyword}||'%'
+						</when>
+						<when test="type=='T'.toString()">
+							ac_title like '%'||#{ac_title}||'%'
+							or
+							ac_info like '%'||#{ac_info}||'%'
+						</when>
+						<when test="type=='C'.toString()">
+							checkin &lt;= '#{checkin}
+							checkout &gt;= '#{checkout}
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+ 	</sql>
+ 
+
+    <select id="getList" resultType="com.example.domain.AccommodationDTO">
+        select * from accommodation
+    </select>
+    
+	<!-- 숙소(사업체) 등록 -->
+ 	<insert id="insertaccommdation">
+		INSERT INTO ACCOMMODATION
+			(ac_id, email_id, ac_title, ac_type, ac_address, ac_info, checkin, checkout, bu_name)
+		VALUES 
+			(#{ac_id}, #{email_id}, #{ac_title}, #{ac_type}, #{ac_address}, #{ac_info}, #{checkin}, #{checkout}, #{bu_name})
+ 	</insert>
+
+	<update id="updateaccommdation">
+		update 
+			accommodation
+ 		set 
+ 			email_id=#{email_id}, ac_title=#{ac_title}, ac_type=#{ac_type}, 
+ 			ac_address=#{ac_address}, ac_info=#{ac_info}, checkin=#{checkin}, checkout=#{checkout}
+ 		where 
+ 			ac_id=#{ac_id}
+ 	</update>
+	
+	<delete id="deleteaccommdation">
+		delete accommodation where ac_id=#{ac_id}
+ 	</delete>
+ 	
+ 	
+	<!-- 숙소 검색 (숙소 아이디로) (숙소목록 중에서 숙소 상세보기 페이지로 들어갈 때 방을 보여준다)-->
+	<select id="searchByac_id" resultType="com.example.domain.AccommodationDTO">
+        select * from accommodation
+        where
+        	ac_id =#{ac_id}
+    </select>
+    
+    <!-- 숙소 검색 (숙소 제목, checkin, checkout 시간으로) -->
+	<select id="searchListByTitle" resultType="com.example.domain.AccommodationDTO">
+	    select * from accommodation
+	    where
+	        ac_title LIKE '%' || #{ac_title} || '%'
+	</select>
+    
+    <select id="searchByac_type" resultType="com.example.domain.AccommodationDTO">
+        select * from accommodation
+        where
+        	ac_type = #{ac_type}
+    </select>
+    
+    
+    
+    
+    <select id="aside_search" resultType="com.example.domain.SearchDTO">
+        select * from accommodation
+        where
+        	   ac_title LIKE '%' || #{ac_title} || '%' 
+          AND  ac_info LIKE '%' || #{ac_info} || '%'
+    </select>
+
+
+<!-- 	남은 방 있을 때만 방을 출력한다 (숙소가 출력되는 것은 아니다 조인 될뿐)) -->
+<!-- 	원리 : 일단 검색한 날짜 사이의 방을 모두 불러온다 그런다음 만약 remaingroom 테이블에서 해당 날짜의 데이터가 있다면 remaing 테이블의 남은 방 수 값을 가져오고 -->
+<!-- 	만약 null이라면 아무도 방을 사용하지 않으므로 room테이블의 남은 방 수를 가져오고 만약 remaing 테이블의 남은 방 수가 0이라면 남은 방이 없으므로 가져오지않는다 -->
+<!-- 	일단 ac_id는 asd123 이고 room_num=2인 방의 남은방을 계산한다 -->
+<!-- 	날짜는 2024-04-10부터 2024-04-30까지의 기간 중 남은 방이 있다면 남은 방의 수를 출력한다 -->
+<!-- 	날짜 처리할 때 에러나서 일단 제외하였음... -->
+	<select id="rest_room_search" resultType="com.example.domain.SearchWordDTO">
+	
+		<![CDATA[
+	        SELECT  DISTINCT a.ac_title, a.ac_address, a.ac_info, a.ac_id
+			FROM (
+			    SELECT TO_DATE('2024-05-10', 'YYYY-MM-DD') + LEVEL - 1 AS day 
+			    FROM dual 
+			    CONNECT BY TO_DATE('2024-04-01', 'YYYY-MM-DD') + LEVEL - 1 <= TO_DATE('2024-05-10', 'YYYY-MM-DD')
+			) d 
+			LEFT JOIN remaingroom rm ON d.day = rm.day 
+			LEFT JOIN (
+			    SELECT ac_id, ac_title, ac_address, ac_info, ac_type
+			    FROM accommodation 
+			    WHERE ac_title LIKE '%' || #{ac_title} || '%'
+			    	OR
+                      ac_address LIKE '%' || #{ac_title} || '%'
+			) a ON 1 = 1
+			LEFT JOIN (
+			    SELECT ro_count AS v_ro_count, ac_id
+			    FROM room 
+			) r ON r.ac_id = a.ac_id
+			WHERE  nvl(rm.remaingroom,r.v_ro_count) != 0
+				AND
+                   a.ac_type = #{ac_type}
+		]]>
+    </select>
+    
+
+</mapper>

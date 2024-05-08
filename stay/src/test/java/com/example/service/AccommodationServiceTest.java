@@ -91,7 +91,7 @@ public class AccommodationServiceTest {
 		log.info(accommodation);
 	}
 	
-//	@Test
+//	@Test 
 	public void testsearchByac_id() {
 		AccommodationDTO accommodation=new AccommodationDTO();
 		accommodation.setAc_id("3");

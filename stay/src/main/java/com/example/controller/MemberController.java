@@ -22,7 +22,7 @@ import com.example.service.MemberService;
 
 import lombok.AllArgsConstructor;
 
-@RequestMapping("/member")
+@RequestMapping("/member/*")
 @AllArgsConstructor
 @Controller
 
@@ -163,17 +163,17 @@ public class MemberController {
 			String type_code = validatedMember.getType_code();
 
 			if ("1".equals(type_code)) {
-				return "redirect:/base/main";
+				return "redirect:/stay/base/main";
 			} else if ("2".equals(type_code)) {
-				return "redirect:/member/list";
+				return "redirect:/stay/business/main";
 			} else {
 				// 그 외의 경우에는 로그인 페이지로 리다이렉트합니다.
-				return "redirect:/member/loginview";
+				return "redirect:/stay/member/loginview";
 			}
 		} else {
 			// 로그인 실패 시 로그인 페이지로 리다이렉트합니다.
-			return "redirect:/member/loginview";
-		}
+			return "redirect:/stay/member/loginview";
+		} 
 	}
 
 	@GetMapping("/loginview")

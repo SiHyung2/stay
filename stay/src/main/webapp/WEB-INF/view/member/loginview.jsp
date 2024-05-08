@@ -22,8 +22,8 @@
                     <label for="password">비밀번호</label>
                     <input type="password" id="password" name="password" class="form-control">
                 </div>
-                <button type="submit" class="btn">로그인</button>
-                <a href="#" class="forgot-password">회원가입</a>
+                <button type="submit" class="btn">로그인</button> 
+                <a href="./joinview" class="forgot-password">회원가입</a>
                 <a href="#" class="forgot-password">비밀번호를 잊으셨나요?</a>
             </form>
         </div>

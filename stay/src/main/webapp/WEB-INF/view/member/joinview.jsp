@@ -21,7 +21,7 @@
 			</div>
 
 			<div class="form-group">
-				<label>비밀번호</label><input class="form-control" name='password'>
+				<label>비밀번호</label><input class="form-control" name='password'> 
 			</div>
 
 			<div class="form-group">

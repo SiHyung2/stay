@@ -38,7 +38,7 @@ public class MemberServiceTest {
       service.insert(member);
        
       // 단언 구문 추가
-      assert member.getEmail_id() != null;
+      assert member.getEmail_id() != null; 
   }
   
 //  @Test

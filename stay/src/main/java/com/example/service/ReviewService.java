@@ -25,7 +25,7 @@ public interface ReviewService {
 	public List<ReviewDTO> getListWithPaging(Criteria cri, long l);
 
 	public ReviewDTO read(Long rev_Num);
-	List<ReviewDTO> selectAll(Criteria cri); 
+	List<ReviewDTO> selectAll(Criteria cri);  
 	
 	
 	List<ReviewDTO> getAllReviews(); 

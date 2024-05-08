@@ -27,7 +27,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberDTO select(String email_id) {
 		log.info("Selecting member with email: " + email_id);
-		return mapper.select(email_id);
+		return mapper.select(email_id); 
 	}
  
 	@Override

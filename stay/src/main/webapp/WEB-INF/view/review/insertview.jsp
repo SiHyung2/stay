@@ -13,7 +13,7 @@
 
 
 		<div class="form-group">
-			<label>rev_Num</label> <input class="form-control" name='rev_Num'>
+			<label>rev_Num</label> <input class="form-control" name='rev_Num'> 
 		</div>
 
 		<div class="form-group">

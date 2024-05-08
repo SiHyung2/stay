@@ -20,7 +20,7 @@ public class LoginVO {
 //	
 //	    public LoginVO(MemberMapper memberMapper) {
 //	        this.memberMapper = memberMapper;
-//	    }
+//	    } 
 
     private String email_id;
     private String password;

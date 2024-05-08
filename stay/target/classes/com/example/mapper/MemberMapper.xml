@@ -20,7 +20,7 @@
     </select>
     
     <select id="selectAll" resultType="com.example.domain.MemberDTO">
-        SELECT * FROM MEMBER
+        SELECT * FROM MEMBER 
     </select>
     
     <update id="update" parameterType="com.example.domain.MemberDTO">

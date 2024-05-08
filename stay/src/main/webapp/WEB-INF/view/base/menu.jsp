@@ -9,14 +9,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Insert title here</title> 
 <link
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand text-dark" href="main">Stay</a>
+    <a class="navbar-brand text-dark" href="/stay/base/main">Stay</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -25,11 +25,11 @@
 				<c:choose>
 					<c:when test="${empty sessionScope.sessionId}">
 						<li class="nav-item active"><a class="nav-link"
-							href="../member/joinview" style="margin-right: 5px; color: black;">회원가입</a></li>
+							href="/stay/member/joinview" style="margin-right: 5px; color: black;">회원가입</a></li>
 						<li class="nav-item active"><a class="nav-link"
 							href="#" style="margin-right: 5px; color: black;">지도검색</a></li>
 						<li class="nav-item active"><a class="nav-link"
-							href="../member/loginview" style="margin-right: 5px; color: black;">로그인</a></li>
+							href="/stay/member/loginview" style="margin-right: 5px; color: black;">로그인</a></li>
 					</c:when>
 					<c:otherwise>
 						<c:if test="${sessionScope.sessionTypeCode eq '1'}">

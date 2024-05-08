@@ -20,7 +20,7 @@ public interface ReviewMapper {
     // Delete 
     public void delete(long rev_Num);
   
-    // 수정된 메서드
+    // 수정된 메서드 
     public List<ReviewDTO> getListWithPaging(Criteria cri, long l);
 
     public ReviewDTO read(Long rev_Num);
@@ -30,6 +30,6 @@ public interface ReviewMapper {
 	public List<ReviewDTO> getAllReviews(); 
   
      
-     
+       
 } 
  

@@ -33,7 +33,7 @@ public class ReviewServiceTest {
 		newReview.setReview_Date(new Date()); // Set the review_Date (current date)
 		newReview.setUpdate_Date(new Date()); // Set the update_Date (current date)
 
-		service.insert(newReview); 
+		service.insert(newReview);  
 	} 
 
 //@Test

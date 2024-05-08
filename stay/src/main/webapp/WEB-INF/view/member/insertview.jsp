@@ -22,7 +22,7 @@
 
 									<div class="form-group">
 										<label>name</label>
-										<input class="form-control"  name='name'></input>
+										<input class="form-control"  name='name'></input> 
 									</div>
  
 									<div class="form-group">

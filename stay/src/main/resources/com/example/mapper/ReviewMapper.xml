@@ -17,7 +17,7 @@
 		SELECT REV_NUM, BO_NUM, AC_TITLE, ROOM_NUM, CONTENT, REVIEW_DATE,
 		UPDATE_DATE
 		FROM review
-		WHERE REV_NUM = #{rev_Num}
+		WHERE REV_NUM = #{rev_Num} 
 	</select>
 
 	<update id="update" parameterType="com.example.domain.ReviewDTO">

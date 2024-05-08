@@ -32,7 +32,7 @@ public class MemberMapperTest {
         member.setTel("123-456-7890");
         member.setType_code("1");
         
-        mapper.insert(member);
+        mapper.insert(member); 
          
         // 단언 구문 추가
         assert member.getEmail_id() != null;

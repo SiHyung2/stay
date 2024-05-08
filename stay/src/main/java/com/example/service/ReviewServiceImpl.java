@@ -31,7 +31,7 @@ public class ReviewServiceImpl implements ReviewService {
 		
 	}
  
-	@Override
+	@Override 
 	public ReviewDTO select(Long rev_Num) {
 		log.info("select........"+rev_Num);
 		return mapper.read(rev_Num);

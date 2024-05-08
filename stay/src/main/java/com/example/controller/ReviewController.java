@@ -45,7 +45,7 @@ public class ReviewController {
 		service.insert(review);
 		return "redirect:/review/list";
 	} // 회원 등록 후 메인 페이지로 이동
-
+ 
 
 
 	

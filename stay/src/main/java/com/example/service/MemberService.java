@@ -24,7 +24,7 @@ public void delete(String email_id);
 
 public LoginVO validateMember(LoginVO member);
 
-
+ 
 
 
 

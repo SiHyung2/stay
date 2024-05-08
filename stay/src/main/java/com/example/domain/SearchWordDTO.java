@@ -13,6 +13,8 @@ public class SearchWordDTO {
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date checkout;
 	
+	private String checkin_string_type;
+	private String checkout_string_type;
 	
 	private String ac_id;
 	private int ac_type;

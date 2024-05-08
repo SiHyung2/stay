@@ -11,14 +11,18 @@
 /*     border: 1px solid black; */
 }
 
+.container{
+	display: flex;
+}
+
 /* 왼쪽 사이드 검색 바 */
 .left-aside{
     width: 250px;
     height: 1100px;
     background-color: lightgray;
     /* position: fixed; */
-    margin-left: 400px;
-    float:left;
+/*     margin-left: 150px; */
+/*     float:left; */
 }
 
 .left-aside>div{
@@ -111,7 +115,7 @@
     width: 600px;
     height: auto;
     border:1px double red;
-    float:left;
+/*     float:left; */
     border : 2px dashed purple;
 }
 

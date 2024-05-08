@@ -96,7 +96,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="rest_room_search" resultType="com.example.domain.SearchWordDTO">
 	
 		<![CDATA[
-	        SELECT  DISTINCT a.ac_title, a.ac_address, a.ac_info
+	        SELECT  DISTINCT a.ac_title, a.ac_address, a.ac_info, a.ac_id
 			FROM (
 			    SELECT TO_DATE('2024-05-10', 'YYYY-MM-DD') + LEVEL - 1 AS day 
 			    FROM dual 

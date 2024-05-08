@@ -1,64 +1,62 @@
 body {
-    font-family: sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+	font-family: sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color:#ffffff
 }
 
 .registration-form {
-    width: 500px;
-    margin: 50px auto;
+    width: 600px;
+    margin: 150px auto;
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid #fff;
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    background-color: #fff; 
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	background-color: #fff;
 }
 
 .registration-form h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
+	text-align: center;
+	margin-bottom: 20px;
+	color: #333;
 }
 
 .form-group {
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
+	margin-bottom: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	width: 100%;
 }
 
 label {
-    font-weight: bold;
-    margin-bottom: 5px;
-    width: 25%;
-    color: #333;
+	font-weight: bold;
+	margin-bottom: 5px;
+	width: 25%;
+	color: #333;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="tel"] {
-    width: 75%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    box-sizing: border-box;
+input[type="text"], input[type="email"], input[type="tel"]
+	{
+	width: 75%;
+	padding: 10px;
+	border: 1px solid rgb(255, 255, 255);
+	border-radius: 3px;
+	box-sizing: border-box;
 }
 
 button[type="submit"] {
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 100%;
-    margin-top: 20px;
+	background-color: #4CAF50;
+	color: white;
+	padding: 12px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	width: 100%;
+	margin-top: 20px;
 }
 
 button[type="submit"]:hover {
-    background-color: #45a049;
+	background-color: #45a049;
 }

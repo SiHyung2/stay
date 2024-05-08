@@ -4,16 +4,14 @@
 <html>
 <head>
 
-<link rel="stylesheet" href="join.css">
+<link rel="stylesheet" href="/resources/css/join.css">
 <meta charset="EUC-KR">
-<title>login</title>
+<title>login</title> 
 </head>
 <body>
 	<div class="registration-form">
 		<h1>회원가입</h1>
 		<form action="/stay/member/insert" method="post">
-
-
 
 
 			<div class="form-group">
@@ -25,7 +23,7 @@
 			</div>
 
 			<div class="form-group">
-				<label for="confirmPassword">비밀번호 확인:</label> <input
+				<label for="confirmPassword">비밀번호 확인</label> <input
 					class="form-control" type="password" id="confirmPassword"
 					name="confirmPassword" required>
 			</div>
@@ -40,7 +38,7 @@
 			</div>
 
 			<div class="form-group">
-				<label for="type_code">Type Code</label> <select
+				<label for="type_code">고객유형</label> <select
 					class="form-control" name="type_code" id="type_code">
 					<option value="1">일반고객</option>
 					<option value="2">사업자</option>

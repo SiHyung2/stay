@@ -13,10 +13,30 @@
 	rel="stylesheet">
 </head>
 <body>
+
+
+
 	<nav class="navbar navbar-expand-lg bg-body-tertiary">
 		<div class="container-fluid">
+		
+		
+	<c:choose>
+		<c:when test="${empty sessionScope.LoginVO.email_id}">
 			<a class="navbar-brand text-dark" href="/stay/base/main">Stay</a>
-			<button class="navbar-toggler" type="button"
+		</c:when>
+
+		<c:otherwise>
+			<c:if test="${sessionScope.LoginVO.type_code eq '1'}">
+				<a class="navbar-brand text-dark" href="/stay/base/main">Stay</a>
+			</c:if>
+			<c:if test="${sessionScope.LoginVO.type_code eq '2'}">
+
+				<a class="navbar-brand text-dark" href="/stay/business/main">Stay</a>
+			</c:if>
+		</c:otherwise>
+	</c:choose>
+
+	<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
 				aria-controls="navbarSupportedContent" aria-expanded="false"
 				aria-label="Toggle navigation">
@@ -24,6 +44,37 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav ml-auto">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 			<a class="navbar-brand text-dark" href="/stay/base/main">Stay</a> -->
+		
+
+
+
+
+
+
+
+
+
+
+
+
 					<c:choose>
 						<c:when test="${empty sessionScope.LoginVO.email_id}">
 							<li class="nav-item active"><a class="nav-link"
@@ -41,6 +92,9 @@
 
 								<li class="nav-item active"><a class="nav-link" href="#"
 									style="margin-right: 5px; color: black;">예약 확인</a></li>
+
+
+
 							</c:if>
 
 							<c:if test="${sessionScope.LoginVO.type_code eq '2'}">
@@ -49,7 +103,8 @@
 							</c:if>
 
 
-							<li class="nav-item active"><a class="nav-link" href="/stay/base/logout"
+							<li class="nav-item active"><a class="nav-link"
+								href="/stay/member/logout"
 								style="margin-right: 5px; color: black;">로그아웃</a></li>
 
 						</c:otherwise>

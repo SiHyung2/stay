@@ -182,7 +182,7 @@ public class MemberController {
 	
 	
 	@GetMapping("/loginview")
-	public void loginview() {
+	public void loginview() { 
 	}
 
 	@GetMapping("/logout")

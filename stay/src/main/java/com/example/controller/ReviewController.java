@@ -115,4 +115,15 @@ public class ReviewController {
 
         return "review/list"; // 적절한 뷰 이름으로 변경
     }
+    
+    
+    @GetMapping("/business_review")
+    public void businessreview(Model model) {
+  
+		List<ReviewDTO> review = service.selectAll();
+        model.addAttribute("reviews", review);
+
+    }
+    
+    
 }

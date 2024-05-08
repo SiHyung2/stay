@@ -17,7 +17,6 @@
     z-index: 1; /* 이미지 위에 나오도록 설정됩니다. */
     width: 100%;
     max-width: 500px; /* 최대 너비 설정 */
-    border: 1px solid black;
 }
 
 .image {
@@ -54,6 +53,32 @@
     justify-content: center; /* 수평 가운데 정렬 */
 }
 </style>
+
+
+<!-- 라디오 버튼을 직사각형 탭 메뉴로 만드는 스타일시트 -->
+<style>
+    /* 라디오 버튼을 숨김 */
+    .custom-radio input[type="radio"] {
+        display: none;
+    }
+    /* 라디오 버튼을 나타내는 직사각형 스타일 */
+    .custom-radio label {
+        display: inline-block;
+        width: 180px;
+        height: 60px;
+        padding: 10px;
+        cursor: pointer;
+        text-align: center;
+        line-height: 40px;
+    }
+    /* 라디오 버튼이 선택되었을 때 label의 배경색을 변경 */
+    .custom-radio input[type="radio"]:checked + label {
+        background-color: darkgreen;
+        color: #fff;
+        font-weight:700;
+        text-size:30px;
+    }
+</style>
 </head>
 <body>
     <div class="container-wrapper">
@@ -62,33 +87,44 @@
                     
 			
 			<form role="form" action="/stay/base/ac_list" method="GET">
-<!-- 				 <div style="font-size: 24px;">호텔</div> -->
-<!-- 	            <div style="font-size: 24px;">모텔</div> -->
-<!-- 	            <div style="font-size: 24px;">펜션</div> -->
-<!-- 	            <div style="font-size: 24px;">리조트</div>  -->
-				호텔<input type="checkbox" name="ac_type" value="1" value="0" checked/>
-				모텔<input type="checkbox" name="ac_type" value="2" value="0" />
-				팬션<input type="checkbox" name="ac_type" value="3" value="0" />
-				리조트<input type="checkbox" name="ac_type" value="4" value="0" />
-				<p>---</p>
-				<p>한개만 선택</p>
-	            <div class="input1">
-	                <input type='date' id="checkin" min="${today }" value="${today }"
-	                    class="main_checkin_1" name="checkin" onchange="dateChk()">
-	            </div>
-	            <div class="input2">
-	                <input type='date' id="checkout" min="${tomorrow }"
-	                    value="${tomorrow }" class="main_checkout_1" name="checkout"
-	                    onchange="dateChk()">
-	            </div>
-	            <div class="input3">
-	                <input type='search' class='main_search_text' placeholder='지역,숙소명' value=""
-	                    name="ac_title">
-	            </div>
-	            <div class="input4">
-	                <div class="input4">
-	                    <button type='submit' class="btn btn-primary">STAY</button>
-	                </div>
+				<div>
+					<div class="custom-radio">
+				        <input type="radio" id="hotel"  name="ac_type" value="1"  checked/>
+				        <label for="hotel">호텔</label>
+				    </div>
+				    <div class="custom-radio">
+				        <input type="radio" id="motel" name="ac_type" value="2"/>
+				        <label for="motel">모텔</label>
+				    </div>
+				    <div class="custom-radio">
+				        <input type="radio" id="pension"  name="ac_type" value="3"/>
+				        <label for="pension">팬션</label>
+				    </div>
+				    <div class="custom-radio">
+				        <input type="radio" id="resort" name="ac_type" value="4"/>
+				        <label for="resort">리조트</label>
+				    </div>
+			    </div>
+			    
+			    <div>
+		            <div class="input1">
+		                <input type='date' id="checkin" min="${today }" value="${today }"
+		                    class="main_checkin_1" name="checkin" onchange="dateChk()">
+		            </div>
+		            <div class="input2">
+		                <input type='date' id="checkout" min="${tomorrow }"
+		                    value="${tomorrow }" class="main_checkout_1" name="checkout"
+		                    onchange="dateChk()">
+		            </div>
+		            <div class="input3">
+		                <input type='search' class='main_search_text' placeholder='지역,숙소명' value=""
+		                    name="ac_title">
+		            </div>
+		            <div class="input4">
+		                <div class="input4">
+		                    <button type='submit' class="btn btn-primary">STAY</button>
+		                </div>
+		            </div>
 	            </div>
 	         </form>
         </div>

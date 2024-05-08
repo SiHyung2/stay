@@ -8,7 +8,8 @@
 <meta charset="EUC-KR">
 <title>login</title> 
 </head>
-<body>
+<body style="background-color: #ffffff">
+
 	<div class="registration-form">
 		<h1>회원가입</h1>
 		<form action="/stay/member/insert" method="post">
@@ -23,11 +24,12 @@
 			</div>
 
 			<div class="form-group">
-				<label for="confirmPassword">비밀번호 확인</label> <input
-					class="form-control" type="password" id="confirmPassword"
+			
+				<label for="confirmPassword">비밀번호 확인</label> <input  style= "width:460px" 
+				type="password" id="confirmPassword"
 					name="confirmPassword" required>
 			</div>
-
+ 
 
 			<div class="form-group">
 				<label>이름</label> <input class="form-control" name='name'></input>

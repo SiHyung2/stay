@@ -104,8 +104,9 @@ public class MemberServiceTest {
   public void testValidateMember() {
   	
   	LoginVO vo1 = new LoginVO();
-  	vo1.setEmail_id("11test497@example.com");
-  	vo1.setPassword("34352");
+  	vo1.setEmail_id("12");
+  	vo1.setPassword("1");
+
 
       LoginVO vo2 = service.validateMember(vo1);
       
@@ -114,6 +115,21 @@ public class MemberServiceTest {
 
   } 
   
-  
+//  @Test
+//  public void testValidateMember() {
+//      LoginVO vo1 = new LoginVO();
+//      vo1.setEmail_id("12");
+//      vo1.setPassword("1");
+//      vo1.setType_code("1");
+//
+//      // 검사할 조건을 필터링하여 객체 생성
+//      LoginVO vo2 = new LoginVO(); 
+//      vo2.setEmail_id(vo1.getEmail_id());
+//      vo2.setPassword(vo1.getPassword());
+//
+//      LoginVO resultVO = service.validateMember(vo2);
+//      log.info("리턴: {}", vo1);
+//  } 
+
   
 }

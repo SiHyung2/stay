@@ -97,8 +97,9 @@ public class MemberMapperTest {
     public void testValidateMember() {
     	
     	LoginVO vo1 = new LoginVO();
-    	vo1.setEmail_id("11test497@example.com");
-    	vo1.setPassword("34352");
+    	vo1.setEmail_id("12");
+    	vo1.setPassword("1");
+    	vo1.setType_code("1");
 
         LoginVO vo2 = mapper.validateMember(vo1);
         

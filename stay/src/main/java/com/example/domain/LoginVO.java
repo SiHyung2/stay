@@ -14,25 +14,13 @@ import lombok.Setter;
 @Component
 public class LoginVO {
 	
-//	private MemberMapper memberMapper;
-//	
-//	
-//	
-//	    public LoginVO(MemberMapper memberMapper) {
-//	        this.memberMapper = memberMapper;
-//	    } 
+
 
     private String email_id;
     private String password;
     private String type_code;
     
-    
-    
-
-//    public MemberDTO validateMember(String email_id, String password) {
-//        return memberMapper.validateMember(email_id, password);
-//    }
-    
+ 
 	
 }
 

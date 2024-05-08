@@ -1,9 +1,11 @@
 package com.example.controller;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +27,8 @@ import lombok.AllArgsConstructor;
 @RequestMapping("/member/*")
 @AllArgsConstructor
 @Controller
+
+
 
 public class MemberController {
 
@@ -108,74 +112,75 @@ public class MemberController {
 		return "member/list"; // 적절한 뷰 이름으로 변경
 	}
 
-//    @PostMapping("/login")
-//    public ResponseEntity<Void> login(LoginVO vo, HttpServletRequest request) {
+//	@PostMapping("/login")
+//	public String login(LoginVO vo, HttpServletRequest request) {
 //
-//        MemberDTO member = memberService.validateMember(vo.getEmail_id(), vo.getPassword());
+//		LoginVO validatedMember = memberService.validateMember(vo);
 //
-//        
-//        if (member != null) {
-//            // Login successful
-//            // Implement session management
-//            request.getSession().setAttribute("loggedInUser", member);
-//
-//           
-//            HttpHeaders headers = new HttpHeaders();
-//            headers.add("Location", "/list");
-//            return ResponseEntity.status(HttpStatus.FOUND) 
-//                                 .headers(headers)
-//                                 .build();
-//        } else {
-//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-//        }
-//    }
+//		if (validatedMember != null) {
+//			request.getSession().setAttribute("eq", validatedMember);
+//		}
+//			String type_code = validatedMember.getType_code();
+//			
+//			 if ("1".equals(type_code)) {"redirect:/member/loginview";}
+//		} 
+//			
+			
+			
+			
+//			if ("1".equals(type_code)) {
+//				return "redirect:/base/main";
+//			} else if ("2".equals(type_code)) {
+//				return "redirect:/business/main";
+//			} else {
+//				// 그 외의 경우에는 로그인 페이지로 리다이렉트합니다.
+//				return "redirect:/member/loginview";
+//			}
+//		} else {
+//			// 로그인 실패 시 로그인 페이지로 리다이렉트합니다.
 
-//    @PostMapping("/login")
-//    public ResponseEntity<Void> login(LoginVO vo, HttpServletRequest request) {
-////        LoginVO loginVO = new LoginVO();
-////        loginVO.setEmail_id(vo.getEmail_id());
-////        loginVO.setPassword(vo.getPassword());
-//
-////        LoginVO validatedMember = memberService.validateMember(loginVO);
-//        LoginVO validatedMember = memberService.validateMember(vo);
-//
-//        if (validatedMember != null) {
-//            request.getSession().setAttribute("loggedInUser", validatedMember);
-//
-//            HttpHeaders headers = new HttpHeaders();
-//            headers.add("Location", "/base/main");
-//            return ResponseEntity.status(HttpStatus.FOUND)
-//                                 .headers(headers)
-//                                 .build();
-//        } else {
-//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-//        }
-//    }
-
+//	}
+//	
 	@PostMapping("/login")
 	public String login(LoginVO vo, HttpServletRequest request) {
 
 		LoginVO validatedMember = memberService.validateMember(vo);
 
 		if (validatedMember != null) {
-			request.getSession().setAttribute("logInUser", validatedMember);
-
+			request.getSession().setAttribute("LoginVO", validatedMember);
+			
+			
 			String type_code = validatedMember.getType_code();
 
-			if ("1".equals(type_code)) {
-				return "redirect:/stay/base/main";
-			} else if ("2".equals(type_code)) {
-				return "redirect:/stay/business/main";
+			if (type_code.equals("1")) {
+				return "redirect:/base/main";
+			} else if (type_code.equals("2")) {
+				return "redirect:/business/main";
 			} else {
 				// 그 외의 경우에는 로그인 페이지로 리다이렉트합니다.
-				return "redirect:/stay/member/loginview";
+				return "redirect:/member/loginview";
 			}
 		} else {
 			// 로그인 실패 시 로그인 페이지로 리다이렉트합니다.
-			return "redirect:/stay/member/loginview";
+			return "redirect:/member/loginview";
 		} 
 	}
 
+//	@PostMapping("/login")
+//	public String login(LoginVO vo, HttpServletRequest request) {
+//
+//		LoginVO validatedMember = memberService.validateMember(vo);
+//
+//		if (validatedMember != null) {
+//			request.getSession().setAttribute("logInUser", validatedMember);
+//
+//		}
+//			return "redirect:/member/loginview";
+//		}
+//	
+	
+	
+	
 	@GetMapping("/loginview")
 	public void loginview() {
 	}
@@ -183,7 +188,7 @@ public class MemberController {
 	@GetMapping("/logout")
 	public String logout(HttpServletRequest request) {
 		request.getSession().invalidate();
-		return "redirect:/";
+		return "redirect:/base/main";
 	}
 
 	@GetMapping("/joinview")

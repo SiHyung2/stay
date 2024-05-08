@@ -1,5 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
-<%@include file="../base/menu.jsp"%>
+<%@include file="../menu.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>

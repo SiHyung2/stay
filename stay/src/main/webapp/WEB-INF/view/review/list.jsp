@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 
-<%@include file="../base/menu.jsp"%>
+<%@include file="../menu.jsp"%>
 
 <body id="page-top">
 

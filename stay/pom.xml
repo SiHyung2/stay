@@ -172,8 +172,13 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-		
-	</dependencies>
+
+		<dependency>
+			<groupId>com.example</groupId>
+			<artifactId>project1</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+  </dependencies>
   
   	
   	<build>

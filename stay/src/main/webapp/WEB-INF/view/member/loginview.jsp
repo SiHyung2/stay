@@ -1,6 +1,6 @@
 <%@ page language="java" 
     pageEncoding="UTF-8"%>
-    <%@include file="../base/menu.jsp" %> 
+    <%@include file="../menu.jsp" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +13,7 @@
   <div class="container">
         <div class="login-form">
             <h1>Stay</h1>
-            <form action="/member/login" method="post">
+            <form action="login" method="post">
                 <div class="form-group">
                     <label for="username">아이디</label>
                     <input type="text" id="email_id" name="email_id" class="form-control">

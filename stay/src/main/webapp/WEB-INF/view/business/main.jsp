@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@include file="./menu.jsp"%>
+	<%@include file="../menu.jsp"%>
 	<%@include file="./business_menu.jsp"%>
 	
 	

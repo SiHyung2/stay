@@ -23,7 +23,7 @@ public interface MemberMapper {
 	public LoginVO validateMember(LoginVO member);
     
 	
-}  
+} 
  
 	/*
 	 * // Create (회원가입) int memberJoin(MemberDTO member);

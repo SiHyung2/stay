@@ -36,8 +36,7 @@
 </style>
 </head>
 <body>
-	<%@include file="./menu.jsp"%>
-	<div style="padding: 10px;"></div>
+	<%@include file="../menu.jsp"%>
 	<%@include file="./search.jsp"%>
 
 

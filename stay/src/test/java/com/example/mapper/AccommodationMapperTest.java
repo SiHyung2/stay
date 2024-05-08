@@ -112,22 +112,29 @@ public class AccommodationMapperTest {
 	}
 	
 
-//	@Test
-//	public void aside_search() {
-//		AccommodationDTO accommodation=new AccommodationDTO();
-//		accommodation.setAc_type(1);
-//		mapper.searchByac_type(accommodation);
-//		
-//		log.info(accommodation);
-//	}
-	
-	
 	@Test
+	public void aside_search() {
+		SearchWordDTO searchword=new SearchWordDTO();
+		searchword.setAc_title("");
+		searchword.setRo_basic_count(0);
+//		searchword.setAc_type_checkbox1(1);
+//		searchword.setAc_type_checkbox2(2);
+//		searchword.setAc_type_checkbox3(3);
+//		searchword.setAc_type_checkbox4(4);
+//		searchword.setAc_type_checkbox5(5);
+//		searchword.setAc_type_checkbox6(6);
+//		searchword.setAc_type_checkbox7(7);
+		List<SearchWordDTO> resultList = mapper.aside_search(searchword);
+		
+	}
+	
+	
+//	@Test
 	public void rest_room_searchTest() {
 		SearchWordDTO searchword=new SearchWordDTO();
-		searchword.setAc_title("텔");
+		searchword.setAc_title("");
 		searchword.setAc_type(1);
-		searchword.setCheckout(new Date());
+//		searchword.setCheckout(new Date());
 
 	    List<SearchWordDTO> resultList = mapper.rest_room_search(searchword);
 

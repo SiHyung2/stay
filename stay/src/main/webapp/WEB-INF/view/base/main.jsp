@@ -32,6 +32,9 @@
 	margin: 20px 0px; /* 이미지 간의 가로 방향 마진을 설정합니다. */
 	margin-left: 120px;
 }
+
+
+
 }
 </style>
 </head>

@@ -29,7 +29,7 @@
                 			<div class="panel-body">
                 				<form role="form" method="post">
                 					<div class="form-group">
-                						<label>ro_type</label> <input class="form-control" name='ro_type' value='${room.ro_type }'>
+                						<label>ro_type</label> <input class="form-control" name='room_num' value='${room.room_num }'>
                 					</div>
                 					
                 					<div class="form-group">

@@ -85,9 +85,9 @@ header .date_button{
     border: 2px solid blue;
 }
 
-/* .room_view>.room_price{
+.room_view>.room_price{
     width: 100px;
     height: 50px;
     /* float: right; */
     border: 2px solid red;
-} */
+} 

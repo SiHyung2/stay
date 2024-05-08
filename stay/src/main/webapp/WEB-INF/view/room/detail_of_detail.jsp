@@ -10,7 +10,7 @@
 <body>
 	<h1>detail_of_detail test...</h1>
 	<a href="/stay/room/list">목록으로</a>
-	<a href="/stay/room/modify_and_delete_view?ac_id=${room.ac_id}&ro_type=${room.ro_type}">수정 및 삭제 페이지로</a>
+	<a href="/stay/room/modify_and_delete_view?ac_id=${room.ac_id}&room_num=${room.room_num}">수정 및 삭제 페이지로</a>
 	<br>
 	<a href="/stay/room/detail?ac_id=${room.ac_id}">숙소 상세페이지(detail페이지)로</a>
     <table class="table table-bordered">
@@ -26,7 +26,7 @@
             </tr>
         </thead>
            <tr>
-               <td><c:out value="${room.ro_type}" /></td>
+               <td><c:out value="${room.room_num}" /></td>
                <td><c:out value="${room.ac_id}" /></td>
                <td><c:out value="${room.ro_name}" /></td>
                <td><c:out value="${room.ro_basic_count}" /></td>

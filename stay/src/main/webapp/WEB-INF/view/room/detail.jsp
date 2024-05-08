@@ -27,7 +27,7 @@
             <tr>
                 <td><c:out value="${room.ro_name}" /></td>
                 <td><c:out value="${room.ac_id}" /></td>
-                <td><a href="/stay/room/detail_of_detail?ac_id=${room.ac_id}&ro_name=${room.ro_name}"><c:out value="${room.ro_name}" /></a></td>
+                <td><a href="/stay/room/detail_of_detail?ac_id=${room.ac_id}&room_num=${room.room_num}"><c:out value="${room.ro_name}" /></a></td>
                 <td><c:out value="${room.ro_basic_count}" /></td>
                 <td><c:out value="${room.ro_max_count}" /></td>
                 <td><c:out value="${room.ro_info}" /></td>

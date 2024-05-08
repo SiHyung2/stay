@@ -80,7 +80,7 @@ public class RoomController {
 	
 	
 	
-    
+//    한 숙소의 모든 방을 보여줌 (숙소 상세 페이지)
 	@GetMapping("/detail")
 	public String All_Room_in_on_Accommodation(Model model, @RequestParam("ac_id") String ac_id) {
 		log.info("ac_id: "+ac_id);
@@ -88,7 +88,7 @@ public class RoomController {
 		return "room/detail";
 	}
 	
-	
+//	한 숙소의 특정 방을 보여줌 (방 상세 페이지)
 	@GetMapping("/detail_of_detail")
 	public String One_Room_in_on_Accommodation(Model model, RoomDTO room, @RequestParam("ac_id") String ac_id, @RequestParam("room_num") int room_num) {
 		log.info("ac_id: "+ac_id);

@@ -36,7 +36,7 @@
                 	<c:out value="${room.room_price}" />
                 </div>
                 <div class="room_infomation_button">
-                	<td><a href="/stay/room/detail_of_detail?ac_id=${room.ac_id}&ro_name=${room.ro_name}"><c:out value="${room.ro_name}" /></a></td>
+                	<td><a href="/stay/room/detail_of_detail?ac_id=${room.ac_id}&room_num=${room.room_num}"><c:out value="${room.ro_name}" /></a></td>
                 </div>
                 <div class="booking_button"></div>
             </div>

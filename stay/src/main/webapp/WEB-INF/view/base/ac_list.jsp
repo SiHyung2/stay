@@ -99,20 +99,22 @@
 	        </aside>
     	</form>
 
-		<c:forEach items="${accommodation_list}" var="accommodation">
+		
 	        <section class="accommodation-list">
+	        	<c:forEach items="${accommodation_list}" var="accommodation">
 	            <div>
 	                <asdie class="accommodation-img">
 	                    숙소 이미지
 	                </asdie>
 		                <div class="accommodation-content">
-		                    <div class="accommodation-title"><h3>${accommodation.ac_title}</h3></div>
+		                    <div class="accommodation-title">
+		                    	<h3>${accommodation.ac_title} &nbsp; ${accommodation.ac_address}</h3>
+		                    </div>
 		                    <div class="accommodation-infomation">
-		                    	<h4>${accommodation.ac_address}</h4>
-		                    	<h4>${accommodation.ac_info}</h4>
+		                    	<h4>${accommodation.ac_info}    &nbsp;&nbsp;지도 보기(미구현)</h4>
 		                    </div>
 		                    <div class="accommodation-price">
-		                    	<h2>숙소 가격</h2>
+		                    	<h1>${accommodation.min_room_price} 원</h1>
 		                    </div>
 		                    <button class="accommodation-button" 
 		                        onclick="location.href='/stay/accommodation/detail?ac_id=${accommodation.ac_id}'">
@@ -120,8 +122,9 @@
 		                    </button>
 		                </div>
 	            </div>
+	            </c:forEach>
 	        </section>        
-        </c:forEach>
+        
         
     </div>
 </body>

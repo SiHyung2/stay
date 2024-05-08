@@ -59,24 +59,31 @@
     <div class="container-wrapper">
         <img src="../resources/img/main_bg.jpg" class="image" alt="Background Image">
         <div class="container">
-            <div style="font-size: 24px;">호텔</div>
-            <div style="font-size: 24px;">모텔</div>
-            <div style="font-size: 24px;">펜션</div>
-            <div style="font-size: 24px;">리조트</div>
+                    
 			
 			<form role="form" action="/stay/base/ac_list" method="GET">
+<!-- 				 <div style="font-size: 24px;">호텔</div> -->
+<!-- 	            <div style="font-size: 24px;">모텔</div> -->
+<!-- 	            <div style="font-size: 24px;">펜션</div> -->
+<!-- 	            <div style="font-size: 24px;">리조트</div>  -->
+				호텔<input type="checkbox" name="ac_type" value="1" value="0" checked/>
+				모텔<input type="checkbox" name="ac_type" value="2" value="0" />
+				팬션<input type="checkbox" name="ac_type" value="3" value="0" />
+				리조트<input type="checkbox" name="ac_type" value="4" value="0" />
+				<p>---</p>
+				<p>한개만 선택</p>
 	            <div class="input1">
 	                <input type='date' id="checkin" min="${today }" value="${today }"
-	                    class="main_checkin_1" name="checkin" onchange="dateChk()" required>
+	                    class="main_checkin_1" name="checkin" onchange="dateChk()">
 	            </div>
 	            <div class="input2">
 	                <input type='date' id="checkout" min="${tomorrow }"
 	                    value="${tomorrow }" class="main_checkout_1" name="checkout"
-	                    onchange="dateChk()" required>
+	                    onchange="dateChk()">
 	            </div>
 	            <div class="input3">
-	                <input type='search' class='main_search_text' placeholder='지역,숙소명'
-	                    name="ac_title" required>
+	                <input type='search' class='main_search_text' placeholder='지역,숙소명' value=""
+	                    name="ac_title">
 	            </div>
 	            <div class="input4">
 	                <div class="input4">

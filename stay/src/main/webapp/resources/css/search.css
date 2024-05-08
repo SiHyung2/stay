@@ -114,9 +114,11 @@
     margin-left: 120px;
     width: 600px;
     height: auto;
-    border:1px double red;
+/*     border:1px double red; */
 /*     float:left; */
-    border : 2px dashed purple;
+/*     border : 2px dashed purple; */
+	display: flex;
+	flex-direction:column;
 }
 
 
@@ -126,14 +128,17 @@
     width: 100%;
     height: 200px;
     margin-bottom: 20px;
-    border: 1px dashed blue;
+/*     border: 1px dashed blue; */
+	
+	box-shadow:3px 3px 1px 3px gray;
     position: relative;
+    margin-bottom:30px;
 }
 
 /* 숙소 목록 안의 박스 안의 이미지 디지인 */
 .accommodation-list .accommodation-img{
     width: 180px;
-    height: 120%;
+    height: 100%;
     margin-right: 30px;
 }
 
@@ -157,11 +162,14 @@
 .accommodation-list .accommodation-price{
     width: 100%;
     height: 70px;
+    text-align:right;
+    color:darkcyan;
+    font-weight:700;
 }
 
 
 .accommodation-list .accommodation-button{
-    width: 290px;
+    width: 435px;
     height: 45px;
     /* 하단 고정을 위해 position과 bottom속성 사용 */
     position: absolute;

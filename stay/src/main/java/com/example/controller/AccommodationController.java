@@ -45,18 +45,7 @@ public class AccommodationController {
 		return "redirect:/accommodation/list";
 	}
     
-    
-//    @PostMapping("/insert")
-//    public String InsertRoom(AccommodationDTO accommodation,
-//                             @RequestParam("checkin") @DateTimeFormat(pattern = "yyyy-MM-dd") Date checkin,
-//                             @RequestParam("checkout") @DateTimeFormat(pattern = "yyyy-MM-dd") Date checkout) {
-//        accommodation.setCheckin(checkin);
-//        accommodation.setCheckout(checkout);
-//        service.insertaccommodation(accommodation);
-//
-//        log.info("insert: " + accommodation);
-//        return "redirect:/accommodation/list";
-//    }
+
 //	
 	
 	@GetMapping("/ex03")
@@ -68,7 +57,7 @@ public class AccommodationController {
 	
 	
 	
-	@GetMapping("/insert_view")//2-1.방 추가하는 뷰
+	@GetMapping("/insert_view")//2-1. 추가하는 뷰
 	public void InsertRoom_view() {
 		//방 추가하는 뷰와 연결하기만 하는 메서드
 	}
@@ -76,33 +65,14 @@ public class AccommodationController {
 	
 	
 	
-	@PostMapping("/modify")   //3.방 수정
+	@PostMapping("/modify")   //3. 수정
 	public String ModifyRoom(AccommodationDTO accommodation, Model model) {
 		
 		accommodationservice.updateaccommodation(accommodation);
 		 
 		return "redirect:/accommodation/modify";
 	}
-//	
-//	
-//	@GetMapping("/modify_and_delete_view")//3-1.방 수정 및 삭제하는 뷰
-//	public void ModifyRoom_view() {
-//		//방 수정하는 뷰와 연결하기만 하는 메서드
-//	}
-////   
-////	
-//	@PostMapping("/delete")   //4.방 삭제
-//	public String DeleteRoom(RoomDTO room, Model model) {
-//		
-//		service.deleteroom(room);
-//		 
-//		return "redirect:/room/list";
-//	}
-//	
-//	
-//	
-//	
-//    
+ 
 	@GetMapping("/detail")
 	public void All_Room_in_on_Accommodation(Model model, @RequestParam("ac_id") String ac_id, RoomDTO room) {
 		log.info("ac_id: "+ac_id);
@@ -111,23 +81,7 @@ public class AccommodationController {
 		model.addAttribute("roomlist" ,roomservice.searchByac_id(ac_id));
 		
 	}
-//	
-//	
-//	@GetMapping("/detail_of_detail")
-//	public String One_Room_in_on_Accommodation(Model model, RoomDTO room, @RequestParam("ac_id") String ac_id, @RequestParam("ro_type") int ro_type) {
-//		log.info("ac_id: "+ac_id);
-//		log.info("ro_type: "+ro_type);
-//		
-//		room.setAc_id(ac_id);
-//		room.setRo_type(ro_type);
-//		model.addAttribute("room" ,service.searchByac_id_And_ro_type(room));
-//		log.info(room);
-//		return "room/detail_of_detail";
-//	}
 	
-	
-	
-    
     
     
 }

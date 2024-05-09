@@ -133,6 +133,23 @@ public class AccommodationServiceTest {
 	}
 	
 	
+	@Test
+	public void aside_search() {
+		SearchWordDTO searchword=new SearchWordDTO();
+		searchword.setAc_title("");
+		searchword.setRo_basic_count(0);
+		searchword.setAc_type_checkbox1(0);
+		searchword.setAc_type_checkbox2(1);
+		searchword.setAc_type_checkbox3(0);
+		searchword.setAc_type_checkbox4(0);
+		searchword.setAc_type_checkbox5(0);
+		searchword.setAc_type_checkbox6(0);
+		searchword.setAc_type_checkbox7(0);
+		List<SearchWordDTO> resultList = service.aside_search(searchword);
+		
+	}
+	
+	
 	
 
 

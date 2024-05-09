@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.domain.AccommodationDTO;
 import com.example.domain.RoomDTO;
 import com.example.domain.SearchWordDTO;
 import com.example.service.AccommodationService;
@@ -71,34 +72,79 @@ public class BaseController {
     
     
     
-//    이거 테스트하려면 ac_type까지 꼭 넘겨줘야한다. 주소창에 넣어주자
-    @RequestMapping(value = "/ac_list", method = RequestMethod.GET)
-    public void search_process(Locale locale, Model model, SearchWordDTO searchword) {
-        
-    	List<SearchWordDTO> accommodation_list = accommodationservice.rest_room_search(searchword);
-    	model.addAttribute("accommodation_list", accommodation_list);
-    	
-    	accommodation_list.forEach(result -> log.info(result));
-	
-//    	accommodation_list를 모델을 사용해서 매개변수로 뷰에 넘긴다. 그리고 accommodation_list에 있는 것만 출력하도록 스크립트 짤 예쩡
-//    	만약 accommodation_list이 
-//    	accommodation_list에 있는 값이라면 출력한다      이미 숙소 리스트 만든거에서 조건문만 추가하면 될거같다
-    	
-    	
-    }
-    
-//    @RequestMapping(value = "/base/ac_list", method = RequestMethod.GET)
-//    public void search(Locale locale, Model model) {
+//    백업본 (에러 없음) (try문으로 만든 버전)
+//    @GetMapping(value = "/ac_list")
+//    public void search_process(Locale locale, Model model, SearchWordDTO searchword) {
+//        
+//    	try {
+//    		String what_type_of_search = searchword.getWhat_type_of_search();
+//    		System.out.println("(일반도 asdie검색 실행되는 부분)try 실행됨1");
+//    		if(what_type_of_search == null) {
+//    			System.out.println("실행되면 try 필요없음");
+//    		}
+//    		if (what_type_of_search.equals("aside_search") ) {
+////    		만약 asdie_search(리스트에서 조건으로 검색하는 거)이면 이조건문을 실행한다
+//    		System.out.println("aside_search 실행됨2");
+//    		}
+//    	}
+//    	catch(NullPointerException e){
+//    		System.out.println("일반 검색 실행됨3");
+//    		List<SearchWordDTO> accommodation_list = accommodationservice.rest_room_search(searchword);
+//        	model.addAttribute("accommodation_list", accommodation_list);
+//        	
+//        	accommodation_list.forEach(result -> log.info(result));
+//    	}
 //    }
     
-//	@GetMapping("/detail")
-//	public void All_Room_in_on_Accommodation(Model model, RoomDTO room) {
-//		log.info("ac_id: "+ac_id);
-//	
-//		
-//		model.addAttribute("roomlist" ,roomservice.searchByac_id(ac_id));
-//		
-//	}
+    
+
+//	aside 검색시 유의점 : ro_basic_count 이 null값이면 출력이 안되므로 유의해야한다 (그래서 숙소에 방이 하나도 없으면 출력이 안된다!!)
+    @GetMapping(value = "/ac_list")
+    public void search_process(Model model, SearchWordDTO searchword) {
+    	String what_type_of_search = searchword.getWhat_type_of_search();
+    	if(what_type_of_search == null) {
+    		System.out.println("일반 검색 실행됨3");
+    		List<SearchWordDTO> accommodation_list = accommodationservice.rest_room_search(searchword);
+        	model.addAttribute("accommodation_list", accommodation_list);
+        	
+        	accommodation_list.forEach(result -> log.info(result));
+		}
+    	else if(what_type_of_search.equals("aside_search") ) {
+//    		만약 asdie_search(리스트에서 조건으로 검색하는 거)이면 이조건문을 실행한다
+//    		체크박스 로직 : 
+//    		체크박스의 ac_type_checkbox 값들은 int이므로 기본값(체크x)은 0으로 들어온다
+//    		그러므로 mapper.xml에서 0으로 들어갈 때 ac_type=0 이 없기에 체크되지않은
+//    		카테고리는 보여지지않음을 알 수 있다
+    		
+//    		(테스트 코드)
+    		int ro_basic_count=searchword.getRo_basic_count();
+    		int Ac_type_checkbox1=searchword.getAc_type_checkbox1();
+    		int Ac_type_checkbox2=searchword.getAc_type_checkbox2();
+    		int Ac_type_checkbox3=searchword.getAc_type_checkbox3();
+    		String ac_title=searchword.getAc_title();
+    		System.out.println("aside_search 실행됨2");
+    		System.out.println("ro_basic_count=");
+    		System.out.println(ro_basic_count);
+    		System.out.println("Ac_type_checkbox1(ac_type)=");
+    		System.out.println(Ac_type_checkbox1);
+    		System.out.println("Ac_type_checkbox2(ac_type)=");
+    		System.out.println(Ac_type_checkbox2);
+    		System.out.println("Ac_type_checkbox3(ac_type)=");
+    		System.out.println(Ac_type_checkbox3);
+    		System.out.println("ac_title=");
+    		System.out.println(ac_title);
+    		
+    		
+    		List<SearchWordDTO> accommodation_list = accommodationservice.aside_search(searchword);
+        	model.addAttribute("accommodation_list", accommodation_list);
+    	}
+    }
+    
+
+    
+    
+    
     
     
 }
+

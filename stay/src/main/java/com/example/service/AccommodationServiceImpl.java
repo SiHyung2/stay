@@ -72,4 +72,11 @@ public class AccommodationServiceImpl implements AccommodationService {
 		return resultList;
 	}
 
+	@Override
+	public List<SearchWordDTO> aside_search(SearchWordDTO searchword) {
+		
+		List<SearchWordDTO> resultList = mapper.aside_search(searchword);
+		return null;
+	}
+
 }

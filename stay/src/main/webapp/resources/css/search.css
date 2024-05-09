@@ -103,6 +103,7 @@
   font-weight: 900;
   border-radius: 10%;
   margin-top: 10px;
+  margin-right:10px;
   float: right;
 }
 
@@ -169,7 +170,7 @@
 
 
 .accommodation-list .accommodation-button{
-    width: 435px;
+    width: 73.2%;
     height: 45px;
     /* 하단 고정을 위해 position과 bottom속성 사용 */
     position: absolute;

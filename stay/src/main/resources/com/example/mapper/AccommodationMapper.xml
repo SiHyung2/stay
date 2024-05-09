@@ -79,31 +79,35 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     
     
-    <select id="aside_search" resultType="com.example.domain.SearchDTO">
+    
+<!--     체크박스의 로직 : 기본적으로 0이 들어간다 그러므로 아무것도 출력되지않는다 하지만 체크박스가 클릭되면 해당 카테고리 번호가 들어가므로 -->
+<!--                   해당 카테고리가 보인다 (체크박스 끼리는 OR 연산자이기 때문) -->
+<!-- 	ro_basic_count 이 null값이면 출력이 안되므로 유의해야한다 (그래서 숙소에 방이 하나도 없으면 출력이 안된다!!)-->
+<!-- 	나중에 입력 폼에서 required 속성을 사용해야겠다 -->
+    <select id="aside_search" resultType="com.example.domain.SearchWordDTO">
         
-		    SELECT DISTINCT a.ac_title, a.ac_address, a.ac_info, a.ac_id, r2.min_room_price, r1.max_ro_basic_count
+		     SELECT DISTINCT a.ac_title, a.ac_address, a.ac_info, a.ac_id, r2.min_room_price, r1.max_ro_basic_count
 			FROM accommodation a
 			LEFT JOIN (
 			    SELECT ac_id, MAX(ro_basic_count) AS max_ro_basic_count
 			    FROM room 
 			    GROUP BY ac_id
 			) r1 ON r1.ac_id = a.ac_id
-			LEFT JOIN (
+            LEFT JOIN (
 			    SELECT ac_id, MIN(room_price) AS min_room_price
 			    FROM room 
 			    GROUP BY ac_id
 			) r2 ON r2.ac_id = a.ac_id
 			WHERE (a.ac_title LIKE '%' || #{ac_title} || '%' OR a.ac_address LIKE '%' || #{ac_title} || '%')
-<!-- 			    AND (r1.max_ro_basic_count >=  #{ro_basic_count}) -->
-<!-- 			    AND a.ac_type  LIKE '%' || #{ac_type_checkbox1} || '%' -->
-<!-- 			    AND( -->
-<!-- 			        a.ac_type  LIKE '%' || #{ac_type_checkbox1} || '%' -->
-<!-- 				    AND  a.ac_type  LIKE '%' || #{ac_type_checkbox2} || '%' -->
-<!-- 				    AND  a.ac_type  LIKE '%' || #{ac_type_checkbox3} || '%' -->
-<!-- 				    AND  a.ac_type  LIKE '%' || #{ac_type_checkbox4} || '%' -->
-<!-- 				    AND  a.ac_type  LIKE '%' || #{ac_type_checkbox5} || '%' -->
-<!-- 				    AND  a.ac_type  LIKE '%' || #{ac_type_checkbox6} || '%' -->
-<!-- 				    AND  a.ac_type  LIKE '%' || #{ac_type_checkbox7} || '%') -->
+				AND r1.max_ro_basic_count  &gt;= #{ro_basic_count}
+                AND(
+                        a.ac_type  LIKE '%' || #{ac_type_checkbox1} || '%'
+                        OR  a.ac_type  LIKE '%' || #{ac_type_checkbox2} || '%'
+                        OR  a.ac_type  LIKE '%' || #{ac_type_checkbox3} || '%'
+                        OR  a.ac_type  LIKE '%' || #{ac_type_checkbox4} || '%'
+                        OR  a.ac_type  LIKE '%' || #{ac_type_checkbox5} || '%'
+                        OR  a.ac_type  LIKE '%' || #{ac_type_checkbox6} || '%'
+                        OR  a.ac_type  LIKE '%' || #{ac_type_checkbox7} || '%')
 	    
     </select>
 
@@ -147,7 +151,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!--     </select> -->
 
 
-	<select id="rest_room_search" parameterType="map" resultType="com.example.domain.SearchWordDTO">
+	<select id="rest_room_search" resultType="com.example.domain.SearchWordDTO">
 	    SELECT DISTINCT a.ac_title, a.ac_address, a.ac_info, a.ac_id, r2.min_room_price
 	    FROM accommodation a
 	    LEFT JOIN room r ON r.ac_id = a.ac_id

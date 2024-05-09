@@ -117,13 +117,13 @@ public class AccommodationMapperTest {
 		SearchWordDTO searchword=new SearchWordDTO();
 		searchword.setAc_title("");
 		searchword.setRo_basic_count(0);
-//		searchword.setAc_type_checkbox1(1);
-//		searchword.setAc_type_checkbox2(2);
-//		searchword.setAc_type_checkbox3(3);
-//		searchword.setAc_type_checkbox4(4);
-//		searchword.setAc_type_checkbox5(5);
-//		searchword.setAc_type_checkbox6(6);
-//		searchword.setAc_type_checkbox7(7);
+		searchword.setAc_type_checkbox1(0);
+		searchword.setAc_type_checkbox2(1);
+		searchword.setAc_type_checkbox3(0);
+		searchword.setAc_type_checkbox4(0);
+		searchword.setAc_type_checkbox5(0);
+		searchword.setAc_type_checkbox6(0);
+		searchword.setAc_type_checkbox7(0);
 		List<SearchWordDTO> resultList = mapper.aside_search(searchword);
 		
 	}

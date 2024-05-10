@@ -1,0 +1,109 @@
+.container{
+	 margin-left:205px;
+	 margin-right:205px;
+	 width:1500px;
+}
+
+.container *{
+	border : 1px solid black;
+}
+
+.header_container {  
+	display: grid;
+	width:100%;
+  	grid-template-columns: 500px 1000px;
+  	grid-template-rows: 90px 70px 80px 60px 100px;
+  	grid-template-areas:
+  		"accommodation_image accommodation_title"
+  		"accommodation_image accommodation_information"
+  		"accommodation_image accommodation_date"
+  		"accommodation_image date_button_div"
+  		"room_review_tab room_review_tab";
+   
+    border:2px solid pink;
+}
+
+.accommodation_image { grid-area: accommodation_image; }
+.accommodation_title{ grid-area: accommodation_title;}
+.accommodation_information{ grid-area: accommodation_information;}
+.accommodation_date{ grid-area: accommodation_date;}
+.date_button_div{ grid-area: date_button_div;}
+.room_review_tab{ grid-area: room_review_tab;}
+
+
+
+header>.accommodation_image{
+    width: 500px;
+    height: 100%;
+}
+
+
+header .accommodation_title{
+    width: 950px;
+    height: 90px;
+}
+
+header .accommodation_information{
+    width: 950px;
+    height: 70px;
+}
+
+header .accommodation_date{
+   	width: 950px;
+    height: 80px;
+}
+
+header .date_button_div{
+    width: 950px;
+    height: 50px;
+    border: 1px dashed red;
+    margin-bottom:10px;
+}
+
+header .date_button_div>.date_button{
+	width:250px;
+	height:40px;
+	font-size:25px;
+	font-weight:500;
+	color:white;
+	background-color:#0080ff;
+	border-radius: 7px;
+	border:none;
+	margin-top:10px;
+}
+
+
+header .date_button_div>.date_button:hover{
+	background-color:#44a2ff;
+}
+
+
+header .accommodation_date{
+	font-size:20px;
+	font-weight:600;
+}
+
+header .accommodation_date .date_input {
+        width: 180px;
+        height: 30px;
+        font-size: 22px; 
+        text-align:center;
+        border-radius: 10px; 
+        border: 1px solid #ccc; 
+}
+
+header .room_review_tab{
+	height: 100%;
+	display:flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+header .room_review_tab>button{
+    width: 400px;
+    height: 70px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+

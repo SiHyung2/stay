@@ -5,30 +5,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.example.mapper.AccommodationMapper">
 
-<!-- 	<sql id="criteria"> -->
-<!--  		<trim prefix="(" suffix=") AND" prefixOverrides="OR"> -->
-<!-- 			<foreach item='type' collection="typeArr"> -->
-<!-- 				<trim prefix="OR"> -->
-<!-- 					<choose> -->
-<!-- 						<when test="type=='C'.toString()"> -->
-<!-- 							R.ro_basic_count like '%'||#{keyword}||'%' -->
-<!-- 						</when> -->
-<!-- 						<when test="type=='T'.toString()"> -->
-<!-- 							ac_title like '%'||#{ac_title}||'%' -->
-<!-- 							or -->
-<!-- 							ac_info like '%'||#{ac_info}||'%' -->
-<!-- 						</when> -->
-<!-- 						<when test="type=='C'.toString()"> -->
-<!-- 							checkin &lt;= '#{checkin} -->
-<!-- 							checkout &gt;= '#{checkout} -->
-<!-- 						</when> -->
-<!-- 					</choose> -->
-<!-- 				</trim> -->
-<!-- 			</foreach> -->
-<!-- 		</trim> -->
-<!--  	</sql> -->
- 
-
     <select id="getList" resultType="com.example.domain.AccommodationDTO">
         select * from accommodation
     </select>
@@ -167,5 +143,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
     
     
+    <select id="accommodation_detail" resultType="com.example.domain.accommodation_detailDTO">
+    	SELECT a.ac_id, r.room_num , a.ac_title, a.ac_info, r.ro_info, r.ro_name, r.ro_basic_count, r.ro_max_count, a.checkin, a.checkout, r.room_price
+		FROM accommodation a
+		LEFT JOIN room r ON r.ac_id=a.ac_id
+		WHERE a.ac_id=#{ac_id}
+    </select>
 
 </mapper>

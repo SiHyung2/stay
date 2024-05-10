@@ -139,12 +139,5 @@ public class BaseController {
         	model.addAttribute("accommodation_list", accommodation_list);
     	}
     }
-    
-
-    
-    
-    
-    
-    
 }
 

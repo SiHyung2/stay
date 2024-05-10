@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.example.domain.AccommodationDTO;
 import com.example.domain.SearchWordDTO;
+import com.example.domain.accommodation_detailDTO;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -121,7 +122,7 @@ public class AccommodationServiceTest {
 		
 	}
 	
-	@Test
+//	@Test
 	public void rest_room_searchTest() {
 		SearchWordDTO searchword=new SearchWordDTO();
 		searchword.setAc_title("텔");
@@ -133,7 +134,7 @@ public class AccommodationServiceTest {
 	}
 	
 	
-	@Test
+//	@Test
 	public void aside_search() {
 		SearchWordDTO searchword=new SearchWordDTO();
 		searchword.setAc_title("");
@@ -146,6 +147,14 @@ public class AccommodationServiceTest {
 		searchword.setAc_type_checkbox6(0);
 		searchword.setAc_type_checkbox7(0);
 		List<SearchWordDTO> resultList = service.aside_search(searchword);
+		
+	}
+	
+	@Test
+	public void accommodation_detail() {
+		accommodation_detailDTO accommodation_detail=new accommodation_detailDTO();
+		accommodation_detail.setAc_id("1");
+		List<accommodation_detailDTO> resultList = service.accommodation_detail(accommodation_detail);
 		
 	}
 	

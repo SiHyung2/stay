@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.domain.AccommodationDTO;
 import com.example.domain.RoomDTO;
 import com.example.domain.TodoDTO;
+import com.example.domain.accommodation_detailDTO;
 import com.example.service.AccommodationService;
 import com.example.service.RoomService;
 
@@ -74,11 +75,13 @@ public class AccommodationController {
 	}
  
 	@GetMapping("/detail")
-	public void All_Room_in_on_Accommodation(Model model, @RequestParam("ac_id") String ac_id, RoomDTO room) {
-		log.info("ac_id: "+ac_id);
-
+	public void All_Room_in_on_Accommodation(Model model, @RequestParam("ac_id") String ac_id, accommodation_detailDTO accommodation_detail) {
+//		log.info("ac_id: "+ac_id);
 		
-		model.addAttribute("roomlist" ,roomservice.searchByac_id(ac_id));
+		accommodation_detail.setAc_id(ac_id);
+		
+		
+		model.addAttribute("accommodation_list" ,accommodationservice.accommodation_detail(accommodation_detail));
 		
 	}
 	

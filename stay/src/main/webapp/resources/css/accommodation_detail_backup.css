@@ -1,0 +1,104 @@
+.container {  
+	display: grid;
+	width:1500px;
+  	grid-template-columns: 300px 900px 300px;
+  	grid-template-rows: 300px 100px 75px 75px 75px 75px;
+  	grid-template-areas:
+  		"header_container header_container header_container"
+  		"room_review_tab room_review_tab room_review_tab"
+    	"ac_image room_title room_title"
+    	"ac_image ro_basic_and_max button"
+    	"ac_image ro_check button"
+    	"ac_image ro_price button";
+    margin-left:205px;
+    border:2px solid blue;
+}
+
+.container *{
+	border : 1px solid black;
+}
+
+.ac_image { grid-area: ac_image; }
+
+.room_review_tab{ grid-area: room_review_tab;}
+
+.room_title { grid-area: room_title; }
+
+.ro_basic_and_max { grid-area: ro_basic_and_max; }
+
+.ro_check { grid-area: ro_check; }
+
+.ro_price { grid-area: ro_price; }
+
+.button { grid-area: button; }
+
+.header_container { grid-area: header_container; }
+
+
+
+
+header>.accommodation_image{
+    width: 500px;
+    height: 100%;
+    float: left;
+}
+
+header>.accommodation_content{
+    float: left;
+}
+
+header .accommodation_title{
+    width: 950px;
+    height: 90px;
+}
+
+header .accommodation_information{
+    width: 950px;
+    height: 70px;
+}
+
+header .accommodation_date{
+   	width: 950px;
+    height: 80px;
+}
+
+header .date_button_div{
+    width: 950px;
+    height: 50px;
+    border: 1px dashed red;
+}
+
+header .date_button_div>.date_button{
+	width:250px;
+	height:40px;
+	font-size:25px;
+	font-weight:500;
+	color:white;
+	background-color:#0080ff;
+	border-radius: 7px;
+	border:none;
+	margin-top:10px;
+}
+
+
+
+
+
+header .date_button_div>.date_button:hover{
+	background-color:#44a2ff;
+}
+
+
+header .accommodation_date{
+	font-size:20px;
+	font-weight:600;
+}
+
+.accommodation_date .date_input {
+        width: 180px;
+        height: 30px;
+        font-size: 22px; 
+        text-align:center;
+        border-radius: 10px; 
+        border: 1px solid #ccc; 
+    }

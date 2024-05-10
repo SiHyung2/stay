@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.domain.AccommodationDTO;
 import com.example.domain.SearchWordDTO;
+import com.example.domain.accommodation_detailDTO;
 import com.example.mapper.AccommodationMapper;
 
 import lombok.AllArgsConstructor;
@@ -76,7 +77,13 @@ public class AccommodationServiceImpl implements AccommodationService {
 	public List<SearchWordDTO> aside_search(SearchWordDTO searchword) {
 		
 		List<SearchWordDTO> resultList = mapper.aside_search(searchword);
-		return null;
+		return resultList;
+	}
+
+	@Override
+	public List<accommodation_detailDTO> accommodation_detail(accommodation_detailDTO accommodation_detail) {
+		List<accommodation_detailDTO> resultList = mapper.accommodation_detail(accommodation_detail);
+		return resultList;
 	}
 
 }

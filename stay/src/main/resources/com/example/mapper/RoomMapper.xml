@@ -49,6 +49,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         where
         	ac_id =#{ac_id} and room_num=#{room_num}
     </select>
+    
+    
+    
  </mapper>
  
  

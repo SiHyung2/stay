@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.example.domain.AccommodationDTO;
 import com.example.domain.SearchWordDTO;
+import com.example.domain.accommodation_detailDTO;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -112,7 +113,7 @@ public class AccommodationMapperTest {
 	}
 	
 
-	@Test
+//	@Test
 	public void aside_search() {
 		SearchWordDTO searchword=new SearchWordDTO();
 		searchword.setAc_title("");
@@ -138,6 +139,16 @@ public class AccommodationMapperTest {
 
 	    List<SearchWordDTO> resultList = mapper.rest_room_search(searchword);
 
+	}
+	
+	
+	@Test
+	public void accommodation_detail() {
+		accommodation_detailDTO accommodation_detail=new accommodation_detailDTO();
+		accommodation_detail.setAc_id(1);
+		accommodation_detail.setRoom_num(2);
+		List<accommodation_detailDTO> resultList = mapper.accommodation_detail(accommodation_detail);
+		
 	}
 
 

@@ -62,7 +62,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 	나중에 입력 폼에서 required 속성을 사용해야겠다 -->
     <select id="aside_search" resultType="com.example.domain.SearchWordDTO">
         
-		     SELECT DISTINCT a.ac_title, a.ac_address, a.ac_info, a.ac_id, r2.min_room_price, r1.max_ro_basic_count
+		    SELECT DISTINCT a.ac_title, a.ac_address, a.ac_info, a.ac_id, r2.min_room_price, r1.max_ro_basic_count
 			FROM accommodation a
 			LEFT JOIN (
 			    SELECT ac_id, MAX(ro_basic_count) AS max_ro_basic_count
@@ -127,8 +127,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!--     </select> -->
 
 
+<!-- 	SUBSTR(your_column, 1, INSTR(a.ac_title, ' ') - 1)  을 이용하여 공백이 시작하기 전의 주소까지만 추출하였다 -->
+<!-- 	DISTINCT로 중복을 제거하였음 -->
 	<select id="rest_room_search" resultType="com.example.domain.SearchWordDTO">
-	    SELECT DISTINCT a.ac_title, a.ac_address, a.ac_info, a.ac_id, r2.min_room_price
+	   SELECT DISTINCT a.ac_title,
+                SUBSTR(a.ac_address, 1, INSTR(a.ac_address, ' ') - 1) AS ac_address,
+                a.ac_info,
+                a.ac_id,
+                r2.min_room_price
 	    FROM accommodation a
 	    LEFT JOIN room r ON r.ac_id = a.ac_id
 	    LEFT JOIN (
@@ -144,7 +150,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     
     <select id="accommodation_detail" resultType="com.example.domain.accommodation_detailDTO">
-    	SELECT a.ac_id, r.room_num , a.ac_title, a.ac_info, r.ro_info, r.ro_name, r.ro_basic_count, r.ro_max_count, a.checkin, a.checkout, r.room_price
+    	SELECT a.ac_id, r.room_num , a.ac_title, a.ac_info, a.ac_address, r.ro_info, r.ro_name, r.ro_basic_count, r.ro_max_count, 
+    		TO_CHAR(a.checkin, 'HH24:MI') AS checkin_string, TO_CHAR(a.checkout, 'HH24:MI') AS checkout_string, r.room_price
+    		, a.email_id, a.bu_name
 		FROM accommodation a
 		LEFT JOIN room r ON r.ac_id=a.ac_id
 		WHERE a.ac_id=#{ac_id}

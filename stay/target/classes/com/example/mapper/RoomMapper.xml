@@ -50,6 +50,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         	ac_id =#{ac_id} and room_num=#{room_num}
     </select>
     
+<!--     <select id="room_detail_detail" resultType="com.example.domain.Room_detailDTO"> -->
+<!--         SELECT a.ac_title, r.ro_name, r.room_price,  -->
+<!-- 		        TO_CHAR(a.checkin, 'HH24:MI') AS checkin_string,  -->
+<!-- 		        TO_CHAR(a.checkout, 'HH24:MI') AS checkout_string -->
+<!-- 		FROM accommodation a -->
+<!-- 		LEFT JOIN room r ON a.ac_id = r.ac_id -->
+<!-- 		WHERE a.ac_id=#{ac_id}; -->
+<!--     </select> -->
+    
     
     
  </mapper>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,33 +10,43 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script>
 	$(function() {
-		$('.review_view').hide();
-		$('.room_view_button').click(function() {
-			$('.accommodation_view').hide();
-// 			$('.accommodation_view').hide().filter(this.hash).fadeIn();
-			$('.review_view a').removeClass('active');
-			$(this).addClass('active');
-			return false;
-		}).filter(':eq(0)').click();
+		$('.review_view').hide();		
 	});
+	
+	function switchToReviewView() {
+	    $('.room_view').hide(); 
+	    $('.review_view').fadeIn(); 
+// 	    $('.room_view_button').removeClass('active'); 
+	    $('#review_view_button').addClass('active'); 
+	}
+	
+	function switchToRoomView() {
+	    $('.review_view').hide(); 
+	    $('.room_view').fadeIn(); 
+// 	    $('.review_view_button').removeClass('active'); 
+	    $('#review_view_button').addClass('active'); 
+	}
 	</script>
 </head>
 
-
-
-
 <body>
-	<div class="container">
+	<%@include file="../menu.jsp"%>
+	<div class="_container">
 		<header class="header_container">
-			<div class="accommodation_image"></div>
+			<div class="accommodation_image">ac_img</div>
             <div class="accommodation_content">
 <!--             	accommodation_list 은 배열이므로 첫번째 것을 가져온다. -->
 <!--             	첫번째 것을 가져오는 이유는 두번째것이 없을 수도 있기 때문이다 -->
                 <div class="accommodation_title">
                 	<c:out value="${accommodation_list[0].ac_title}" />
                 </div>
-                <div class="accommodation_information">
-                	<c:out value="${accommodation_list[0].ac_info}" />
+                <div class="accommodation_information_address">
+                	<p>
+                		<c:out value="${accommodation_list[0].ac_info}" />
+                	</p>
+                	<p>
+                		<c:out value="${accommodation_list[0].ac_address}" />
+                	</p>
                 </div>
                 <div class="accommodation_date">
                 	checkin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="date" id="checkin" class="date_input" name="checkin"/><br>
@@ -56,37 +66,94 @@
 			  	document.getElementById('checkout').value= new Date(today.setDate(today.getDate() + 1)).toISOString().slice(0, 10);
 			</script>
 			<div class="room_review_tab">
-				<button id="room_view_button" onclick="location.href=''">객실</button>
-				<button id="review_view_button" onclick="location.href=''">리뷰</button>
+				<button id="room_view_button" class="room_view_button" onclick="switchToRoomView()">객실</button>
+				<button id="review_view_button" class="review_view_button" onclick="switchToReviewView()">리뷰</button>
 			</div>
 		</header>
 		
 		<section class="section_container">
 			<!-- 이제 테이블로 만들고 체크인, 체크아웃을 문자열로 만들면 될거같다 -->
-			<table class="accommodation_view">
+			<table class="room_view">
 				<c:forEach items="${accommodation_list}" var="accommodation">
+<!-- 					1번째 줄 -->
 					<tr>
-						<td class="ac_image">ac_image</td>
-						<td class="room_title"><c:out value="${accommodation.ro_name}"/></td>
-						<td class="ro_basic_and_max">
-							최소 <c:out value="${accommodation.ro_basic_count}"/>인
-							최대 <c:out value="${accommodation.ro_max_count}"/>인
+						<td  rowspan='3' class="ac_image">
+							ro_image
 						</td>
-						<td class="ro_check">
-							체크인&nbsp; <c:out value="${accommodation.checkin}"/>
-							체크아웃      <c:out value="${accommodation.checkout}"/>
+						<td class="room_title">
+							<c:out value="${accommodation.ro_name}"/>
 						</td>
+						<td class="room_button" rowspan='3'>
+							<button onclick="location.href='/stay/room/detail_of_detail?ac_id=${accommodation.ac_id}&room_num=${accommodation.room_num}'" >
+								방 정보
+							</button>
+							<br/>
+							<button  onclick="location.href='#'">
+								예약하기
+							</button>
+						</td>
+					</tr>
+<!-- 					2번째 줄 -->
+					<tr>
+<!-- 						<td>     -->
+<!-- 							룸 이미지 -->
+<!-- 						</td> -->
+						<td class="ro_basic_and_max_and_checkin_checkout">
+							<div>
+								최소 <c:out value="${accommodation.ro_basic_count}"/>인,
+								최대 <c:out value="${accommodation.ro_max_count}"/>인
+							</div>
+							<br>
+							<div>
+								입실 <c:out value="${accommodation.checkin_string}"/>
+								/퇴실 <c:out value="${accommodation.checkout_string}"/>
+							</div>
+							
+						</td>
+<!-- 						<td> -->
+<!-- 							버튼 -->
+<!-- 						</td> -->
+					</tr>
+<!-- 					3번째 줄 -->
+					<tr class="tr_3rd">
+<!-- 						<td> -->
+<!-- 							룸 이미지 -->
+<!-- 						</td> -->
 						<td class="ro_price">
-							<h3><c:out value="${accommodation.room_price}"/>원</h3>
+							가격 : 
+							<span><c:out value="${accommodation.room_price}"/>원</span>
 						</td>
-						<td class="button">
-							<button>예약하기</button>
+						<td>
+<!-- 							버튼 -->
 						</td>
 					</tr>
 				</c:forEach>
 			</table>
 			<div class="review_view">리뷰 - 뷰</div>
 		</section>
+		
+		
+		<p>숙소 추가할때 사업자 아이디를 가지고있는지 확인하는 쿼리 추가 필요</p>
+		<p>방 추가할때 사업자 아이디와 일치하는지 확인하는 쿼리 추가 필요</p>
+		<p>리뷰 누르면 리뷰 보이도록 제이쿼리 에러 수정 필요</p>
+		<form action="/stay/accommodation/insert_view" method="post">
+	        <!-- 여기에 ac_id를 hidden으로 전달 -->
+	        <input type="hidden" name="email_id" value="${accommodation_list[0].email_id}">
+	        <input type="hidden" name="bu_name" value="${accommodation_list[0].bu_name}"> 
+	        <button type="submit" class="btn btn-success w-25 h-25">숙소 추가 View</button>
+	    </form>
+	    
+	    
+	    <form action="/stay/room/insert_view" method="post">
+	        <!-- 여기에 ac_id를 hidden으로 전달 -->
+	        <input type="hidden" name="ac_id" value="${accommodation_list[0].ac_id}">
+	        <button type="submit" class="btn btn-warning w-25 h-25">방 추가 View</button>
+	    </form>
 	</div>
+	
+	
+	
+	
+	
 </body>
 </html>

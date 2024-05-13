@@ -32,15 +32,11 @@
 	margin: 20px 0px; /* 이미지 간의 가로 방향 마진을 설정합니다. */
 	margin-left: 120px;
 }
-
-
-
 }
 </style>
 </head>
 <body>
-	<%@include file="./menu.jsp"%>
-	<div style="padding: 10px;"></div>
+	<%@include file="../menu.jsp"%>
 	<%@include file="./search.jsp"%>
 
 
@@ -50,28 +46,28 @@
 		<h4 class="main_head_text">⚡️ 클릭해서 원하는 숙소를 찾아보세요!</h4>
 		<div class="row">
 			<div class="image-container">
-				<a href="/stay/base/ac_list?ac_type=1&checkin=&checkout=&ac_title="> <img src="../resources/img/main_test.jpg"
+				<a href="hotel.html"> <img src="../resources/img/main_test.jpg"
 					alt="호텔" style="max-width: 650px; max-height: 200px;">
 					<div class="image-text">호텔</div>
 				</a>
 			</div>
 
 			<div class="image-container">
-				<a href="/stay/base/ac_list?ac_type=2&checkin=&checkout=&ac_title="> <img src="../resources/img/main_test.jpg"
+				<a href="motel.html"> <img src="../resources/img/main_test.jpg"
 					alt="모텔" style="max-width: 650px; max-height: 200px;">
 					<div class="image-text">모텔</div>
 				</a>
 			</div>
 
 			<div class="image-container">
-				<a href="/stay/base/ac_list?ac_type=3&checkin=&checkout=&ac_title="> <img src="../resources/img/main_test.jpg"
+				<a href="resort.html"> <img src="../resources/img/main_test.jpg"
 					alt="리조트" style="max-width: 650px; max-height: 200px;">
 					<div class="image-text">리조트</div>
 				</a>
 			</div>
 
 			<div class="image-container">
-				<a href="/stay/base/ac_list?ac_type=4&checkin=&checkout=&ac_title="> <img
+				<a href="pension.html"> <img
 					src="../resources/img/main_test.jpg" alt="펜션" style="max-width: 650px; max-height: 200px;">
 					<div class="image-text">펜션</div>
 				</a>

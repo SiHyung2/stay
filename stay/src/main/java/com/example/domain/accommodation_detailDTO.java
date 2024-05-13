@@ -14,6 +14,7 @@ public class accommodation_detailDTO {
 	private String ac_id;
 	private int room_num;
 	private String ac_info;
+	private String ac_address;
 	private String ac_title;
 	private String ro_info;
 	private String ro_name;
@@ -23,8 +24,12 @@ public class accommodation_detailDTO {
 	private Date checkin;
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date checkout;
+	private String checkin_string;   // 출력용
+	private String checkout_string;    // 출력용
 	private int room_price;
 	
+	private String email_id;  // 출력용
+	private String bu_name;  // 출력용
 	
 	
 }

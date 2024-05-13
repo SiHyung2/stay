@@ -27,22 +27,18 @@
 
 .container>* {
 /*     border: 1px solid black; */
-    display: flex;
-    align-items: center; /* 수직 가운데 정렬 */
-    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */ 
+    justify-content: center; /* 수평 가운데 정렬 */ 
     font-size: 20px; /* 글씨 크기 조정 */
 }
 
 
 .container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr; /* 동일한 너비의 4개의 열 */
-    grid-template-rows: auto auto; /* 자동으로 높이를 설정하여 내용에 맞게 조절됩니다. */
     background-color: white;
-    max-width: 1000px;
-    max-height: 500px;
-    height: auto; /* 컨테이너 높이를 자동으로 설정하여 내용에 맞게 조절됩니다. */
-    grid-row-gap: 20px;
+/*     max-width: 1000px; */
+/*     max-height: 500px; */
+/*     height: auto; /* 컨테이너 높이를 자동으로 설정하여 내용에 맞게 조절됩니다. */ */
+/*     grid-row-gap: 20px; */
     padding-top: 15px; /* 위쪽 공백 설정 */
     padding-bottom: 15px; /* 아래쪽 공백 설정 */
 }
@@ -79,6 +75,16 @@
         text-size:30px;
     }
 </style>
+<style>
+.form_seach{
+	align-items: center; /* 수직 가운데 정렬 */ 
+    justify-content: center; /* 수평 가운데 정렬 */ 
+
+}
+.form_seach>div{
+	display:flex;
+}
+</style>
 </head>
 <body>
     <div class="container-wrapper">
@@ -86,8 +92,8 @@
         <div class="container">
                     
 			
-			<form role="form" action="/stay/base/ac_list" method="GET">
-				<div>
+			<form role="form" class="form_seach" action="/stay/base/ac_list" method="GET">
+				<div class="flex">
 					<div class="custom-radio">
 				        <input type="radio" id="hotel"  name="ac_type" value="1"  checked/>
 				        <label for="hotel">호텔</label>

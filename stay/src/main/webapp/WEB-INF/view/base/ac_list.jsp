@@ -12,7 +12,7 @@
 </head>
 
 <body>
-	<%@include file="../base/menu.jsp" %> 
+	<%@include file="../menu.jsp" %> 
 <%-- 	<%@include file="<c:url value="/WEB-INF/base/menu.jsp" />" %>  --%>
     <div class="container">
 <!--     	미완 -->
@@ -108,26 +108,28 @@
 		
 	        <section class="accommodation-list">
 	        	<c:forEach items="${accommodation_list}" var="accommodation">
-	            <div>
-	                <asdie class="accommodation-img">
-	                    숙소 이미지
-	                </asdie>
-		                <div class="accommodation-content">
-		                    <div class="accommodation-title">
-		                    	<h3>${accommodation.ac_title} &nbsp; ${accommodation.ac_address}</h3>
-		                    </div>
-		                    <div class="accommodation-infomation">
-		                    	<h4>${accommodation.ac_info}    &nbsp;&nbsp;지도 보기(미구현)</h4>
-		                    </div>
-		                    <div class="accommodation-price">
-		                    	<h1>${accommodation.min_room_price} 원</h1>
-		                    </div>
-		                    <button class="accommodation-button" 
-		                        onclick="location.href='/stay/accommodation/detail?ac_id=${accommodation.ac_id}'">
-		                    	숙소로 이동
-		                    </button>
-		                </div>
-	            </div>
+		            <div>
+		                <asdie class="accommodation-img">
+		                    숙소 이미지
+		                </asdie>
+			                <div class="accommodation-content">
+			                    <div class="accommodation-title">
+			                    	<h3>${accommodation.ac_title} &nbsp; ${accommodation.ac_address}</h3>
+			                    </div>
+			                    <div class="accommodation-infomation">
+			                    	<h5>${accommodation.ac_info}    &nbsp;&nbsp;</h5>
+			                    	<h6>지도 보기(미구현)<h6>
+			                    </div>
+			                    <div class="accommodation-price">
+			                    	<h1>${accommodation.min_room_price} 원</h1>
+			                    </div>
+			                    <button class="accommodation-button" 
+			                        onclick="location.href='/stay/accommodation/detail?ac_id=${accommodation.ac_id}'">
+			                    	숙소로 이동
+			                    </button>
+			                </div>
+		            </div>
+		            <hr/>
 	            </c:forEach>
 	        </section>        
         

@@ -2,6 +2,8 @@ package com.example.controller;
 
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.example.domain.AccommodationDTO;
 import com.example.domain.RoomDTO;
@@ -43,7 +46,7 @@ public class AccommodationController {
 		log.info("insert: "+accommodation);
 		accommodationservice.insertaccommodation(accommodation);
 		
-		return "redirect:/accommodation/list";
+		return "redirect:/base/main";
 	}
     
 
@@ -56,12 +59,22 @@ public class AccommodationController {
 		return "ex02";
 	}
 	
-	
-	
-	@GetMapping("/insert_view")//2-1. 추가하는 뷰
-	public void InsertRoom_view() {
+
+	@PostMapping("/insert_view")//2-1. 추가하는 뷰
+	public void InsertRoom_view2(HttpServletRequest httpServletRequest, Model model) {
 		//방 추가하는 뷰와 연결하기만 하는 메서드
+		
+//		POST 방식 매개변수 넘기는 법!!!
+		String email_id = httpServletRequest.getParameter("email_id");
+		String bu_name = httpServletRequest.getParameter("bu_name");
+		
+		System.out.println("email_id : " + email_id);
+		System.out.println("bu_name : " + bu_name);
+		model.addAttribute("email_id", email_id);
+		model.addAttribute("bu_name", bu_name);
 	}
+	
+	
 	
 	
 	
@@ -74,6 +87,16 @@ public class AccommodationController {
 		return "redirect:/accommodation/modify";
 	}
  
+	
+	@GetMapping("/modify_and_delete_view")//3-1.방 수정 및 삭제하는 뷰
+	public void ModifyRoom_view(HttpServletRequest httpServletRequest, Model model, RoomDTO room) {
+		String ac_id = httpServletRequest.getParameter("ac_id");
+		
+		model.addAttribute("ac_id" ,ac_id);
+	}
+	
+	
+	
 	@GetMapping("/detail")
 	public void All_Room_in_on_Accommodation(Model model, @RequestParam("ac_id") String ac_id, accommodation_detailDTO accommodation_detail) {
 //		log.info("ac_id: "+ac_id);

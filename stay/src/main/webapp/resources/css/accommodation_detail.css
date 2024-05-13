@@ -1,12 +1,19 @@
-.container{
-	 margin-left:205px;
-	 margin-right:205px;
+._container{
+	 margin-left:190px;
+	 margin-right:190px;
 	 width:1500px;
 }
 
-.container *{
-	border : 1px solid black;
+/* 반응형 웹 */
+/* 만약, 노트북 크기라면 모든 요소를 78.5% 크기로 만든다 */
+@media (max-width: 1600px){
+	._container {
+	    transform: scale(0.785);
+	    transform-origin: 0 0; /* 좌상단 기준점으로 화면 축소 */
+	    margin-left:170px;
+	}
 }
+
 
 .header_container {  
 	display: grid;
@@ -15,17 +22,15 @@
   	grid-template-rows: 90px 70px 80px 60px 100px;
   	grid-template-areas:
   		"accommodation_image accommodation_title"
-  		"accommodation_image accommodation_information"
+  		"accommodation_image accommodation_information_address"
   		"accommodation_image accommodation_date"
   		"accommodation_image date_button_div"
   		"room_review_tab room_review_tab";
-   
-    border:2px solid pink;
 }
 
 .accommodation_image { grid-area: accommodation_image; }
 .accommodation_title{ grid-area: accommodation_title;}
-.accommodation_information{ grid-area: accommodation_information;}
+.accommodation_information_address{ grid-area: accommodation_information_address;}
 .accommodation_date{ grid-area: accommodation_date;}
 .date_button_div{ grid-area: date_button_div;}
 .room_review_tab{ grid-area: room_review_tab;}
@@ -41,9 +46,12 @@ header>.accommodation_image{
 header .accommodation_title{
     width: 950px;
     height: 90px;
+    font-size:40px;
+    font-weight:700;
+    pading:20px;
 }
 
-header .accommodation_information{
+header .accommodation_information_address{
     width: 950px;
     height: 70px;
 }
@@ -55,26 +63,27 @@ header .accommodation_date{
 
 header .date_button_div{
     width: 950px;
-    height: 50px;
-    border: 1px dashed red;
+    height: 60px;
+/*     border: 1px dashed red; */
     margin-bottom:10px;
 }
 
 header .date_button_div>.date_button{
 	width:250px;
-	height:40px;
+	height:50px;
 	font-size:25px;
 	font-weight:500;
 	color:white;
-	background-color:#0080ff;
+	background-color:darkcyan;
 	border-radius: 7px;
+	border:1px solid #0080c0;
 	border:none;
 	margin-top:10px;
 }
 
 
 header .date_button_div>.date_button:hover{
-	background-color:#44a2ff;
+	background-color:rgb(0, 198, 198);
 }
 
 
@@ -89,7 +98,7 @@ header .accommodation_date .date_input {
         font-size: 22px; 
         text-align:center;
         border-radius: 10px; 
-        border: 1px solid #ccc; 
+        border: 1px solid transparent; 
 }
 
 header .room_review_tab{
@@ -100,10 +109,80 @@ header .room_review_tab{
 	justify-content: center;
 }
 header .room_review_tab>button{
-    width: 400px;
-    height: 70px;
-    border: 1px solid black;
+    width: 48%;
+    height: 60px;
+    border: 1px solid transparent;
     text-align: center;
+    font-size:25px;
+    font-weight:800;
+}
+header .room_review_tab>button:nth-child(1){
+	margin-right:2%;
 }
 
+header .room_review_tab>button:nth-child(2){
+	margin-left:2%;
+}
 
+.room_view{
+	border-right : 1px solid lightgray;
+	border-left : 1px solid lightgray;
+}
+
+.room_view .ac_image{
+	width: 450px;
+	height: 250px
+}
+
+.room_view .room_title{
+	width: 850px;
+	height: 50px;
+	font-size:27px;
+	font-weight:800;	
+}
+
+.room_view .tr_3rd>td{
+	border-bottom: 2px solid gray;
+}
+
+.room_view .ro_basic_and_max_and_checkin_checkout{
+	width: 850px;
+	height: 120px;
+	font-size:25px;
+}
+.room_view .ro_price{
+	width: 850px;
+	height: 80px;
+	font-size:30px;
+	font-weight:800;
+}
+
+.room_view .ro_price>span{
+	float:right;
+}
+
+.room_view .room_button{
+	color:white;
+	width:200px;   /* 1행 가로와 2행 가로길이를 빼준 값*/  
+}
+
+.room_view .room_button button{
+	font-size:26px;
+	font-weight:700;
+	width:150px;
+	height:60px;
+	margin-left:25px;
+	margin-right:25px;
+	border-radius:5px;
+	border: 1px solid transparent;
+	background-color: #2db2fa;
+	color:white;
+}
+
+.room_view .room_button button:hover{
+	background-color: #84cdf5;
+}
+.room_view .room_button button:nth-child(1){
+	margin-top:70px;
+	margin-bottom:20px;	
+}

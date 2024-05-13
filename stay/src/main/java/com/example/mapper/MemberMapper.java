@@ -31,7 +31,7 @@ public interface MemberMapper {
 	 * // Read (이메일 중복 확인) int idCheck(String email);
 	 * 
 	 * // Read (회원 로그인) MemberDTO memberLogin(String email, String password);
-	 */
+	 */ 
 
  
  

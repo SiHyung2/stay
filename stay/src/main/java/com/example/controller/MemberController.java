@@ -165,7 +165,7 @@ public class MemberController {
 			return "redirect:/member/loginview";
 		} 
 	}
-
+ 
 //	@PostMapping("/login")
 //	public String login(LoginVO vo, HttpServletRequest request) {
 //

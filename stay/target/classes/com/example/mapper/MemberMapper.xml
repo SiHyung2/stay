@@ -33,7 +33,7 @@
         DELETE FROM MEMBER WHERE email_id = #{email_id}
     </delete>
     
-
+ 
 
 
 <select id="validateMember" resultType="com.example.domain.LoginVO">

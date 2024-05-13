@@ -39,7 +39,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void delete(String email_id) {
 		log.info("Deleting member with email: " + email_id);
-		mapper.delete(email_id);
+		mapper.delete(email_id); 
 	}
 
 	@Override

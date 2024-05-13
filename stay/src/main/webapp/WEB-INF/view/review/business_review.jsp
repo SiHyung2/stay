@@ -30,7 +30,7 @@
 		<c:forEach items="${reviews}" var="review">
 			
 			
-			<tr>
+			<tr> 
 			<td><c:out value="${review.ac_Title}" /></td>
 			<td><c:out value="${review.room_Num}"/>호</td>
 			</tr>

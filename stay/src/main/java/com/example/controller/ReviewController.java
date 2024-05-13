@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -115,15 +114,47 @@ public class ReviewController {
 
         return "review/list"; // 적절한 뷰 이름으로 변경
     }
+     
     
-    
+      
     @GetMapping("/business_review")
-    public void businessreview(Model model) {
-  
-		List<ReviewDTO> review = service.selectAll();
-        model.addAttribute("reviews", review);
+    public void business_review(Model model) {
+    
+    List<ReviewDTO> review = service.selectAll();
+    model.addAttribute("reviews", review);
 
-    }
-    
-    
+     // 적절한 뷰 이름으로 변경
+
 }
+    
+//    @GetMapping("/business_review")
+//    public void business_review(Model model) {
+//  
+//    	 List<ReviewDTO> businessReviews = service.selectBusiness_Reviews();
+//        model.addAttribute("reviews", businessReviews);
+// 
+//    } 
+//    
+//    @PostMapping("/{reviewId}/reply")
+//    public ReplyDTO saveReply(@RequestBody LoginVO vo, HttpServletRequest request, @PathVariable Long reviewId, @RequestBody ReplyDTO replyDTO) {
+//
+//        // 현재 사용자 유형 판단
+//        		
+//        		LoginVO validatedMember = service.validateMember(vo);
+//        		String type_code = validatedMember.getType_code();  
+// 
+//        // 고객인 경우 댓글 작성
+//        if (type_code.equals("1")) { 
+//            // ... (댓글 작성 로직)
+//        }
+//
+//        // 사업자인 경우 대댓글 작성
+//        else if (type_code.equals("2")) {
+//            // ... (대댓글 작성 로직)
+//        }
+//		return replyDTO;
+//    
+//    }
+
+}
+

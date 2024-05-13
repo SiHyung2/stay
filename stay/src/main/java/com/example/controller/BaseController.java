@@ -30,7 +30,7 @@ public class BaseController {
     @RequestMapping(value = "/category", method = RequestMethod.GET)
     public String category(Locale locale, Model model) {
         // category.jsp 실행 로직
-        return "base/category"; 
+        return "base/category";  
     }
 
     @RequestMapping(value = "/footer", method = RequestMethod.GET)

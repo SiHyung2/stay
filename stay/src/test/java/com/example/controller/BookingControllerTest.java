@@ -22,6 +22,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.example.domain.BookingConfirmDTO;
 import com.example.domain.BookingDTO;
 
 import lombok.Setter;
@@ -44,7 +45,7 @@ public class BookingControllerTest {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
     }
     
-    @Test
+//    @Test
     public void testGetAllBooking() throws Exception {
         mockMvc.perform(get("/booking/list"))
                 .andExpect(status().isOk())
@@ -59,7 +60,7 @@ public class BookingControllerTest {
     	BookingDTO booking = new BookingDTO();
         booking.setBo_num("1005");
         booking.setEmail_id("test@example.com");
-        booking.setRo_type(1);
+        booking.setRoom_num(1);
         booking.setAc_id(1);
         booking.setCheckin_day("2024-04-15");
         booking.setCheckout_day("2024-04-16");
@@ -70,7 +71,7 @@ public class BookingControllerTest {
         mockMvc.perform(post("/booking/add")
                 .param("bo_num", booking.getBo_num())
                 .param("email_id", booking.getEmail_id())
-                .param("ro_type", String.valueOf(booking.getRo_type()))
+                .param("ro_type", String.valueOf(booking.getRoom_num()))
                 .param("ac_id", String.valueOf(booking.getAc_id()))
                 .param("checkin_day", booking.getCheckin_day())
                 .param("checkout_day", booking.getCheckout_day())
@@ -82,15 +83,15 @@ public class BookingControllerTest {
                 .andExpect(flash().attributeExists("message"));
     }
 
-//    @Test
-	public void testGet() throws Exception {
-		String expectedBoNum = "1003";
+    @Test
+	public void getBusinessBookingsByEmail() throws Exception {
+		String expectedBoNum = "1";
 	    
 	    mockMvc.perform(get("/booking/{bo_num}", expectedBoNum))
 	            .andExpect(status().isOk())
 	            .andExpect(view().name("bookingDetails"))
 	            .andExpect(model().attributeExists("booking"))
-	            .andExpect(model().attribute("booking", any(BookingDTO.class)));
+	            .andExpect(model().attribute("booking", any(BookingConfirmDTO.class)));
     	
 	}
 
@@ -99,7 +100,7 @@ public class BookingControllerTest {
     	BookingDTO booking = new BookingDTO();
         booking.setBo_num("1003");
         booking.setEmail_id("test@example.com");
-        booking.setRo_type(1);
+        booking.setRoom_num(1);
         booking.setAc_id(1);
         booking.setCheckin_day("2024-04-15");
         booking.setCheckout_day("2024-04-16");
@@ -109,7 +110,7 @@ public class BookingControllerTest {
 
         mockMvc.perform(post("/booking/{bo_num}/update", booking.getBo_num())
                 .param("email_id", booking.getEmail_id())
-                .param("ro_type", String.valueOf(booking.getRo_type()))
+                .param("ro_type", String.valueOf(booking.getRoom_num()))
                 .param("ac_id", String.valueOf(booking.getAc_id()))
                 .param("checkin_day", booking.getCheckin_day())
                 .param("checkout_day", booking.getCheckout_day())

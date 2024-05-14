@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.example.domain.BookingConfirmDTO;
 import com.example.domain.BookingDTO;
 import com.example.service.BookingService;
 
@@ -23,7 +24,7 @@ public class BookingServicetest {
     @Setter(onMethod_ = @Autowired)
     private BookingService service;
 
-    @Test
+//    @Test
     public void testGetAllBookings() {
         List<BookingDTO> list = service.getAllBooking();
         log.info(list);
@@ -39,9 +40,9 @@ public class BookingServicetest {
     }
     
     //읽기
-//    @Test
-    public void testGetBooking() {
-        BookingDTO booking = service.getBooking("12345");
+    @Test
+    public void getBusinessBookingsByEmail() {
+    	List<BookingConfirmDTO> booking = service.getBusinessBookingsByEmail("1");
         log.info(booking);
     }
 

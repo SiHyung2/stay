@@ -20,15 +20,15 @@
                     font-size: 20px; margin-right: 30px;">객실정보</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#" style="color: black;
+                    <a class="nav-link" href="./business_booking" style="color: black;
                     font-size: 20px; margin-right: 30px;">예약확인</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#" style="color: black;
+                    <a class="nav-link" href="./business_checkin" style="color: black;
                     font-size: 20px; margin-right: 30px;">체크인</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#" style="color: black;
+                    <a class="nav-link" href="./business_checkout" style="color: black;
                     font-size: 20px; margin-right: 30px;">체크아웃</a>
                 </li>
                 <li class="nav-item active">

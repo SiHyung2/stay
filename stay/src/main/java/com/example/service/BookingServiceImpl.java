@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.domain.BookingConfirmDTO;
 import com.example.domain.BookingDTO;
 import com.example.mapper.BookingMapper;
 
@@ -45,5 +46,12 @@ public class BookingServiceImpl implements BookingService {
     public List<BookingDTO> getAllBooking() {
         log.info("Getting all bookings");
         return bookingMapper.getAllBooking();
+    }
+    
+    // 사업자 정보
+    @Override
+    public List<BookingConfirmDTO> getBusinessBookingsByEmail(String email_id) {
+        log.info("Getting business bookings for email_id: " + email_id);
+        return bookingMapper.getBusinessBookingsByEmail(email_id);
     }
 }

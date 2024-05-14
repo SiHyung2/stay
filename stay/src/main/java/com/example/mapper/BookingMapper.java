@@ -2,6 +2,7 @@ package com.example.mapper;
 
 import java.util.List;
 
+import com.example.domain.BookingConfirmDTO;
 import com.example.domain.BookingDTO;
 
 public interface BookingMapper {
@@ -20,4 +21,7 @@ public interface BookingMapper {
 
     // 예약 삭제
     public void deleteBooking(String bo_num);
+    
+    // 사업자 정보
+    public List<BookingConfirmDTO> getBusinessBookingsByEmail(String email_id);
 }

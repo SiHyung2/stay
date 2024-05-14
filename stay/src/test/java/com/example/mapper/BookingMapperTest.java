@@ -10,6 +10,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.example.domain.BookingDTO;
+import com.example.domain.AccommodationDTO;
+import com.example.domain.BookingConfirmDTO;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -21,6 +23,7 @@ public class BookingMapperTest {
 
     @Setter(onMethod_ = @Autowired)
     private BookingMapper mapper;
+    private AccommodationMapper mapper1;
     
 //    @Test
     public void testGetAllBooking() {
@@ -34,7 +37,7 @@ public class BookingMapperTest {
         BookingDTO booking = new BookingDTO();
         booking.setBo_num("1009");
         booking.setEmail_id("qwe123@naver.com");
-        booking.setRo_type(1);
+        booking.setRoom_num(1);
         booking.setAc_id(1234);
         booking.setCheckin_day("2024-04-15");
         booking.setCheckout_day("2024-04-20");
@@ -47,10 +50,13 @@ public class BookingMapperTest {
         log.info("Booking added: " + booking);
     }
     
-//    @Test
-    public void testGetBooking() {
-        String bo_num = "1009";
-        BookingDTO booking = mapper.getBooking(bo_num);
+    @Test
+    public void getBusinessBookingsByEmail() {
+        String email_id = "1";
+        int ac_id = 10;
+        List<BookingConfirmDTO> booking = mapper.getBusinessBookingsByEmail(email_id);
+        
+        List<AccommodationDTO> accommodation = mapper1.searchByac_id(ac_id);
         
         log.info("Booking retrieved: " + booking);
     }

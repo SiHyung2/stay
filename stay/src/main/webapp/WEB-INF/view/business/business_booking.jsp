@@ -29,11 +29,11 @@
             <th scope="col">예약자</th>
             <th scope="col">전화번호</th>
             <th scope="col">예약상태</th>
-            <th scope="col">비고</th>
+            <th scope="col">숙소이름</th>
         </tr>
         </thead>
         <tbody>
-            <c:forEach var="booking" items="${booking}">
+            <c:forEach var="booking" items="${businessBookings}">
                 <tr>
                     <td>${booking.bo_num}</td>
                     <td>${booking.room_rum}</td>
@@ -42,7 +42,7 @@
                     <td>${booking.email_id}</td>
                     <td>${booking.tel}</td>
                     <td>${booking.status}</td>
-                    <td></td>
+                    <td>${booking.ac_id}</td>
                 </tr>
             </c:forEach>
         </tbody>

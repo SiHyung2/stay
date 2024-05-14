@@ -9,7 +9,7 @@
 <body>
 
 			
-								<form role="form" action="/member/insert" method="post">
+								<form role="form" action="/stay/member/insert" method="post">
 						
 									
 									<div class="form-group">
@@ -22,7 +22,7 @@
 
 									<div class="form-group">
 										<label>name</label>
-										<input class="form-control"  name='name'></input>
+										<input class="form-control"  name='name'></input> 
 									</div>
  
 									<div class="form-group">

@@ -23,5 +23,5 @@ public interface BookingMapper {
     public void deleteBooking(String bo_num);
     
     // 사업자 정보
-    public List<BookingConfirmDTO> getBusinessBookingsByEmail(String email_id);
+    public List<BookingConfirmDTO> getBusinessBookingsByEmail(int ac_id);
 }

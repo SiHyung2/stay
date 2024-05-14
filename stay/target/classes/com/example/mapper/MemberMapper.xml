@@ -20,7 +20,7 @@
     </select>
     
     <select id="selectAll" resultType="com.example.domain.MemberDTO">
-        SELECT * FROM MEMBER
+        SELECT * FROM MEMBER 
     </select>
     
     <update id="update" parameterType="com.example.domain.MemberDTO">
@@ -33,9 +33,14 @@
         DELETE FROM MEMBER WHERE email_id = #{email_id}
     </delete>
     
-    <select id="validateMember"   resultType="com.example.domain.LoginVO" >
-        SELECT EMAIL_ID, PASSWORD FROM MEMBER WHERE email_id = #{email_id} and password = #{password}
-    </select>
+ 
+
+
+<select id="validateMember" resultType="com.example.domain.LoginVO">
+    SELECT EMAIL_ID, PASSWORD, TYPE_CODE
+    FROM MEMBER
+    WHERE email_id = #{email_id} AND password = #{password} 
+</select>
 
 
 

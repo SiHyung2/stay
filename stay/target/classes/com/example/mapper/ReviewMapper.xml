@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.ReviewMapper">
+
+<insert id="insert" parameterType="com.example.domain.ReviewDTO">
+    INSERT INTO review (REV_NUM, BO_NUM, AC_TITLE, ROOM_NUM, CONTENT,
+    REVIEW_DATE, UPDATE_DATE)
+    VALUES (#{rev_Num}, #{bo_Num}, #{ac_Title}, #{room_Num}, #{content},
+    SYSDATE, SYSDATE)
+</insert>
+
+
+
+	<select id="read" parameterType="java.lang.Long"
+		resultType="com.example.domain.ReviewDTO">
+		SELECT REV_NUM, BO_NUM, AC_TITLE, ROOM_NUM, CONTENT, REVIEW_DATE,
+		UPDATE_DATE
+		FROM review
+		WHERE REV_NUM = #{rev_Num} 
+	</select>
+
+	<update id="update" parameterType="com.example.domain.ReviewDTO">
+		UPDATE review
+		SET BO_NUM = #{bo_Num}, AC_TITLE = #{ac_Title}, ROOM_NUM = #{room_Num},
+		CONTENT = #{content}, REVIEW_DATE = SYSDATE, UPDATE_DATE =
+		SYSDATE
+		WHERE REV_NUM = #{rev_Num}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.Long">
+		DELETE FROM review
+		WHERE REV_NUM = #{rev_Num}
+	</delete>
+ 
+	<select id="getAllReviews"
+		resultType="com.example.domain.ReviewDTO">
+		SELECT * FROM review
+	</select>
+
+
+
+
+</mapper>

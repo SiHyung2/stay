@@ -11,7 +11,7 @@
 
 								<form role="form" action="/review/delete" method="post">
 									<div class="form-group">
-										<label>rev_Num</label> <input class="form-control" name='rev_Num'>
+										<label>rev_Num</label> <input class="form-control" name='rev_Num'> 
 									</div>
 
 								

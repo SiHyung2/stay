@@ -48,10 +48,10 @@ public class BookingServiceImpl implements BookingService {
         return bookingMapper.getAllBooking();
     }
     
-    // 사업자 정보
-    @Override
-    public List<BookingConfirmDTO> getBusinessBookingsByEmail(String email_id) {
-        log.info("Getting business bookings for email_id: " + email_id);
-        return bookingMapper.getBusinessBookingsByEmail(email_id);
-    }
+
+	@Override
+	public List<BookingConfirmDTO> getBusinessBookingsByEmail(String email_id, int ac_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

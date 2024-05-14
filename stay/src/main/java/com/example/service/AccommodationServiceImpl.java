@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.example.domain.AccommodationDTO;
+import com.example.domain.BoByAcDTO;
 import com.example.domain.SearchWordDTO;
 import com.example.domain.accommodation_detailDTO;
 import com.example.mapper.AccommodationMapper;
@@ -84,6 +85,12 @@ public class AccommodationServiceImpl implements AccommodationService {
 	public List<accommodation_detailDTO> accommodation_detail(accommodation_detailDTO accommodation_detail) {
 		List<accommodation_detailDTO> resultList = mapper.accommodation_detail(accommodation_detail);
 		return resultList;
+	}
+
+	@Override
+	public List<BoByAcDTO> bookingByaccommodation(String email_id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

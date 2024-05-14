@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 
-<%@include file="../base/menu.jsp"%>
+<%@include file="../menu.jsp"%>
 
 <body id="page-top">
 
@@ -22,7 +22,7 @@
 						</thead>
 						<c:forEach items="${members}" var="member">
 							<tr>
-								<td><c:out value="${member.email_id}" /></td>
+								<td><c:out value="${member.email_id}" /></td> 
 
 								<td>
 

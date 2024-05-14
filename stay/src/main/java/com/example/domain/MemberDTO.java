@@ -15,7 +15,7 @@ public class MemberDTO {
     private String type_code; 
 }
 /*    public MemberDTO() {
-    }
+    } 
 
     public MemberDTO(String email_id, String hashedPassword, String tel, String name) {
         this.email_id = email_id;

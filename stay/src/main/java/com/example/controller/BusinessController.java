@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.example.domain.BoByAcDTO;
 import com.example.domain.BookingConfirmDTO;
 import com.example.domain.BookingDTO;
+import com.example.domain.CheckDTO;
 import com.example.mapper.AccommodationMapper;
 import com.example.mapper.BookingMapper;
 import com.example.service.BookingService;
@@ -61,17 +62,9 @@ public class BusinessController {
     public String showBusinessBookings(Model model, HttpServletRequest request) {
     	String email_id = request.getParameter("email_id");
 	    System.out.println("email_id :"+email_id);
-	    
-//	    List<BoByAcDTO> ac_id = accommodationMapper.bookingByaccommodation(email_id);
-//
-//	    List<BookingConfirmDTO> businessBookings = new ArrayList<>();
-//	    for (BoByAcDTO acDTO : ac_id) {
-//	        int current_ac_id = acDTO.ac_id; // ac_id 필드를 직접 참조하여 값을 가져옴
-//	        List<BookingConfirmDTO> bookings = bookingMapper.getBusinessBookingsByEmail(current_ac_id);
-//	        businessBookings.addAll(bookings);
-//	    }
-//
-//	    model.addAttribute("businessBookings", businessBookings);
+	    List<BookingConfirmDTO> businessbooking = bookingMapper.getBusinessBookingsByEmail(email_id);
+	    System.out.println("businessbooking: " + businessbooking);
+	    model.addAttribute("businessbooking", businessbooking);
 
 	    return "business/business_booking";
     }

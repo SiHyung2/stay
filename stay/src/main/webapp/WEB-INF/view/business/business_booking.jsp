@@ -33,7 +33,7 @@
         </tr>
         </thead>
         <tbody>
-            <c:forEach var="booking" items="${businessBookings}">
+            <c:forEach var="booking" items="${businessbooking}">
                 <tr>
                     <td>${booking.bo_num}</td>
                     <td>${booking.room_rum}</td>

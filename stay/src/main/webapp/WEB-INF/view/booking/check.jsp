@@ -9,7 +9,7 @@
 </head>
 <body>
 <%@include file="../menu.jsp"%>
-<%@include file="./booking_check_munu.jsp"%>
+<%@include file="./booking_check_menu.jsp"%>
 <%@include file="./booking_check_sidebar.jsp"%>
 	
 </body>

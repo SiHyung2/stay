@@ -4,57 +4,77 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 <title>Insert title here</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+  }
+  .room_view {
+    width: 80%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  .room_view td {
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  .room_title {
+    font-weight: bold;
+    font-size: 18px;
+  }
+  .room_info {
+    font-size: 16px;
+  }
+</style>
 </head>
 <body>
 <%@include file="../menu.jsp"%>
-<%@include file="./booking_check_munu.jsp"%>
+<%@include file="./booking_check_menu.jsp"%>
 <%@include file="./booking_check_sidebar.jsp"%>
 
-<%-- 	<c:forEach var="booking" items="${checkBookings}"> --%>
-	
-<!--                 <tr> -->
-<%--                     <td>방번호 : ${booking.bo_num}</td> --%>
-<%--                     <td>${booking.room_num}</td> --%>
-<%--                     <td>${booking.checkin_day}</td> --%>
-<%--                     <td>${booking.checkout_day}</td> --%>
-<%--                     <td>${booking.email_id}</td> --%>
-<%--                     <td>${booking.tel}</td> --%>
-<%--                     <td>${booking.status}</td> --%>
-<%--                     <td>${booking.ac_id}</td> --%>
-<!--                 </tr> -->
-<%--             </c:forEach> --%>
-	<table class="room_view">
-				<c:forEach var="booking" items="${checkBookings}">
-					<tr>
-						<td  rowspan='3' class="ac_image">
-							ro_image
-						</td>
-						<td class="room_title">
-							<c:out value="${booking.bo_num}"/>
-							<c:out value="${booking.email_id}"/>
-							
-						</td>
-					</tr>
-					<tr>
-						<td class="ro_basic_and_max_and_checkin_checkout">
-							<div>
-								방번호 : <c:out value="${booking.room_num}"/>
-							</div>
-							<br>
-							<div>
-								입실 <c:out value="${booking.checkin_day}"/>
-								/퇴실 <c:out value="${booking.checkout_day}"/>
-							</div>
-							
-						</td>
-					</tr>
-					<tr class="tr_3rd">
-						<button  onclick="location.href='#'">
-								예약하기
-							</button>
-					</tr>
-				</c:forEach>
-			</table>
+<div class="container">
+  <table class="room_view">
+    <c:forEach var="booking" items="${checkBookings}">
+      <tr>
+        <td rowspan='5' class="ac_image">
+          <img src="ro_image_url" alt="Room Image">
+        </td>
+        <td class="room_title">
+          <c:out value="${booking.ac_title}"/>
+        </td>
+      </tr>
+      <tr>
+        <td class="room_info">
+          <strong>방이름:</strong> <c:out value="${booking.ro_name}"/>
+        </td>
+      </tr>
+      <tr>
+        <td class="room_info">
+          <strong>입실:</strong> <c:out value="${booking.checkin_day}"/>
+        </td>
+      </tr>
+      <tr>
+        <td class="room_info">
+          <strong>퇴실:</strong> <c:out value="${booking.checkout_day}"/>
+        </td>
+      </tr>
+      <tr>
+        <td class="room_info">
+          <strong>가격:</strong> <c:out value="${booking.room_price}"/>원
+          <div class="float-right">
+            <button type='button' class="btn btn-primary btn-sm checkout-btn">객실 정보</button>
+          </div>
+        </td>
+      </tr>
+    </c:forEach>
+  </table>
+</div>
 </body>
 </html>

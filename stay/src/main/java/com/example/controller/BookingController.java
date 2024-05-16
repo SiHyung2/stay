@@ -21,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.example.domain.BoByAcDTO;
 import com.example.domain.BookingConfirmDTO;
 import com.example.domain.BookingDTO;
+import com.example.domain.CheckDTO;
 import com.example.service.BookingService;
 import com.example.service.AccommodationService;
 import com.example.mapper.*;
@@ -108,12 +109,29 @@ public class BookingController {
 	}
 	
 	@GetMapping("/bookingcomplete")
-    public String showCheckComplete(Model model, HttpServletRequest request) {
+    public String showbookingcomplete(Model model, HttpServletRequest request) {
     	String email_id = request.getParameter("email_id");
-        System.out.println("email_id: " + email_id);
-        List<BookingConfirmDTO> checkBookings = bookingMapper.getBusinessBookingsByEmail(email_id);
+//        System.out.println("email_id: " + email_id);
+        List<CheckDTO> checkBookings = bookingMapper.getBusinessBookingsByEmailcheck(email_id);
+//        System.out.println("checkBookings: " + checkBookings);
         model.addAttribute("checkBookings", checkBookings);
         return "booking/bookingcomplete";
+    }
+	
+	@GetMapping("/bookingcancel")
+    public String showbookingcancel(Model model, HttpServletRequest request) {
+    	String email_id = request.getParameter("email_id");
+//        System.out.println("email_id: " + email_id);
+        List<CheckDTO> checkBookings = bookingMapper.getBusinessBookingsByEmailcheck(email_id);
+//        System.out.println("checkBookings: " + checkBookings);
+        model.addAttribute("checkBookings", checkBookings);
+        return "booking/bookingcancel";
+    }
+	
+	@GetMapping("/bookingend")
+    public String showbookingend(Model model, HttpServletRequest request) {
+    	
+        return "booking/bookingend";
     }
 	
 	// 사업자 정보

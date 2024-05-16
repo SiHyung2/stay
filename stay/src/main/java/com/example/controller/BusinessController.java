@@ -1,19 +1,43 @@
 package com.example.controller;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+
+import com.example.domain.BoByAcDTO;
+import com.example.domain.BookingConfirmDTO;
+import com.example.domain.BookingDTO;
+import com.example.mapper.AccommodationMapper;
+import com.example.mapper.BookingMapper;
+import com.example.service.BookingService;
+import com.example.service.AccommodationService;
+
+import com.example.domain.BoByAcDTO;
+import com.example.domain.BookingConfirmDTO;
 @Controller
 @RequestMapping("/business")
 public class BusinessController {
     private static final Logger logger = LoggerFactory.getLogger(BusinessController.class);
-
+    
+    @Autowired
+    private AccommodationMapper accommodationMapper;
+	private BookingMapper bookingMapper;
+	
     @RequestMapping(value = "/main", method = RequestMethod.GET)
     public String main(Locale locale, Model model) {
         logger.info("Welcome Main! The client locale is {}.", locale);
@@ -33,10 +57,23 @@ public class BusinessController {
         return "business/footer";
     }
     
-    @RequestMapping(value = "/business_booking", method = RequestMethod.GET)
-    public String business_booking(Locale locale, Model model) {
-        // menu.jsp 실행 로직
-        return "business/business_booking";
+    @GetMapping("/business_booking")
+    public String showBusinessBookings(Model model, HttpServletRequest request) {
+    	String email_id = request.getParameter("email_id");
+	    System.out.println("email_id :"+email_id);
+	    
+//	    List<BoByAcDTO> ac_id = accommodationMapper.bookingByaccommodation(email_id);
+//
+//	    List<BookingConfirmDTO> businessBookings = new ArrayList<>();
+//	    for (BoByAcDTO acDTO : ac_id) {
+//	        int current_ac_id = acDTO.ac_id; // ac_id 필드를 직접 참조하여 값을 가져옴
+//	        List<BookingConfirmDTO> bookings = bookingMapper.getBusinessBookingsByEmail(current_ac_id);
+//	        businessBookings.addAll(bookings);
+//	    }
+//
+//	    model.addAttribute("businessBookings", businessBookings);
+
+	    return "business/business_booking";
     }
 
     @RequestMapping(value = "/menu", method = RequestMethod.GET)

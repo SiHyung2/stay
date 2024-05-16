@@ -15,11 +15,10 @@
 <body>
 
 
-
 	<nav class="navbar navbar-expand-lg bg-body-tertiary">
 		<div class="container-fluid">
 		
-		
+	
 	<c:choose>
 		<c:when test="${empty sessionScope.LoginVO.email_id}">
 			<a class="navbar-brand text-dark" href="/stay/base/main">Stay</a>
@@ -90,8 +89,10 @@
 						<c:otherwise>
 							<c:if test="${sessionScope.LoginVO.type_code eq '1'}">
 
-								<li class="nav-item active"><a class="nav-link" href="#"
-									style="margin-right: 5px; color: black;">예약 확인</a></li>
+								<li class="nav-item active">
+									<a class="nav-link" href="../booking/check?email_id=${sessionScope.LoginVO.email_id}"
+									style="margin-right: 5px; color: black;">예약 확인</a>
+								</li>
 
 
 

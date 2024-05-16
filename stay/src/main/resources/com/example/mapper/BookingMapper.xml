@@ -44,4 +44,14 @@
 		join member m on b.email_id = m.email_id
 		where a.email_id like #{email_id}
 	</select>
+	
+	<select id="getBusinessBookingsByEmail-1"
+		parameterType="String" resultType="com.example.domain.BookingConfirmDTO">
+    	select bo_num, room_num, checkin_day, room_price, checkout_day, b.email_id, b.ac_id, ac_title
+		from booking b
+		join accommodation a on b.ac_id = a.ac_id
+		join room r on b.room_num = r.room_num
+		join member m on b.email_id = m.email_id
+		where b.email_id like #{email_id}
+	</select>
 </mapper>

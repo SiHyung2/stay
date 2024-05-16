@@ -99,6 +99,23 @@ public class BookingController {
         return "business_booking";
     }
 	
+	@GetMapping("/check")
+    public String showBusinessCheck(Model model, HttpServletRequest request) {
+    	String email_id = request.getParameter("email_id");
+	    System.out.println("email_id :"+email_id);
+	    
+	    return "booking/check";
+	}
+	
+	@GetMapping("/bookingcomplete")
+    public String showCheckComplete(Model model, HttpServletRequest request) {
+    	String email_id = request.getParameter("email_id");
+        System.out.println("email_id: " + email_id);
+        List<BookingConfirmDTO> checkBookings = bookingMapper.getBusinessBookingsByEmail(email_id);
+        model.addAttribute("checkBookings", checkBookings);
+        return "booking/bookingcomplete";
+    }
+	
 	// 사업자 정보
 //	@GetMapping("/business_booking/{email_id}")
 //	public String showBusinessBookings(@PathVariable String email_id, Model model) {
@@ -107,23 +124,6 @@ public class BookingController {
 //	    return "business_booking";
 //	}
 	
-	@GetMapping("/business/business_booking")
-	public String showBusinessBookings(Model model, HttpServletRequest request) {
-	    HttpSession session = request.getSession();
-	    String email_id = (String) session.getAttribute("email_id");
-	    List<BoByAcDTO> ac_id = accommodationMapper.bookingByaccommodation(email_id);
-
-	    List<BookingConfirmDTO> businessBookings = new ArrayList<>();
-	    for (BoByAcDTO acDTO : ac_id) {
-	        int current_ac_id = acDTO.ac_id; // ac_id 필드를 직접 참조하여 값을 가져옴
-	        List<BookingConfirmDTO> bookings = bookingMapper.getBusinessBookingsByEmail(current_ac_id);
-	        businessBookings.addAll(bookings);
-	    }
-
-	    model.addAttribute("businessBookings", businessBookings);
-
-	    return "business_booking";
-	}
 
 
 	

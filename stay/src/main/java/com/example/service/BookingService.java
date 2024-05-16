@@ -18,5 +18,5 @@ public interface BookingService {
 	public List<BookingDTO> getAllBooking(); 
 	
 	// 사업자 정보
-	public List<BookingConfirmDTO> getBusinessBookingsByEmail(String email_id, int ac_id);
+	public List<BookingConfirmDTO> getBusinessBookingsByEmail(String email_id);
 }

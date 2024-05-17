@@ -81,8 +81,8 @@
                 <div class="input4">
                     <button type=submit class="btn btn-primary">STAY</button>
                 </div>
-            </div>
+            </div> 
         </div>
-    </div>
+    </div> 
 </body>
 </html>

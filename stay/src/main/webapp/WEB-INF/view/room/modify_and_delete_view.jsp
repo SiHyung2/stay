@@ -3,7 +3,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
 
 
 <body class="bg-gradient-primary">
@@ -52,7 +52,7 @@
                     </div>
                     
                     <div class="mb-3">
-                        <label for=""room_info"" class="form-label">방 설명</label>
+                        <label for="room_info" class="form-label">방 설명</label>
                         <input type="text" class="form-control" id="room_info" name="ro_info" required>
                     </div>
                     
@@ -60,71 +60,20 @@
                         <label for="room_price" class="form-label">가격</label>
                         <input type="number" class="form-control" id="room_price" name="room_price" required>
                     </div>
-                    
-                                    <button id="modify" type="submit" class="btn btn-warning" onclick="javascript: form.action='/stay/room/modify';">수정</button>
-                					<button id="delete" type="submit" class="btn btn-danger" onclick="javascript: form.action='/stay/room/delete';">삭제</button>
+                    <button id="modify" type="submit" class="btn btn-warning" onclick="javascript: form.action='/stay/room/modify';">수정</button>
+					<button id="delete" type="submit" class="btn btn-danger" onclick="javascript: form.action='/stay/room/delete';">삭제</button>
                 </form>
             </div>
         </div>
     </div>
 
+</div>
+
+</body>
+
+</html>
 
 
 
-
-
-
-
-
-
-<!--         <div class="card o-hidden border-0 shadow-lg my-5"> -->
-<!--             <div class="card-body p-5"> -->
-<!--                 <div class="row"> -->
-<!--                 	<div class="col-lg-12"> -->
-<!--                 		<div class="panel panel-default"> -->
-<!--                 			<div class="panel-heading">Room Register</div> -->
-<!--                 			<div class="panel-body"> -->
-<!--                 				<form role="form" method="post"> -->
-<!--                 					<div class="form-group"> -->
-<%--                 						<label>ro_type</label> <input class="form-control" name='room_num' value='${room.room_num }'> --%>
-<!--                 					</div> -->
-                					
-<!--                 					<div class="form-group"> -->
-<%--                 						<label>ac_id</label> <input class="form-control" name='ac_id' value='${room.ac_id }'> --%>
-<!--                 					</div> -->
-                					
-                					
-<!--                 					<div class="form-group"> -->
-<%--                 						<label>ro_name</label> <input class="form-control" name='ro_name' value="${room.ro_name}"> --%>
-<!--                 					</div> -->
-                					
-                					
-<!--                 					<div class="form-group"> -->
-<%--                 						<label>ro_basic_count</label> <input class="form-control" name='ro_basic_count' value="${room.ro_basic_count}"> --%>
-<!--                 					</div> -->
-                					
-<!--                 					<div class="form-group"> -->
-<%--                 						<label>ro_max_count</label> <input class="form-control" name='ro_max_count' value="${room.ro_max_count}"> --%>
-<!--                 					</div> -->
-                					
-<!--                 					<div class="form-group"> -->
-<%--                 						<label>ro_info</label> <input class="form-control" name='ro_info' value="${room.ro_info}"> --%>
-<!--                 					</div> -->
-                					
-<!--                 					<div class="form-group"> -->
-<%--                 						<label>ro_count</label> <input class="form-control" name='ro_count' value="${room.ro_count}"> --%>
-<!--                 					</div> -->
-                					
-<!--                 					<br> -->
-                				
-<!--                 					<button id="modify" type="submit" class="btn btn-warning" onclick="javascript: form.action='/stay/room/modify';">수정</button> -->
-<!--                 					<button id="delete" type="submit" class="btn btn-danger" onclick="javascript: form.action='/stay/room/delete';">삭제</button> -->
-<!--                 				</form> -->
-<!--                 			</div> -->
-<!--                 		</div> -->
-<!--                 	</div> -->
-<!--                 </div> -->
-<!--             </div> -->
-<!--         </div> -->
         
         

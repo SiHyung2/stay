@@ -4,25 +4,21 @@
 <meta charset="UTF-8">
 <style>
 .container-wrapper {
-    position: relative;
     width: 100%;
-    height: auto; /* 높이를 자동으로 설정하여 이미지와 내용에 맞게 조절됩니다. */
 }
 
 .container {
-    position: absolute; /* 이미지 위에 절대 위치로 배치됩니다. */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* 수직, 수평으로 가운데 정렬됩니다. */
-    z-index: 1; /* 이미지 위에 나오도록 설정됩니다. */
     width: 100%;
     max-width: 500px; /* 최대 너비 설정 */
+    position:absolute;
+    z-index:0;
 }
 
 .image {
-    width: 100%; 
-    height: 350px; /* 높이를 자동으로 설정하여 이미지 비율을 유지합니다. */
-    object-fit: cover; /* 이미지가 화면을 가득 채우도록 설정합니다. */
+    width: auto; 
+    height: auto; /* 높이를 자동으로 설정하여 이미지 비율을 유지합니다. */
+/*     object-fit: cover; /* 이미지가 화면을 가득 채우도록 설정합니다. */ */
+	overflow: hidden;
 }
 
 .container>* {
@@ -34,7 +30,7 @@
 
 
 .container {
-    background-color: white;
+    background-color: tansparent;
 /*     max-width: 1000px; */
 /*     max-height: 500px; */
 /*     height: auto; /* 컨테이너 높이를 자동으로 설정하여 내용에 맞게 조절됩니다. */ */
@@ -60,7 +56,7 @@
     /* 라디오 버튼을 나타내는 직사각형 스타일 */
     .custom-radio label {
         display: inline-block;
-        width: 180px;
+        width: 200px;
         height: 60px;
         padding: 10px;
         cursor: pointer;
@@ -69,21 +65,52 @@
     }
     /* 라디오 버튼이 선택되었을 때 label의 배경색을 변경 */
     .custom-radio input[type="radio"]:checked + label {
-        background-color: darkgreen;
+        background-color: #1f9dcf;
         color: #fff;
         font-weight:700;
         text-size:30px;
     }
+    .custom-radio input[type="radio"]:hover + label{
+    	background-color: #6bc4e7;
+    }
+    
 </style>
 <style>
 .form_seach{
+	width: 810px;
+	height:110px;
 	align-items: center; /* 수직 가운데 정렬 */ 
     justify-content: center; /* 수평 가운데 정렬 */ 
-
+    margin-top:-270px;     /* 이미지와 폼이 겹치게 하려고 만든 코드 */ 
+ 	margin-left:550px;
+	background-color:white;
+	
+	
+/* 	그라데이션 테두리 코드 */
+	border: 4px solid;
+    border-image: linear-gradient(to right, #231557 0%, #44107A 29%, #80032c 67%, #7e4503 100%);
+    border-image-slice: 1;
+/*     background-clip: content-box, border-box; */
 }
 .form_seach>div{
 	display:flex;
 }
+.form_seach input{
+	border:none;
+	margin-left:10px;
+}
+
+.form_seach .main_search_text{
+	
+	text-align:center;
+	width:280px;
+}
+
+.form_seach .search_button{
+	width:150px;
+	color:white;
+}
+
 </style>
 </head>
 <body>
@@ -93,7 +120,7 @@
                     
 			
 			<form role="form" class="form_seach" action="/stay/base/ac_list" method="GET">
-				<div class="flex">
+				<div>
 					<div class="custom-radio">
 				        <input type="radio" id="hotel"  name="ac_type" value="1"  checked/>
 				        <label for="hotel">호텔</label>
@@ -128,7 +155,7 @@
 		            </div>
 		            <div class="input4">
 		                <div class="input4">
-		                    <button type='submit' class="btn btn-primary">STAY</button>
+		                    <button type='submit' class="btn btn-info search_button">검색</button>
 		                </div>
 		            </div>
 	            </div>

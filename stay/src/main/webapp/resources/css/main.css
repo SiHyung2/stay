@@ -1,0 +1,52 @@
+
+.section_container {
+  /* padding 속성이 좌우로 총 200px이므로 실질적인 가로길이는 1900px*/
+  width: 1900px;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 100px;
+/*   border: 1px solid blue; */
+/*   background-color: rgb(236, 234, 234); */
+}
+
+@media (max-width: 1600px){
+	._container {
+	    transform: scale(0.785);
+	    transform-origin: 0 0; /* 좌상단 기준점으로 화면 축소 */
+	}
+}
+
+.box {
+  width: 250px;
+  height: 300px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); 
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+  overflow: hidden;
+}
+
+.box:hover {
+  transform: translateY(-10px); 
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6); 
+}
+
+
+.image-text label{
+	position: relative;
+	height: 60px;
+	width:100%;
+	font-size:40px;
+	font-weight:800;
+	text-align:center;
+/* 	 글자와 사진을 겹치게 하려고했는데 이미지가 라벨위에 표시되어서 가리게됨.. */
+/* 	margin-bottom:-100px; */   
+/* 	border:1px solid pink; */
+/* 	z-index: 1; */
+}
+
+.image-text img{
+	position: relative;
+/* 	margin-top:-100px; */
+/* 	z-index: 2; */
+}

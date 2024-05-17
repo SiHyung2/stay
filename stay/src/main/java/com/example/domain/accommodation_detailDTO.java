@@ -20,12 +20,13 @@ public class accommodation_detailDTO {
 	private String ro_name;
 	private int ro_basic_count;
 	private int ro_max_count;
-	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private Date checkin;
-	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private Date checkout;
-	private String checkin_string;   // 출력용
-	private String checkout_string;    // 출력용
+//	@DateTimeFormat(pattern="yyyy-MM-dd")
+//	private Date checkin;
+//	@DateTimeFormat(pattern="yyyy-MM-dd")
+//	private Date checkout;
+	
+	private String checkin;   
+	private String checkout;   
 	private int room_price;
 	
 	private String email_id;  // 출력용

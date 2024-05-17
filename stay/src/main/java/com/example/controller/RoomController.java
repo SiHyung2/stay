@@ -1,9 +1,5 @@
 package com.example.controller;
 
-//import com.stay.domain.AccommodationDTO;
-//import com.stay.domain.RoomDTO;
-//import com.stay.service.RoomService;
-
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
@@ -13,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.domain.AccommodationDTO;
 import com.example.domain.RoomDTO;
 import com.example.domain.accommodation_detailDTO;
 import com.example.service.AccommodationService;
@@ -80,20 +75,42 @@ public class RoomController {
 	}
 	
 	
-	@GetMapping("/modify_and_delete_view")//3-1.방 수정 및 삭제하는 뷰
-	public void ModifyRoom_view(HttpServletRequest httpServletRequest, Model model, RoomDTO room, @RequestParam("room_num") int room_num) {
+	
+	@PostMapping("/modify_and_delete_view")//3-1.방 수정 및 삭제하는 뷰
+	public void ModifyRoom_view(HttpServletRequest httpServletRequest, Model model, RoomDTO room) {
+		System.out.println("룸 수정 컨트롤러 실행됨");
+		
 		String ac_id = httpServletRequest.getParameter("ac_id");
+		String room_num = httpServletRequest.getParameter("room_num");
+		System.out.println("ac_id : " + ac_id);
+		System.out.println("room_num : "+room_num);
 		
 		room.setAc_id(ac_id);
-		room.setRoom_num(room_num);
 		model.addAttribute("room" ,roomservice.searchByac_id_And_room_num(room));
 		
-		
-		System.out.println("ac_id : " + ac_id);
 		model.addAttribute("ac_id", ac_id);
 	}
-//   
-//	
+	
+	
+	
+	
+	
+//	@GetMapping("/modify_and_delete_view")//3-1.방 수정 및 삭제하는 뷰
+//	public void ModifyRoom_view(HttpServletRequest httpServletRequest, Model model, RoomDTO room) {
+//		String ac_id = httpServletRequest.getParameter("ac_id");
+//		String room_num = httpServletRequest.getParameter("room_num");
+//		System.out.println("ac_id : " + ac_id);
+//		System.out.println("room_num : "+room_num);
+//		
+//		
+////		room.setAc_id(ac_id);
+////		model.addAttribute("room" ,roomservice.searchByac_id_And_room_num(room));
+////		
+////		
+////		model.addAttribute("ac_id", ac_id);
+//	}
+	
+	
 	@PostMapping("/delete")   //4.방 삭제
 	public String DeleteRoom(RoomDTO room, Model model) {
 		
@@ -132,6 +149,10 @@ public class RoomController {
 		model.addAttribute("accommodation_list" ,accommodationservice.accommodation_detail(accommodation_detail));
 		return "room/detail_of_detail";
 	}
+	
+	
+	
+	
 	
 	
 	

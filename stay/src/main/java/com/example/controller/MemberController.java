@@ -180,7 +180,7 @@ public class MemberController {
 //	
 	
 	
-	
+	 
 	@GetMapping("/loginview")
 	public void loginview() { 
 	}
@@ -189,8 +189,8 @@ public class MemberController {
 	public String logout(HttpServletRequest request) {
 		request.getSession().invalidate();
 		return "redirect:/base/main";
-	}
-
+	} 
+ 
 	@GetMapping("/joinview")
 	public void joinview() {
 	}

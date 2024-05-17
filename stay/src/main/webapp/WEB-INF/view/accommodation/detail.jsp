@@ -49,8 +49,8 @@
                 	</p>
                 </div>
                 <div class="accommodation_date">
-                	checkin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="date" id="checkin" class="date_input" name="checkin"/><br>
-                	checkout&nbsp;&nbsp;&nbsp;<input type="date" id="checkout" class="date_input" name="checkout"/>
+                	checkin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type=text id="checkin" class="date_input" name="checkin"/><br>
+                	checkout&nbsp;&nbsp;&nbsp;<input type="text" id="checkout" class="date_input" name="checkout"/>
                 	
                 </div>
                 <div class="date_button_div">
@@ -105,8 +105,8 @@
 							</div>
 							<br>
 							<div>
-								입실 <c:out value="${accommodation.checkin_string}"/>
-								/퇴실 <c:out value="${accommodation.checkout_string}"/>
+								입실 <c:out value="${accommodation.checkin}"/>
+								/퇴실 <c:out value="${accommodation.checkout}"/>
 							</div>
 							
 						</td>
@@ -132,10 +132,23 @@
 			<div class="review_view">리뷰 - 뷰</div>
 		</section>
 		
-		
 		<p>숙소 추가할때 사업자 아이디를 가지고있는지 확인하는 쿼리 추가 필요</p>
 		<p>방 추가할때 사업자 아이디와 일치하는지 확인하는 쿼리 추가 필요</p>
-		<p>리뷰 누르면 리뷰 보이도록 제이쿼리 에러 수정 필요</p>
+		
+		<form action="/stay/room/insert_view" method="post">
+	        <!-- 여기에 ac_id를 hidden으로 전달 -->
+	        <input type="hidden" name="ac_id" value="${accommodation_list[0].ac_id}">
+	        <button type="submit" class="btn btn-warning w-25 h-25">방 추가 View</button>
+	    </form>
+		
+		<form action="/stay/accommodation/modify_and_delete_view" method="post">
+	        <!-- 여기에 ac_id를 hidden으로 전달 -->
+	        <input type="hidden" name="email_id" value="${accommodation_list[0].email_id}">
+	        <input type="hidden" name="bu_name" value="${accommodation_list[0].bu_name}"> 
+	        <input type="hidden" name="ac_id" value="${accommodation_list[0].ac_id}">
+	        <button type="submit" class="btn btn-danger w-25 h-25">숙소 수정 View</button>
+	    </form>
+		
 		<form action="/stay/accommodation/insert_view" method="post">
 	        <!-- 여기에 ac_id를 hidden으로 전달 -->
 	        <input type="hidden" name="email_id" value="${accommodation_list[0].email_id}">
@@ -144,11 +157,6 @@
 	    </form>
 	    
 	    
-	    <form action="/stay/room/insert_view" method="post">
-	        <!-- 여기에 ac_id를 hidden으로 전달 -->
-	        <input type="hidden" name="ac_id" value="${accommodation_list[0].ac_id}">
-	        <button type="submit" class="btn btn-warning w-25 h-25">방 추가 View</button>
-	    </form>
 	</div>
 	
 	

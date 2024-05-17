@@ -36,13 +36,13 @@
    		<div class="checkin">
    			<div>
    				<p>체크인 &nbsp;&nbsp;&nbsp;</p>
-   				<p><c:out value="${accommodation_list[0].checkin_string}" /></p>
+   				<p><c:out value="${accommodation_list[0].checkin}" /></p>
    			</div>
    		</div>
    		<div class="checkout">
    			<div>
    				<p>체크아웃 &nbsp;&nbsp;&nbsp;</p>
-   				<p><c:out value="${accommodation_list[0].checkout_string}" /></p>
+   				<p><c:out value="${accommodation_list[0].checkout}" /></p>
    			</div>
    		</div>
    		
@@ -83,3 +83,4 @@
    	
 </body>
 </html>
+

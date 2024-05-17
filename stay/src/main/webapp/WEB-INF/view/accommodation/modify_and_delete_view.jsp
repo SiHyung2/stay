@@ -1,35 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> -->
+
 <!DOCTYPE html>
 <html lang="en">
 
 
 
-
 <body class="bg-gradient-primary">
+
 	<%@include file="../menu.jsp"%>
 
-		
-<!-- 		post 매개변수 테스트 -->
-<%-- 		${ bu_name }  ${ email_id } --%>
-		
     <div class="container">
-        <h1 class="text-center mt-5">숙소 등록</h1>
+
+
+	
+		
+	<div class="container">
+        <h1 class="text-center mt-5">숙소 수정2</h1>
+<!--         		post 매개변수 테스트 -->
+<%-- 		${ ac_id }         --%>
+                
         <div class="row justify-content-center mt-5">
             <div class="col-md-6">
-                <form name="form1" role="form" action="/stay/accommodation/insert" method="post" onsubmit="return validateForm()">
-               
-<!--                		숙소 아이디는 트리거로 해야만함! (무결성 제약조건 위배될 가능성 있음)  -->
-<!-- 						사실 여기서 입력하지않아도 트리거니까 넘어가야함. 아래의 ac_id 입력창은 디버깅용 코드임 -->
-                	<div>
-                		<label for="accommodation_id" class="form-label">숙소 아이디</label>
-                        <input type="text" class="form-control" id="accommodation_id" name="ac_id">
+                <form role="form">
+                    <div>
+                        <input type="hidden" class="form-control" id="ac_id" name="ac_id">
                     </div>
                     
                     <div class="mb-3">
-                        <label for="accommodationName" class="form-label required">숙소명</label>
-                        <input type="text" class="form-control" id="accommodation_name" name="ac_title">
+                        <label for="ac_title" class="form-label">숙소 이름</label>
+                        <input type="text" class="form-control" id="ac_title" name="ac_title" value="${accommodation_list[0].ac_title}" required>
                     </div>
                     
                     <div class="mb-3">
@@ -47,25 +47,22 @@
                     
                     <div class="mb-3">
                         <label for="accommodation_address" class="form-label">위치</label>
-                        <input type="text" class="form-control" id="accommodation_address" name="ac_address" required>
+                        <input type="text" class="form-control" id="accommodation_address" name="ac_address" value="${accommodation_list[0].ac_address}" required>
                     </div>
                     
                     <div class="mb-3">
                         <label for="accommodation_info" class="form-label">숙소 정보</label>
-                        <textarea class="form-control" id="accommodation_info" name="ac_info" rows="3" required></textarea>
+                        <textarea class="form-control" id="accommodation_info" name="ac_info" rows="3" required>${accommodation_list[0].ac_info}</textarea>
                     </div>
                     
-                    
-<!--                     이거 date인 날짜가 아니라 시간으로 입력 가능하도록 바꿔야함... 대충 아무 날짜 넣고 시간 넣는 형식으로 만들자 -->
-<!--                     뷰에서 input만 바뀌면 됨 -->
                     <div class="mb-3">
                         <label for="accommodation_checkin" class="form-label">체크인</label>
-                        <input type="text" class="form-control" id="accommodation_checkin" name="checkin" required>
+                        <input type="text" class="form-control" id="accommodation_checkin" name="checkin" value="${accommodation_list[0].checkin}" required>
                     </div>
                     
                     <div class="mb-3">
                         <label for="accommodation_checkout" class="form-label">체크아웃</label>
-                        <input type="text" class="form-control" id="accommodation_address" name="checkout" required>
+                        <input type="text" class="form-control" id="accommodation_address" name="checkout" value="${accommodation_list[0].checkout}" required>
                     </div>
                     
                     <div>
@@ -75,14 +72,17 @@
                         <input type="hidden" class="form-control" id="email_id" name="email_id" value="${ email_id }">
                     </div>
                     
-                    <button type="submit" class="btn btn-primary w-100">등록</button>
+<!--                     <button id="modify" type="submit" class="btn btn-warning" onclick="javascript: form.action='/stay/accommodation/modify'; form.method='post';">수정</button> -->
+<!-- 					<button id="delete" type="submit" class="btn btn-danger" onclick="javascript: form.action='/stay/accommodation/delete' form.method='post';;">삭제</button> -->
+					<button id="modify" type="submit" class="btn btn-warning" onclick="javascript: form.action='/stay/accommodation/modify'; form.method='post';">수정</button>
+					<button id="delete" type="submit" class="btn btn-danger" onclick="javascript: form.action='/stay/accommodation/delete'; form.method='post';">삭제</button>
                 </form>
             </div>
         </div>
     </div>
 
+	</div>
 
 
-</body>
-
-</html>
+        
+        

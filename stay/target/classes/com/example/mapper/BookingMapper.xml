@@ -42,16 +42,25 @@
 		from booking b
 		join accommodation a on b.ac_id = a.ac_id
 		join member m on b.email_id = m.email_id
-		where a.email_id like #{email_id}
+		where a.email_id = #{email_id}
 	</select>
 	
-	<select id="getBusinessBookingsByEmail-1"
-		parameterType="String" resultType="com.example.domain.BookingConfirmDTO">
-    	select bo_num, room_num, checkin_day, room_price, checkout_day, b.email_id, b.ac_id, ac_title
-		from booking b
-		join accommodation a on b.ac_id = a.ac_id
-		join room r on b.room_num = r.room_num
-		join member m on b.email_id = m.email_id
-		where b.email_id like #{email_id}
+	<select id="getBusinessBookingsByEmailcheck"
+		parameterType="String" resultType="com.example.domain.CheckDTO">
+		SELECT
+			b.bo_num as bo_num, 
+		    b.room_num as room_num, 
+		    b.checkin_day as checkin_day, 
+		    b.checkout_day as checkout_day, 
+		    b.email_id as email_id, 
+		    b.ac_id as ac_id, 
+		    a.ac_title as ac_title, 
+		    r.ro_name as ro_name,
+		    r.room_price as room_price
+		FROM booking b
+		JOIN accommodation a ON b.ac_id = a.ac_id
+		JOIN room r ON b.room_num = r.room_num
+		JOIN member m ON b.email_id = m.email_id
+		WHERE b.email_id LIKE #{email_id}
 	</select>
 </mapper>

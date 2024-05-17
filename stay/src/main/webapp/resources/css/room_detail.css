@@ -1,0 +1,102 @@
+/* 반응형 웹 */
+/* 만약, 노트북 크기라면 모든 요소를 78.5% 크기로 만든다 */
+
+
+._container{
+	display: grid;
+	width:1000px;
+	grid-template-columns: 1000px;
+	grid-template-rows: 350px 80px 60px 50px 50px 50px 50px 150px 60px;
+	grid-template-areas:
+		"ro_image"
+		"ac_title_ro_name"
+		"room_outline"
+		"room_price"
+		"checkin"
+		"checkout"
+		"ro_info"
+		"room_button_collection";
+	margin-left: 450px;
+}
+
+/* 이 style이 원래 _container style코드보다 밑에 있어야한다 */
+@media (max-width: 1600px){
+	._container {
+	    transform: scale(0.785);
+	    transform-origin: 0 0;   /* 좌상단 기준점으로 화면 축소 */
+	    margin-left : 360px;
+	}
+}
+
+._container>*{
+/* 	border:1px solid blue; */
+	text-align: center;
+	/* 수평 중앙 정렬하기 */
+	margin: 0 auto;
+	width:100%
+}
+
+._container *{
+/* 	기본 폰트사이즈 결정 */
+	font-size : 28px;
+}
+
+
+
+.ro_image { grid-area: ro_image; }
+.ac_title_ro_name{ grid-area: ac_title_ro_name;}
+.room_outline{ grid-area: room_outline;}
+.room_price{ grid-area: room_price;}
+.checkin{ grid-area: checkin;}
+.checkout{ grid-area: checkout;}
+.room_button_collection{ grid-area: room_button_collection;}
+.ro_info{ grid-area: ro_info;}
+
+
+/* .ro_image{ */
+/* 	border:1px solid black; */
+/* } */
+
+.ac_title_ro_name{
+	padding-top: 20px;
+}
+
+.ac_title_ro_name>div{
+ 	text-align: center;   /*  p태그를 중앙정렬시키기 위함 */
+	width:100%;
+	margin: 0 auto;
+/* 	border:1px solid red; */
+}
+
+.ac_title_ro_name>div p{
+	display: inline;    /*  p태그를 한줄로 만들기 위함 */
+}
+
+.ac_title_ro_name>div p:nth-child(1){
+	font-weight:800;
+}
+
+.room_price>div{  text-align: center; }
+.room_price>div p{ display: inline; }
+
+.checkin>div{  text-align: center; }
+.checkin>div p{ display: inline; }
+
+.checkout>div{  text-align: center; }
+.checkout>div p{ display: inline; }
+
+
+.room_button_collection button{
+	width: 700px;
+	height:50px;
+	font-weight:500;
+	color:white;
+	background-color: #2db2fa;
+	border-radius: 7px;
+	border:none;
+	margin-bottom : 10px;
+}
+
+.room_button_collection button:hover{
+	background-color: #84cdf5;
+}

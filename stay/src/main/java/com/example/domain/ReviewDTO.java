@@ -20,19 +20,18 @@ public class ReviewDTO {
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date review_Date;
     @DateTimeFormat(pattern="yyyy-MM-dd")
-    private Date update_Date;
-     
+    private Date update_Date; 
+    private String email_Id;
     
-	public String getId() {
-		// TODO Auto-generated method stub
-		return String.valueOf(rev_Num);
-	}
+
 
 
 		
 	}
 
-    
-    
+     
+
+   
+
  
     

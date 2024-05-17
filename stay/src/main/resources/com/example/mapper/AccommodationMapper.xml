@@ -151,20 +151,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <select id="accommodation_detail" resultType="com.example.domain.accommodation_detailDTO">
     	SELECT a.ac_id, r.room_num , a.ac_title, a.ac_info, a.ac_address, r.ro_info, r.ro_name, r.ro_basic_count, r.ro_max_count, 
-    		TO_CHAR(a.checkin, 'HH24:MI') AS checkin_string, TO_CHAR(a.checkout, 'HH24:MI') AS checkout_string, r.room_price
+    		checkin, checkout, r.room_price
     		, a.email_id, a.bu_name
 		FROM accommodation a
 		LEFT JOIN room r ON r.ac_id=a.ac_id
 		WHERE a.ac_id=#{ac_id}
     </select>
-    
-    <select id="bookingByaccommodation"
-		parameterType="String" resultType="com.example.domain.BoByAcDTO">
-    	select b.ac_id
-	    from booking b
-	    join accommodation a on b.ac_id = a.ac_id
-	    join member m on b.email_id = m.email_id
-	    where a.email_id like #{email_id}
-	</select>
 
 </mapper>

@@ -37,7 +37,7 @@
 		WHERE
 		REV_NUM = #{rev_Num}
 	</delete>
-
+ 
 	<select id="getAllReviews"
 		resultType="com.example.domain.ReviewDTO">
 	

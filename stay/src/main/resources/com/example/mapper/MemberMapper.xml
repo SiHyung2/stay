@@ -21,7 +21,7 @@
     
     <select id="selectAll" resultType="com.example.domain.MemberDTO">
         SELECT * FROM MEMBER 
-    </select>
+    </select> 
     
     <update id="update" parameterType="com.example.domain.MemberDTO">
         UPDATE MEMBER

@@ -29,7 +29,7 @@ public interface ReviewService {
  
 	public ReviewDTO read(Long rev_Num);
 	List<ReviewDTO> selectAll(Criteria cri);  
-	
+	 
 	
 	List<ReviewDTO> getAllReviews(); 
 	public int getTotal(Criteria cri);

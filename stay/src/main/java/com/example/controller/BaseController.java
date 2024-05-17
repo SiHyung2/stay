@@ -35,7 +35,7 @@ public class BaseController {
 
     @RequestMapping(value = "/footer", method = RequestMethod.GET)
     public String footer(Locale locale, Model model) {
-        // footer.jsp 실행 로직
+        // footer.jsp 실행 로직 
         return "base/footer";
     }
 

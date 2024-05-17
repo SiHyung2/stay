@@ -34,7 +34,7 @@ public class MemberServiceImpl implements MemberService {
 	public void update(MemberDTO member) {
 		log.info("Updating member: " + member);
 		mapper.update(member);
-	} 
+	}  
 
 	@Override
 	public void delete(String email_id) {

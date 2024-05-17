@@ -36,7 +36,7 @@ public class MemberMapperTest {
          
         // 단언 구문 추가
         assert member.getEmail_id() != null;
-    }
+    } 
     
 //    @Test
     public void testSelect() {

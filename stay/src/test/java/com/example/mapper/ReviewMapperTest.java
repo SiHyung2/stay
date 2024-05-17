@@ -41,7 +41,7 @@ public class ReviewMapperTest {
 		newReview.setUpdate_Date(new Date()); // Set the update_Date (current date)
 
 		mapper.insert(newReview); 
-	}
+	} 
 
 //@Test
 	public void testRead() {

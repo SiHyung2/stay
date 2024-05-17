@@ -30,7 +30,7 @@ public class BusinessController {
     @RequestMapping(value = "/footer", method = RequestMethod.GET)
     public String footer(Locale locale, Model model) {
         // footer.jsp 실행 로직
-        return "business/footer";
+        return "business/footer"; 
     }
 
     @RequestMapping(value = "/menu", method = RequestMethod.GET)

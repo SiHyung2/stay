@@ -35,7 +35,7 @@ public class ReviewServiceTest {
 
 		service.insert(newReview);  
 	} 
-
+ 
 //@Test
 	public void testRead() {
 	    Long rev_Num = 1L; // Change to Long

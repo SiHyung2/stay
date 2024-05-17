@@ -38,7 +38,7 @@ public class MemberControllerTest {
                                             .post("/member/insert")
                                             .param("email_id", "11test497@example.com")
                                             .param("password", "testPassword")
-                                            .param("name", "Test User")
+                                             .param("name", "Test User")
                                             .param("tel", "010-1234-5678")
                                             .param("type_code", "1"))
                                     .andReturn()

@@ -41,7 +41,7 @@ public class MemberServiceTest {
       assert member.getEmail_id() != null; 
   }
   
-//  @Test
+//  @Test 
   public void testSelect() {
       MemberDTO insertedMember = new MemberDTO();
       insertedMember.setEmail_id("test3333@example.com");

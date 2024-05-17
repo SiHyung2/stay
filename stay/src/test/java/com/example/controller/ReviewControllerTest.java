@@ -36,7 +36,7 @@ public class ReviewControllerTest {
         String resultPage = mockMvc.perform(MockMvcRequestBuilders
                                             .post("/review/insert")
                                             .param("rev_Num", "3")
-                                            .param("bo_Num", "1234")
+                                             .param("bo_Num", "1234")
                                             .param("ac_Title", "Sample Accommodation")
                                             .param("room_Num", "1")
                                             .param("content", "This is a sample review.")

@@ -37,13 +37,13 @@
 		WHERE
 		REV_NUM = #{rev_Num}
 	</delete>
-
+ 
 	<select id="getAllReviews"
 		resultType="com.example.domain.ReviewDTO">
 	
 		select r.rev_num, b.email_id, r.room_num, r.content, r.update_Date  from review r
 		left join booking b on b.bo_num=r.bo_num 
 	</select>
-
+ 
 
 </mapper>

@@ -180,7 +180,7 @@ public class MemberController {
 //	
 	
 	
-	
+	 
 	@GetMapping("/loginview")
 	public void loginview() { 
 	}
@@ -190,7 +190,7 @@ public class MemberController {
 		request.getSession().invalidate();
 		return "redirect:/base/main";
 	} 
-
+ 
 	@GetMapping("/joinview")
 	public void joinview() {
 	}

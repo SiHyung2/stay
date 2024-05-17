@@ -77,7 +77,7 @@
                 <input type=search class=main_search_text placeholder=지역,숙소명
                     name="bu_address" required>
             </div>
-            <div class="input4">
+            <div class="input4"> 
                 <div class="input4">
                     <button type=submit class="btn btn-primary">STAY</button>
                 </div>

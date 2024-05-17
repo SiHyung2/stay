@@ -38,7 +38,7 @@ public class ReviewServiceImpl implements ReviewService {
 		return mapper.read(rev_Num);
 	}  
 
-	@Override
+	@Override 
 	public List<ReviewDTO> selectAll(Criteria cri) { 
 	    log.info("get List with criteria: " + cri);
 	    return mapper.getListWithPaging(cri, 0);

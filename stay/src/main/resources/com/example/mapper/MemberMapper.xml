@@ -28,7 +28,7 @@
         SET password = #{password}, name = #{name}, tel = #{tel}, type_code = #{type_code}
         WHERE email_id = #{email_id}
     </update>
-    
+     
     <delete id="delete" parameterType="String">
         DELETE FROM MEMBER WHERE email_id = #{email_id}
     </delete>

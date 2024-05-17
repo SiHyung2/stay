@@ -22,7 +22,7 @@ public class MemberDTO {
         this.password = hashedPassword; 
         this.tel = tel;
         this.name = name;
-    } 
+    }  
  
     @Override
     public String toString() {

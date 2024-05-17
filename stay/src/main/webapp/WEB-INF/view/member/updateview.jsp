@@ -20,11 +20,11 @@
 										<label>password</label><input class="form-control" name='password'>
 									</div>
 
-									<div class="form-group">
+									<div class="form-group"> 
 										<label>name</label>
 										<input class="form-control"  name='name'></input>
 									</div>
- 
+  
 									<div class="form-group">
 										<label>tel</label> <input class="form-control"
 											name='tel'></input>

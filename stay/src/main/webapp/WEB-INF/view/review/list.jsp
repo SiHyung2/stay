@@ -28,7 +28,7 @@
 							<tr>
 								<td><c:out value="${review.rev_Num}" /></td>
 
-								<td>
+							 	<td>
 
 									
 									<a class='move' href='<c:out value="${review.rev_Num}"/>'>

@@ -14,7 +14,7 @@
 	max-width: 100%; /* 이미지의 최대 너비를 100%로 설정하여 부모 요소에 맞춥니다. */
 	height: auto;
 }
-
+ 
 .image-text {
 	position: absolute;
 	top: 50%;

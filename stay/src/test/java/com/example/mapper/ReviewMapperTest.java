@@ -42,7 +42,7 @@ public class ReviewMapperTest {
 
 		mapper.insert(newReview); 
 	} 
-
+ 
 //@Test
 	public void testRead() {
 	    Long rev_Num = 1L; // Change to Lon g

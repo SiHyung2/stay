@@ -29,7 +29,7 @@
 										<label>tel</label> <input class="form-control"
 											name='tel'></input>
 									</div>
-									
+		 							
 									<div class="form-group">
 										<label>type_code</label> <input class="form-control"
 											name='type_code'></input>

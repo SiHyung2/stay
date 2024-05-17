@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 <title>메뉴 페이지</title>
-</head>
+</head> 
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary mt-5">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">

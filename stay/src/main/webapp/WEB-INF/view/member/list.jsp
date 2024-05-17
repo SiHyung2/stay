@@ -8,7 +8,7 @@
 
 <%@include file="../menu.jsp"%>
 
-<body id="page-top">
+<body id="page-top"> 
 
 						<table class="table table-bordered" width="100%" cellspacing="0">
 						<thead>

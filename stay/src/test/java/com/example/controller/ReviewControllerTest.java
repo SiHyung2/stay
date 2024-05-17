@@ -38,7 +38,7 @@ public class ReviewControllerTest {
                                             .param("rev_Num", "3")
                                              .param("bo_Num", "1234")
                                             .param("ac_Title", "Sample Accommodation")
-                                            .param("room_Num", "1")
+                                             .param("room_Num", "1")
                                             .param("content", "This is a sample review.")
                                         )
                                     .andReturn()

@@ -35,7 +35,7 @@ public class BusinessController {
 
     @RequestMapping(value = "/menu", method = RequestMethod.GET)
     public String menu(Locale locale, Model model) {
-        // menu.jsp 실행 로직
+        // menu.jsp 실행 로직 
         return "business/menu";
     }
 

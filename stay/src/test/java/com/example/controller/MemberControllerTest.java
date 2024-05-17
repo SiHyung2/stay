@@ -36,7 +36,7 @@ public class MemberControllerTest {
     public void testInsertMember() throws Exception {
         String resultPage = mockMvc.perform(MockMvcRequestBuilders
                                             .post("/member/insert")
-                                            .param("email_id", "11test497@example.com")
+                                             .param("email_id", "11test497@example.com")
                                             .param("password", "testPassword")
                                              .param("name", "Test User")
                                             .param("tel", "010-1234-5678")

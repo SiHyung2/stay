@@ -30,7 +30,7 @@
 
 		<div class="form-group">
 			<label>content</label> <input class="form-control" name='content'></input>
-		</div>
+		</div> 
 
 		<div class="form-group" style="display: none;">
 			<label>review_Date</label> <input type="date"

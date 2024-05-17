@@ -21,8 +21,8 @@
 		<div class="form-group">
 			<label>bo_Num</label> <input class="form-control" name='bo_Num'>
 		</div>
-
-
+ 
+ 
 		<div class="form-group">
 			<label>ac_Title</label><input class="form-control" name='ac_Title'>
 		</div>

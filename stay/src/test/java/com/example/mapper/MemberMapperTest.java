@@ -38,7 +38,7 @@ public class MemberMapperTest {
         assert member.getEmail_id() != null;
     } 
     
-//    @Test
+//    @Test 
     public void testSelect() {
         MemberDTO insertedMember = new MemberDTO();
         insertedMember.setEmail_id("1test1@example.com");

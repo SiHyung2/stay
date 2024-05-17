@@ -9,7 +9,7 @@
 <meta charset="EUC-KR">
 <title>login</title>
 </head>
-<body>
+<body> 
   <div class="container">
         <div class="login-form">
             <h1>Stay</h1>

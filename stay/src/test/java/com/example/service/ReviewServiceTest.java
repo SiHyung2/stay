@@ -35,15 +35,15 @@ public class ReviewServiceTest {
 
 		service.insert(newReview);  
 	} 
- 
+  
 //@Test
 	public void testRead() {
 	    Long rev_Num = 1L; // Change to Long
 	    ReviewDTO dto = service.select(rev_Num);
 	    log.info(dto);
-	  
+	   
 	}  
- 
+  
 //	@Test
 	public void testDelete() {
 		Long rev_Num = 1L;

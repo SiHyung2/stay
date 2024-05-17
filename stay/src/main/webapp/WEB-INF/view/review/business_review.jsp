@@ -42,7 +42,7 @@ table {
         cursor: pointer; /* Change cursor to pointer on hover */
         border-radius: 5px; /* Apply border radius for rounded corners */
     }
-
+ 
     /* Hover effect for the submit button */
     input[type="submit"]:hover {
         background-color: darkblue; /* Change background color on hover */

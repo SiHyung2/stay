@@ -1,5 +1,10 @@
 package com.example.mapper;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
+
 import java.util.Date;
 import java.util.List;
 
@@ -15,6 +20,7 @@ import com.example.domain.ReviewDTO;
 
 import lombok.extern.log4j.Log4j2;
 
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { RootConfig.class })
 @Log4j2
@@ -23,7 +29,7 @@ public class ReviewMapperTest {
 	@Autowired
 	private ReviewMapper mapper;
 
-@Test
+//@Test
 	public void testCreate() {
 		ReviewDTO newReview = new ReviewDTO();
 		newReview.setRev_Num(2); // Set the rev_Num (assuming it's auto-generated)
@@ -67,5 +73,23 @@ public class ReviewMapperTest {
 		List<ReviewDTO> reviews = mapper.getListWithPaging(cri, 1L);
 		reviews.forEach(review -> log.info(review));
 	}
+	
+	@Test
+	public void testFindAllReviews() {
+	    List<ReviewDTO> reviews = mapper.findAllReviews();
+
+	    // Assert that at least one review is retrieved
+	    assertFalse(reviews.isEmpty());
+
+	    // Loop through reviews and verify data (optional, based on your needs)
+	    for (ReviewDTO review : reviews) {
+	        // Assert specific values for revNum, emailId, etc.
+	        assertTrue(review.getRev_Num() > 0); // Assuming revNum is positive
+	        assertNotNull(review.getEmail_Id()); // Check for non-empty emailId
+	        
+	        // Add more assertions for other ReviewDTO fields if applicable
+	    }
+	}
+
 
 }

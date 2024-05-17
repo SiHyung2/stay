@@ -37,8 +37,8 @@ public interface ReviewService {
 	public Object getPageDTO(Criteria cri, int total);
 	public List<ReviewDTO> selectBusiness_Reviews();
 
-	    
-	 
+	
+	
 	} 
  
 

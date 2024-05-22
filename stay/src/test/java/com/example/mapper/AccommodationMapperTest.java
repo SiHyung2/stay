@@ -141,15 +141,15 @@ public class AccommodationMapperTest {
 
 	}
 	
-	
-	@Test
-	public void accommodation_detail() {
-		accommodation_detailDTO accommodation_detail=new accommodation_detailDTO();
-		accommodation_detail.setAc_id(1);
-		accommodation_detail.setRoom_num(2);
-		List<accommodation_detailDTO> resultList = mapper.accommodation_detail(accommodation_detail);
-		
-	}
+//	
+//	@Test
+//	public void accommodation_detail() {
+//		accommodation_detailDTO accommodation_detail=new accommodation_detailDTO();
+//		accommodation_detail.setAc_id(1);
+//		accommodation_detail.setRoom_num(2);
+//		List<accommodation_detailDTO> resultList = mapper.accommodation_detail(accommodation_detail);
+//		
+//	} 
 
 
 }

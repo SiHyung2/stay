@@ -30,7 +30,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
 @Controller
-@RequestMapping("/booking")
+@RequestMapping("/booking") 
 @AllArgsConstructor
 @Log4j
 public class BookingController {

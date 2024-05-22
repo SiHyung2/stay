@@ -3,9 +3,9 @@ package com.example.controller;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import java.util.List; 
 import java.util.Locale;
-
+ 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -74,7 +74,7 @@ public class BusinessController {
         // menu.jsp 실행 로직
         return "business/menu";
     }
-    
+     
     @RequestMapping(value = "/business_checkin", method = RequestMethod.GET)
     public String business_checkin(Locale locale, Model model) {
         // menu.jsp 실행 로직

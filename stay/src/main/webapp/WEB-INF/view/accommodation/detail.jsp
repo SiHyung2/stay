@@ -27,9 +27,28 @@
 	    $('#review_view_button').addClass('active'); 
 	}
 	</script>
+	
+<!-- 	리뷰 스타일 -->
+	<style>
+		    /* CSS styles for the submit button */
+		    input[type="submit"] {
+		        background-color: blue; /* Set the background color to blue */
+		        color: white; /* Set text color to white */
+		        border: none; /* Remove default border */
+		        padding: 10px 20px; /* Add padding for better appearance */
+		        cursor: pointer; /* Change cursor to pointer on hover */
+		        border-radius: 5px; /* Apply border radius for rounded corners */
+		    }
+		 
+		    /* Hover effect for the submit button */
+		    input[type="submit"]:hover {
+		        background-color: darkblue; /* Change background color on hover */
+		    }
+		</style>
 </head>
 
 <body>
+
 	<%@include file="../menu.jsp"%>
 	<div class="_container">
 		<header class="header_container">
@@ -126,10 +145,43 @@
 						<td>
 <!-- 							버튼 -->
 						</td>
-					</tr>
-				</c:forEach>
+					</tr> 
+				</c:forEach> 
 			</table>
-			<div class="review_view">리뷰 - 뷰</div>
+			<div class="review_view">
+			
+					    <table align="center" width="50%">
+		        <c:forEach items="${reviews}" var="review">
+		
+		            <tr>
+		                <td><c:out value="${review.email_Id}" /> -room<c:out value="${review.room_Num}" /></td>
+		                <td></td>
+		                <td style="text-align: right;"><c:out value="${review.update_Date}" /></td>
+		            </tr>
+		            <tr>
+		                <td><strong><c:out value="${review.content}" /></strong></td>
+		            </tr>
+		            <tr>
+		                <td colspan="3">
+		                
+		
+		<form action="/reply/${review.rev_Num}" method="POST">
+		    <textarea name="replyContent" rows="3" cols="50" placeholder="답글을 입력하세요..."></textarea>
+		    <br>
+		    <input type="submit" value="답글 달기">
+		</form>
+		
+		                </td>
+		            </tr>
+		            <tr>
+		                <td colspan="2">&nbsp;</td>
+		                <!-- 리뷰 간의 간격을 위한 빈 행 추가 -->
+		            </tr>
+		        </c:forEach>
+		    </table>
+			
+			
+			</div>
 		</section>
 		
 		<p>숙소 추가할때 사업자 아이디를 가지고있는지 확인하는 쿼리 추가 필요</p>

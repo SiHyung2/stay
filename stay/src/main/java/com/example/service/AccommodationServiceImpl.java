@@ -11,7 +11,7 @@ import com.example.mapper.AccommodationMapper;
 
 import lombok.AllArgsConstructor;
 
-@Service
+@Service 
 @AllArgsConstructor
 public class AccommodationServiceImpl implements AccommodationService {
 

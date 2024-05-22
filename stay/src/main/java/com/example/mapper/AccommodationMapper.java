@@ -5,7 +5,7 @@ import java.util.List;
 import com.example.domain.AccommodationDTO;
 import com.example.domain.SearchWordDTO;
 import com.example.domain.accommodation_detailDTO;
-
+ 
 public interface AccommodationMapper {
 	
 	public List<AccommodationDTO> getList();

@@ -1,12 +1,12 @@
 package com.example.service;
 
 import java.util.List;
-
+ 
 import com.example.domain.AccommodationDTO;
 import com.example.domain.SearchWordDTO;
 import com.example.domain.accommodation_detailDTO;
 
-public interface AccommodationService {
+public interface AccommodationService { 
 	 
 	public List<AccommodationDTO> getList();
 	public void insertaccommodation(AccommodationDTO accommdation);

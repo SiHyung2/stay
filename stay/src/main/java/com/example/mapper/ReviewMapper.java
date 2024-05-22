@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Select;
 
-import com.example.domain.Criteria;
+import com.example.domain.Criteria; 
 import com.example.domain.ReviewDTO;
 
 public interface ReviewMapper {
@@ -35,6 +35,11 @@ public interface ReviewMapper {
   
 	  @Select("select r.rev_num, b.email_id from review r left join booking b on b.bo_num=r.bo_num")
 	   public List<ReviewDTO> findAllReviews();
+
+	
+
+	  public List<ReviewDTO> findByAccommodationAcid(String ac_id);
+	 
 
 }  
  

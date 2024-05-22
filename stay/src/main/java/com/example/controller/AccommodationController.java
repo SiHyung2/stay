@@ -1,7 +1,5 @@
 package com.example.controller;
 
-import java.util.Date;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -15,6 +13,7 @@ import com.example.domain.AccommodationDTO;
 import com.example.domain.TodoDTO;
 import com.example.domain.accommodation_detailDTO;
 import com.example.service.AccommodationService;
+import com.example.service.ReviewService;
 import com.example.service.RoomService;
 
 import lombok.AllArgsConstructor;
@@ -28,7 +27,7 @@ public class AccommodationController {
 
     private final AccommodationService accommodationservice;
     private final RoomService roomservice;
-
+    private final ReviewService reviewService;
 
     @GetMapping("/list")   //1.모든 목록 조회
 	public void list(AccommodationDTO accommodation, Model model) {
@@ -117,8 +116,8 @@ public class AccommodationController {
 //		
 //		model.addAttribute("ac_id" ,ac_id);
 //	}
-	
-	
+	 
+	 
 	
 	@GetMapping("/detail")
 	public void All_Room_in_on_Accommodation(Model model, @RequestParam("ac_id") String ac_id, accommodation_detailDTO accommodation_detail) {
@@ -128,7 +127,7 @@ public class AccommodationController {
 		
 		
 		model.addAttribute("accommodation_list" ,accommodationservice.accommodation_detail(accommodation_detail));
-		
+		model.addAttribute("reviews" ,reviewService.findByAccommodationAcid(ac_id));
 	}
 	
     

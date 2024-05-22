@@ -9,7 +9,7 @@ import lombok.Data;
 @Data
 public class accommodation_detailDTO {
 
-//	숙소 상세페이지를 출력하기 위한 DTO이다
+//	숙소 상세페이지를 출력하기 위한 DTO이다 
 	
 	private String ac_id;
 	private int room_num;

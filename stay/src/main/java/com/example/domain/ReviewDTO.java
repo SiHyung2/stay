@@ -8,12 +8,11 @@ import lombok.Data;
 
 
 @Data 
-
-
 public class ReviewDTO {
 
+	private String ac_id;
     private long rev_Num;
-    private String bo_Num;
+    private String bo_Num; 
     private String ac_Title;
     private int room_Num;
     private String content;
@@ -22,16 +21,14 @@ public class ReviewDTO {
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date update_Date; 
     private String email_Id;
-    
 
 
 
 		
-	}
+}
 
-     
+    
 
-   
 
  
     

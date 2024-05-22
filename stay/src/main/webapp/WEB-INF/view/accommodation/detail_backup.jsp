@@ -9,7 +9,7 @@
 <!--     <link rel="stylesheet" href="./accommodation.css"> -->
 </head>
 
-<body>
+<body> 
 	<div class="container">
 		<header class="header_container">
 			<div class="accommodation_image"></div>

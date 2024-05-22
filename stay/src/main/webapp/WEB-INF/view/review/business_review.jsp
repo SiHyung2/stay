@@ -12,27 +12,7 @@
 table {
 	border-spacing: 10px; /* 테이블의 셀 간격을 10px로 설정 */
 }
-</style>
-</head>
-<body>
-    <%@include file="../business/main.jsp"%>
 
-
-
-
-    <table align="center" width="50%">
-        <c:forEach items="${reviews}" var="review">
-            <tr>
-                <td><c:out value="${review.email_Id}" /> -room<c:out value="${review.room_Num}" /></td>
-                <td></td>
-                <td style="text-align: right;"><c:out value="${review.update_Date}" /></td>
-            </tr>
-            <tr>
-                <td><strong><c:out value="${review.content}" /></strong></td>
-            </tr>
-            <tr>
-                <td colspan="3">
-                <style>
     /* CSS styles for the submit button */
     input[type="submit"] {
         background-color: blue; /* Set the background color to blue */
@@ -47,7 +27,28 @@ table {
     input[type="submit"]:hover {
         background-color: darkblue; /* Change background color on hover */
     }
-</style>
+</style> 
+</head>
+<body>
+    <%@include file="../business/main.jsp"%>
+
+
+
+
+    <table align="center" width="50%">
+        <c:forEach items="${reviews}" var="review">
+
+            <tr>
+                <td><c:out value="${review.email_Id}" /> -room<c:out value="${review.room_Num}" /></td>
+                <td></td>
+                 <td style="text-align: right;"><c:out value="${review.update_Date}" /></td>
+            </tr>
+            <tr>
+                <td><strong><c:out value="${review.content}" /></strong></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+             
 
 <form action="/reply/${review.rev_Num}" method="POST">
     <textarea name="replyContent" rows="3" cols="50" placeholder="답글을 입력하세요..."></textarea>

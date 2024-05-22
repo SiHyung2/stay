@@ -16,7 +16,7 @@
 		resultType="com.example.domain.ReviewDTO">
 		SELECT REV_NUM, BO_NUM, AC_TITLE, ROOM_NUM, CONTENT,
 		REVIEW_DATE,
-		UPDATE_DATE
+		UPDATE_DATE 
 		FROM review
 		WHERE REV_NUM = #{rev_Num}
 	</select>
@@ -44,6 +44,29 @@
 		select r.rev_num, b.email_id, r.room_num, r.content, r.update_Date  from review r
 		left join booking b on b.bo_num=r.bo_num 
 	</select>
- 
+  
+
+
+
+
+ <select id="findByAccommodationAcid" parameterType="java.lang.String" resultType="com.example.domain.ReviewDTO">
+    SELECT r.rev_num, r.bo_num, r.ac_title, r.room_num, r.content, r.review_date, r.update_date, b.email_id AS customer_email
+    FROM review r
+    JOIN booking b ON r.bo_num = b.bo_num
+    JOIN accommodation ac ON b.ac_id = ac.ac_id
+    JOIN member m ON ac.email_id = m.email_id AND m.type_code = '2'
+    JOIN member m1 ON b.email_id = m1.email_id AND m1.type_code = '1'
+    WHERE ac.ac_id = #{ac_id}
+</select>
+
+
+   <select id="accommodation_detail" resultType="com.example.domain.accommodation_detailDTO">
+    	SELECT a.ac_id, r.room_num , a.ac_title, a.ac_info, a.ac_address, r.ro_info, r.ro_name, r.ro_basic_count, r.ro_max_count, 
+    		checkin, checkout, r.room_price
+    		, a.email_id, a.bu_name
+		FROM accommodation a
+		LEFT JOIN room r ON r.ac_id=a.ac_id
+		WHERE a.ac_id=#{ac_id}
+    </select>
 
 </mapper>

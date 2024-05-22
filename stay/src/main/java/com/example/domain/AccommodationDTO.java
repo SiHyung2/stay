@@ -7,7 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
 
-@Data
+@Data 
 public class AccommodationDTO {
 	private String ac_id;
 	private String email_id;

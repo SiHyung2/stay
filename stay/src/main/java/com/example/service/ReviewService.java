@@ -3,11 +3,12 @@ package com.example.service;
 import com.example.domain.Criteria;
 import com.example.domain.LoginVO;
 import com.example.domain.ReviewDTO;
+import com.example.domain.accommodation_detailDTO;
 
 import java.util.List;
-
+ 
 public interface ReviewService {
-
+ 
     // 리뷰 생성
 	public void insert(ReviewDTO review);
 	// Read  
@@ -36,7 +37,11 @@ public interface ReviewService {
 	public Object getList(Criteria cri);
 	public Object getPageDTO(Criteria cri, int total);
 	public List<ReviewDTO> selectBusiness_Reviews();
+	
+	List<ReviewDTO> findByAccommodationAcid(String ac_id);
 
+	
+	
 	
 	
 	} 

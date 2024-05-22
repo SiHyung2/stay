@@ -4,7 +4,7 @@
 <html>
 <head>
 
-<link rel="stylesheet" href="/resources/css/join.css">
+<link rel="stylesheet" href="../resources/css/join.css">
 <meta charset="EUC-KR">
 <title>login</title> 
 </head>
@@ -25,7 +25,7 @@
 
 			<div class="form-group">
 			
-				<label for="confirmPassword">비밀번호 확인</label> <input  style= "width:460px" 
+				<label for="confirmPassword">비밀번호 확인</label> <input  style= "width:560px" 
 				type="password" id="confirmPassword"
 					name="confirmPassword" required>
 			</div>

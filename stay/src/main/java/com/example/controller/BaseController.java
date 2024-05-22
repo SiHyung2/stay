@@ -68,7 +68,7 @@ public class BaseController {
         // search.jsp 실행 로직
     	
         return "base/search"; 
-    }
+    } 
     
     
     

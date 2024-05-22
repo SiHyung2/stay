@@ -13,5 +13,5 @@ public interface RoomService {
 	
 	public List<RoomDTO> searchByac_id(String ac_id);
 	
-	public RoomDTO searchByac_id_And_room_num(RoomDTO room);
+	public RoomDTO searchBy_room_num(RoomDTO room);
 }

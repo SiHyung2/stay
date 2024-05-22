@@ -78,7 +78,7 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public List<ReviewDTO> selectAll() {
+	public List<ReviewDTO> selectAll() { 
 	    log.info("get all reviews");
 	    return mapper.getAllReviews();
 	}
@@ -109,9 +109,16 @@ public class ReviewServiceImpl implements ReviewService {
 
 	@Override
 	public List<ReviewDTO> selectBusiness_Reviews() {
-		// TODO Auto-generated method stub
+		// TODO Auto-ge nerated method stub
 		return null;
 	}
+
+	@Override
+	public List<ReviewDTO> findByAccommodationAcid(String ac_id) {
+		// TODO Auto-generated method stub
+		return mapper.findByAccommodationAcid(ac_id);
+	}
+
 
 //	@Override
 //	public LoginVO validateMember(LoginVO member) {

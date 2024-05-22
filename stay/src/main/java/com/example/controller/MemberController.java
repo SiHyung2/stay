@@ -185,11 +185,18 @@ public class MemberController {
 	public void loginview() { 
 	}
 
-	@GetMapping("/logout")
-	public String logout(HttpServletRequest request) {
-		request.getSession().invalidate();
-		return "redirect:/base/main";
-	} 
+//	@GetMapping("/logout")
+//	public String logout(HttpServletRequest request) {
+//		request.getSession().invalidate();
+//		return "redirect:/base/main";
+//	} 
+	
+	@PostMapping("/logout")
+	   public String logout(HttpServletRequest request) {
+	      request.getSession().invalidate();
+	      return "redirect:/base/main";
+	   } 
+	
  
 	@GetMapping("/joinview")
 	public void joinview() {

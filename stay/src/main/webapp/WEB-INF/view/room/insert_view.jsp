@@ -16,16 +16,18 @@
                 
         <div class="row justify-content-center mt-5">
             <div class="col-md-6">
-                <form role="form" action="/stay/room/insert" method="post">
+<!--             	파일 업로드를 위해 enctype="multipart/form-data" 사용 -->
+<!-- 				multiple 설정은 브라우저에 제약이 있음   -->
+                <form role="form" action="/stay/room/insert" method="post" enctype="multipart/form-data">
 <!--                 	원래는 room_num이 트리거이므로 자동으로 넘어가야하지만  -->
 <!--                 	디버깅용으로 room_num 입력창이 존재 -->
-                    <div class="mb-3">
-                        <label for="room_number" class="form-label">객실 번호</label>
-                        <input type="text" class="form-control" id="room_number" name="room_num">
-                    </div>
+<!--                     <div class="mb-3"> -->
+<!--                         <label for="room_number" class="form-label">객실 번호</label> -->
+<!--                         <input type="text" class="form-control" id="room_number" name="room_num"> -->
+<!--                     </div> -->
                     
                     <div>
-                        <input type="hidden" class="form-control" id="ac_id" name="ac_id" value="${ac_id}" }>
+                        <input type="hidden" class="form-control" id="ac_id" name="ac_id" value="${ac_id}">
                     </div>
                     
                     <div class="mb-3">
@@ -34,7 +36,7 @@
                     </div>
                     
                     <div class="mb-3">
-                        <label for=ro_basic_count class="form-label">최저 인원 수</label>
+                        <label for=ro_basic_count class="form-label">기준 인원 수</label>
                         <input type="number" class="form-control" id="ro_basic_count" name="ro_basic_count" required>
                     </div>
                     
@@ -51,6 +53,11 @@
                     <div class="mb-3">
                         <label for="room_price" class="form-label">가격</label>
                         <input type="number" class="form-control" id="room_price" name="room_price" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="room_img" class="form-label">사진</label>
+                        <input type='file' class="form-control" id="room_img" name='room_img' multiple>
                     </div>
                     
                     <button type="submit" class="btn btn-primary">등록</button>

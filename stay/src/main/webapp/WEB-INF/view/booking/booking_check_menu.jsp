@@ -13,18 +13,35 @@
 	<nav class="navbar navbar-expand-lg bg-body-tertiary mt-5">
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto" style="margin: auto;">
-				<li class="nav-item active"><a class="nav-link"
-					href="./bookingcomplete?email_id=${sessionScope.LoginVO.email_id}"
-					style="color: black; font-size: 20px; margin-right: 30px;">예약
-						완료</a></li>
-				<li class="nav-item active"><a class="nav-link"
-					href="./bookingcancel?email_id=${sessionScope.LoginVO.email_id}"
-					style="color: black; font-size: 20px; margin-right: 30px;">예약
-						취소</a></li>
-				<li class="nav-item active"><a class="nav-link"
-					href="./bookingend?email_id=${sessionScope.LoginVO.email_id}"
-					style="color: black; font-size: 20px; margin-right: 30px;">이용
-						완료</a></li>
+				<li class="nav-item active">
+					<form action="./bookingcomplete" method="post" style="margin: 0;">
+						<input type="hidden" name="email_id"
+							value="${sessionScope.LoginVO.email_id}">
+						<button type="submit" class="nav-link"
+							style="color: black; font-size: 20px; margin-right: 30px; background: none; border: none; padding: 0;">예약
+							완료</button>
+					</form>
+				</li>
+
+				<li class="nav-item active">
+					<form action="./bookingcancel" method="post" style="margin: 0;">
+						<input type="hidden" name="email_id"
+							value="${sessionScope.LoginVO.email_id}">
+						<button type="submit" class="nav-link"
+							style="color: black; font-size: 20px; margin-right: 30px; background: none; border: none; padding: 0;">예약
+							취소</button>
+					</form>
+				</li>
+
+				<li class="nav-item active">
+					<form action="./bookingend" method="post" style="margin: 0;">
+						<input type="hidden" name="email_id"
+							value="${sessionScope.LoginVO.email_id}">
+						<button type="submit" class="nav-link"
+							style="color: black; font-size: 20px; margin-right: 30px; background: none; border: none; padding: 0;">이용
+							완료</button>
+					</form>
+				</li>
 			</ul>
 		</div>
 	</nav>

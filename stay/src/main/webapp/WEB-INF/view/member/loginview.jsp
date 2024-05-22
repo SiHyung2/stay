@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="/resources/css/login.css">
+<link rel="stylesheet" href="../resources/css/login.css">
  	
 <meta charset="EUC-KR">
 <title>login</title>

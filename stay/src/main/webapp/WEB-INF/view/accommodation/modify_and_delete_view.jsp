@@ -13,28 +13,31 @@
     <div class="container">
 
 
-	
+<%-- 	${accommodation_list} --%>
 		
 	<div class="container">
-        <h1 class="text-center mt-5">숙소 수정2</h1>
-<!--         		post 매개변수 테스트 -->
-<%-- 		${ ac_id }         --%>
+        <h1 class="text-center mt-5">숙소 수정</h1>
                 
         <div class="row justify-content-center mt-5">
             <div class="col-md-6">
-                <form role="form">
+                <form role="form" method="post">
+<!--                 	ac_id는 조건문에 숙소를 찾는데 사용된다 -->
+					<div>
+                        <input type="hidden" class="form-control" id="ac_id" name="ac_id" value="${accommodation_list[0].ac_id}">
+                    </div>
+                    
                     <div>
-                        <input type="hidden" class="form-control" id="ac_id" name="ac_id">
+                        <input type="hidden" class="form-control" id="email_id" name="email_id" value="${accommodation_list[0].email_id}">
                     </div>
                     
                     <div class="mb-3">
-                        <label for="ac_title" class="form-label">숙소 이름</label>
+                        <label for="ac_title" class="form-label">숙소명</label>
                         <input type="text" class="form-control" id="ac_title" name="ac_title" value="${accommodation_list[0].ac_title}" required>
                     </div>
                     
                     <div class="mb-3">
-                        <label for="accommodation_type" class="form-label" required>객실 유형</label>
-                        <select class="form-select" id="accommodation_type" name="">
+                        <label for="accommodation_type" class="form-label">객실 유형</label>
+                        <select class="form-control" id="accommodation_type" name="ac_type" required>
                             <option value="1" selected>호텔</option>
                             <option value="2">모텔</option>
                             <option value="3">펜션</option>
@@ -65,17 +68,12 @@
                         <input type="text" class="form-control" id="accommodation_address" name="checkout" value="${accommodation_list[0].checkout}" required>
                     </div>
                     
-                    <div>
-                        <input type="hidden" class="form-control" id="accommodation_address" name="bu_name" value="${ bu_name }">
-                    </div>
-                    <div>
-                        <input type="hidden" class="form-control" id="email_id" name="email_id" value="${ email_id }">
-                    </div>
-                    
-<!--                     <button id="modify" type="submit" class="btn btn-warning" onclick="javascript: form.action='/stay/accommodation/modify'; form.method='post';">수정</button> -->
-<!-- 					<button id="delete" type="submit" class="btn btn-danger" onclick="javascript: form.action='/stay/accommodation/delete' form.method='post';;">삭제</button> -->
-					<button id="modify" type="submit" class="btn btn-warning" onclick="javascript: form.action='/stay/accommodation/modify'; form.method='post';">수정</button>
-					<button id="delete" type="submit" class="btn btn-danger" onclick="javascript: form.action='/stay/accommodation/delete'; form.method='post';">삭제</button>
+        
+<!-- 					<button id="modify" type="submit" class="btn btn-warning" onclick="javascript: form.action='/stay/accommodation/modify'; form.method='post';">수정</button> -->
+<!-- 					<button id="delete" type="submit" class="btn btn-danger" onclick="javascript: form.action='/stay/accommodation/delete'; form.method='post';">삭제</button> -->
+					
+					<button id="modify" type="submit" class="btn btn-warning" onclick="javascript: form.action='/stay/accommodation/modify';">수정</button>
+					<button id="delete" type="submit" class="btn btn-danger" onclick="javascript: form.action='/stay/accommodation/delete';">삭제</button>
                 </form>
             </div>
         </div>

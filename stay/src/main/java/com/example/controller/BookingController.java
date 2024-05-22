@@ -16,13 +16,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.domain.BoByAcDTO;
 import com.example.domain.BookingConfirmDTO;
 import com.example.domain.BookingDTO;
 import com.example.domain.CheckDTO;
+import com.example.domain.MemberDTO;
+import com.example.domain.accommodation_detailDTO;
 import com.example.service.BookingService;
+import com.example.service.MemberService;
 import com.example.service.AccommodationService;
 import com.example.mapper.*;
 
@@ -37,7 +41,9 @@ public class BookingController {
 	
 	@Autowired
     private AccommodationMapper accommodationMapper;
+	private AccommodationService accommodationservice;
 	private BookingMapper bookingMapper;
+	private MemberService memberService;
 
 	private final BookingService bookingService;
 
@@ -86,6 +92,14 @@ public class BookingController {
 		redirectAttributes.addFlashAttribute("message", "Booking deleted successfully!");
 		return "redirect:/booking/add";
 	}
+	
+	@PostMapping("/stay/booking/bookingcancel/atction")
+    public String cancelBooking(@RequestParam("bo_num") String bo_num, RedirectAttributes redirectAttributes) {
+        bookingService.deleteBooking(bo_num);
+        redirectAttributes.addFlashAttribute("message", "Booking deleted successfully!");
+        
+        return "redirect:/booking/bookingcancel"; // 예약 취소 후, 다시 예약 목록 페이지로 리다이렉트
+    }
 
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
 	public String search(Locale locale, Model model) {
@@ -100,38 +114,56 @@ public class BookingController {
         return "business_booking";
     }
 	
-	@GetMapping("/check")
-    public String showBusinessCheck(Model model, HttpServletRequest request) {
-    	String email_id = request.getParameter("email_id");
-	    System.out.println("email_id :"+email_id);
-	    
-	    return "booking/check";
+	@PostMapping("/check")
+    public String showBusinessCheck(Model model, @RequestParam("email_id") String emailId) {
+        System.out.println("email_id: " + emailId);
+        model.addAttribute("email_id", emailId);
+        return "booking/check"; // 예약 확인 페이지로 이동합니다.
+    }
+	
+	@PostMapping("/bookingcomplete")
+	public String showbookingcomplete(Model model, @RequestParam("email_id") String email_id) {
+	    // 이메일 주소를 바로 파라미터로 받아와서 사용합니다.
+	    List<CheckDTO> checkBookings = bookingMapper.getBusinessBookingsByEmailcheck(email_id);
+	    model.addAttribute("checkBookings", checkBookings);
+	    return "booking/bookingcomplete";
 	}
 	
-	@GetMapping("/bookingcomplete")
-    public String showbookingcomplete(Model model, HttpServletRequest request) {
-    	String email_id = request.getParameter("email_id");
-//        System.out.println("email_id: " + email_id);
-        List<CheckDTO> checkBookings = bookingMapper.getBusinessBookingsByEmailcheck(email_id);
-//        System.out.println("checkBookings: " + checkBookings);
-        model.addAttribute("checkBookings", checkBookings);
-        return "booking/bookingcomplete";
-    }
-	
-	@GetMapping("/bookingcancel")
-    public String showbookingcancel(Model model, HttpServletRequest request) {
-    	String email_id = request.getParameter("email_id");
-//        System.out.println("email_id: " + email_id);
-        List<CheckDTO> checkBookings = bookingMapper.getBusinessBookingsByEmailcheck(email_id);
-//        System.out.println("checkBookings: " + checkBookings);
-        model.addAttribute("checkBookings", checkBookings);
-        return "booking/bookingcancel";
-    }
+	@PostMapping("/bookingcancel")
+	public String cancelBooking(Model model, @RequestParam("email_id") String email_id) {
+	    List<CheckDTO> checkBookings = bookingMapper.getBusinessBookingsByEmailcheck(email_id);
+	    model.addAttribute("checkBookings", checkBookings);
+	    return "booking/bookingcancel";
+	}
 	
 	@GetMapping("/bookingend")
     public String showbookingend(Model model, HttpServletRequest request) {
     	
         return "booking/bookingend";
+    }
+	
+	@GetMapping("/booking_insertview")
+	public void test(Model model,  @RequestParam("email_id") String email_id, @RequestParam("ac_id") int ac_id, 
+		MemberDTO member, accommodation_detailDTO accommodation_detail) {
+	      
+	      accommodation_detail.setAc_id(ac_id);
+	      model.addAttribute("accommodation_list" ,accommodationservice.accommodation_detail(accommodation_detail));
+	      model.addAttribute("member" ,memberService.select(email_id));
+	   }
+	
+	@PostMapping("/payment")
+    public String processPayment(@ModelAttribute("booking") BookingDTO booking, 
+            @ModelAttribute("accommodation_list") accommodation_detailDTO accommodationDetail,
+            RedirectAttributes redirectAttributes, Model model) {
+        
+		bookingService.addBooking(booking);
+		redirectAttributes.addFlashAttribute("message", "Booking added successfully!");
+
+		// Add the newly created booking object to the model
+		model.addAttribute("booking", booking);
+        
+        redirectAttributes.addFlashAttribute("message", "예약이 완료되었습니다.");
+        return "redirect:/booking_insertview"; // 다시 예약 정보 페이지로 이동
     }
 	
 	// 사업자 정보

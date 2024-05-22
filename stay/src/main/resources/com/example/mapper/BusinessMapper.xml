@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.mapper.BusinessMapper">
+
+    <select id="search_by_email_id" resultType="com.example.domain.BusinessDTO">
+        select * from accommodation
+        where email_id=#{email_id}
+    </select>
+    
+
+</mapper>

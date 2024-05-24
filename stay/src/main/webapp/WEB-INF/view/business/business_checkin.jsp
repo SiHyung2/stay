@@ -51,7 +51,7 @@
                     <th scope="col">체크아웃</th>
                     <th scope="col">예약자</th>
                     <th scope="col">전화번호</th>
-                    <th scope="col">에약상태</th>
+                    <th scope="col">예약상태</th>
                 </tr>
             </thead>
             <tbody>
@@ -76,7 +76,7 @@
                     <th scope="col">체크아웃</th>
                     <th scope="col">예약자</th>
                     <th scope="col">전화번호</th>
-                    <th scope="col">에약상태</th>
+                    <th scope="col">예약상태</th>
                 </tr>
             </thead>
             <tbody>

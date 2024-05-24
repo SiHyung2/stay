@@ -38,7 +38,7 @@
 
 	<select id="getBusinessBookingsByEmail"
 		parameterType="String" resultType="com.example.domain.BookingConfirmDTO">
-    	select bo_num, room_num, checkin_day, checkout_day, tel, b.email_id, status, b.ac_id
+    	select bo_num, room_num, checkin_day, checkout_day, tel, b.email_id, status, b.ac_id, name, ac_title
 		from booking b
 		join accommodation a on b.ac_id = a.ac_id
 		join member m on b.email_id = m.email_id

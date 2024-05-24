@@ -23,26 +23,26 @@
         <thead>
         <tr>
             <th scope="col">예약번호</th>
-            <th scope="col">객실이름</th>
+            <th scope="col">숙소이름</th>
+            <th scope="col">방이름</th>
             <th scope="col">체크인</th>
             <th scope="col">체크아웃</th>
             <th scope="col">예약자</th>
             <th scope="col">전화번호</th>
             <th scope="col">예약상태</th>
-            <th scope="col">숙소이름</th>
         </tr>
         </thead>
         <tbody>
             <c:forEach var="booking" items="${businessbooking}">
                 <tr>
                     <td>${booking.bo_num}</td>
-                    <td>${booking.room_rum}</td>
+                    <td>${booking.ac_title}</td>
+                    <td>${booking.ro_name}</td>
                     <td>${booking.checkin_day}</td>
                     <td>${booking.checkout_day}</td>
-                    <td>${booking.email_id}</td>
+                    <td>${booking.name}</td>
                     <td>${booking.tel}</td>
                     <td>${booking.status}</td>
-                    <td>${booking.ac_id}</td>
                 </tr>
             </c:forEach>
         </tbody>

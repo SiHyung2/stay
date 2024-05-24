@@ -42,7 +42,7 @@ public class BookingServicetest {
     //읽기
     @Test
     public void getBusinessBookingsByEmail() {
-    	List<BookingConfirmDTO> booking = service.getBusinessBookingsByEmail("1");
+    	List<BookingConfirmDTO> booking = service.getBusinessBookingsByEmail("12");
         log.info(booking);
     }
 

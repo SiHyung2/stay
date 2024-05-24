@@ -17,7 +17,7 @@
                 </li>
                 
                 <li class="nav-item active">
-    				<a class="nav-link" href="../business/business_booking?email_id=${sessionScope.LoginVO.email_id}"
+    				<a id="business_booking" class="nav-link" href="#"
     					style="color: black; font-size: 20px; margin-right: 30px;">예약 확인</a>
 				</li>
                 <li class="nav-item active">
@@ -87,6 +87,22 @@
 	        $('body').append(form);
 	        form.submit();
 	    });
+		
+	    $('#business_booking').on('click', function(e) {
+	    	//     	alert("숙소 추가 뷰 링크 함수 실행됨");
+	    	        e.preventDefault(); // 기본 액션 막음. (중복 막음)        
+	    	        var form = $('<form>', {
+	    	            'action': '/stay/business/business_booking',
+	    	            'method': 'post'
+	    	        });
+	    	        form.append($('<input>', {
+	    	            'type': 'hidden',
+	    	            'name': 'email_id',
+	    	            'value': '${sessionScope.LoginVO.email_id}'
+	    	        }));
+	    	        $('body').append(form);
+	    	        form.submit();
+	    	    });
 	});
 	
 	

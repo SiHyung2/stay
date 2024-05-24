@@ -8,11 +8,13 @@ import lombok.Data;
 public class BookingConfirmDTO {
 
     private String bo_num;
-    private int room_num;
-    private int ac_id;
+    private int ro_name;
     private String checkin_day;
     private String checkout_day;
+    private String name;
     private String tel;
-    private String email_id;
     private int status;
+    private String ac_title;
+    private int room_num;
+    
 }

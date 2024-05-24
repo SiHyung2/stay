@@ -53,7 +53,7 @@ public class BookingMapperTest {
     
     @Test
     public void getBusinessBookingsByEmail() {
-    	List<BookingConfirmDTO> booking = mapper.getBusinessBookingsByEmail("22");
+    	List<BookingConfirmDTO> booking = mapper.getBusinessBookingsByEmail("12");
         log.info(booking);
     }
 

@@ -24,6 +24,7 @@ import com.example.domain.BookingConfirmDTO;
 import com.example.domain.BookingDTO;
 import com.example.domain.CheckDTO;
 import com.example.domain.MemberDTO;
+import com.example.domain.RoomDTO;
 import com.example.domain.accommodation_detailDTO;
 import com.example.service.BookingService;
 import com.example.service.MemberService;
@@ -46,6 +47,8 @@ public class BookingController {
 	private MemberService memberService;
 
 	private final BookingService bookingService;
+	
+	
 
 	// getall
 	@GetMapping("/list")

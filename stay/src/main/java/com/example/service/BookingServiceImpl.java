@@ -51,7 +51,6 @@ public class BookingServiceImpl implements BookingService {
 
 	@Override
 	public List<BookingConfirmDTO> getBusinessBookingsByEmail(String email_id) {
-		// TODO Auto-generated method stub
-		return null;
+		return bookingMapper.getBusinessBookingsByEmail(email_id);
 	}
 }

@@ -73,6 +73,10 @@
             	}
 			  
 			  	document.getElementById('checkout').value= new Date(today.setDate(today.getDate() + 1)).toISOString().slice(0, 10);
+			  	function setDates() {
+			        document.getElementById('hidden_checkin').value = document.getElementById('checkin').value;
+			        document.getElementById('hidden_checkout').value = document.getElementById('checkout').value;
+			    }
 			</script>
 			<div class="room_review_tab">
 				<button id="room_view_button" class="room_view_button" onclick="switchToRoomView()">객실</button>
@@ -97,9 +101,17 @@
 								방 정보
 							</button>
 							<br/>
-							<button  onclick="location.href='/stay/booking/booking_insertview?email_id=${sessionScope.LoginVO.email_id}&ac_id=${accommodation.ac_id}&room_num=${accommodation.room_num}'">
-								예약하기
-							</button>
+							<form action="/stay/booking/booking_insertview" method="post"
+								onsubmit="setDates()">
+								<input type="hidden" name="email_id"
+									value="${sessionScope.LoginVO.email_id}"> <input
+									type="hidden" name="ac_id" value="${accommodation.ac_id}">
+								<input type="hidden" name="room_num"
+									value="${accommodation.room_num}"> <input type="hidden"
+									id="hidden_checkin" name="checkin"> <input
+									type="hidden" id="hidden_checkout" name="checkout">
+								<button type="submit" class="btn btn-primary">예약하기</button>
+							</form>
 						</td>
 					</tr>
 <!-- 					2번째 줄 -->

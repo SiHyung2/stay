@@ -145,8 +145,8 @@ public class BookingController {
         return "booking/bookingend";
     }
 	
-	@GetMapping("/booking_insertview")
-	public void test(Model model,  @RequestParam("email_id") String email_id, @RequestParam("ac_id") int ac_id, 
+	@PostMapping("/booking_insertview")
+	public void bookinginsertview(Model model,  @RequestParam("email_id") String email_id, @RequestParam("ac_id") int ac_id, 
 		MemberDTO member, accommodation_detailDTO accommodation_detail) {
 	      
 	      accommodation_detail.setAc_id(ac_id);
@@ -158,14 +158,8 @@ public class BookingController {
     public String processPayment(@ModelAttribute("booking") BookingDTO booking, 
             @ModelAttribute("accommodation_list") accommodation_detailDTO accommodationDetail,
             RedirectAttributes redirectAttributes, Model model) {
-        
 		bookingService.addBooking(booking);
-		redirectAttributes.addFlashAttribute("message", "Booking added successfully!");
-
-		// Add the newly created booking object to the model
 		model.addAttribute("booking", booking);
-        
-        redirectAttributes.addFlashAttribute("message", "예약이 완료되었습니다.");
         return "redirect:/booking_insertview"; // 다시 예약 정보 페이지로 이동
     }
 	

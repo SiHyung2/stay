@@ -11,7 +11,7 @@ public class accommodation_detailDTO {
 
 //	숙소 상세페이지를 출력하기 위한 DTO이다
 	
-	private String ac_id;
+	private int ac_id;
 	private int room_num;
 	private String ac_info;
 	private String ac_address;
@@ -29,8 +29,7 @@ public class accommodation_detailDTO {
 	private String checkout;   
 	private int room_price;
 	
-	private String email_id;  // 출력용
-	private String bu_name;  // 출력용
+	private String email_id;  
 	
 	
 }

@@ -18,13 +18,16 @@
         <h1 class="text-center mt-5">숙소 등록</h1>
         <div class="row justify-content-center mt-5">
             <div class="col-md-6">
-                <form name="form1" role="form" action="/stay/accommodation/insert" method="post" onsubmit="return validateForm()">
+                <form name="form1" role="form" action="/stay/accommodation/insert" method="post">
                
 <!--                		숙소 아이디는 트리거로 해야만함! (무결성 제약조건 위배될 가능성 있음)  -->
 <!-- 						사실 여기서 입력하지않아도 트리거니까 넘어가야함. 아래의 ac_id 입력창은 디버깅용 코드임 -->
-                	<div>
-                		<label for="accommodation_id" class="form-label">숙소 아이디</label>
-                        <input type="text" class="form-control" id="accommodation_id" name="ac_id">
+<!--                 	<div> -->
+<!--                 		<label for="accommodation_id" class="form-label">숙소 아이디</label> -->
+<!--                         <input type="text" class="form-control" id="accommodation_id" name="ac_id"> -->
+<!--                     </div> -->
+                    <div>
+                        <input type="hidden" class="form-control" id="email_id" name="email_id" value="${accommodation_list[0].email_id}">
                     </div>
                     
                     <div class="mb-3">
@@ -33,8 +36,8 @@
                     </div>
                     
                     <div class="mb-3">
-                        <label for="accommodation_type" class="form-label" required>객실 유형</label>
-                        <select class="form-select" id="accommodation_type" name="">
+                        <label for="accommodation_type" class="form-label">객실 유형</label>
+                        <select class="form-control" id="accommodation_type" name="ac_type">
                             <option value="1" selected>호텔</option>
                             <option value="2">모텔</option>
                             <option value="3">펜션</option>
@@ -50,7 +53,7 @@
                         <input type="text" class="form-control" id="accommodation_address" name="ac_address" required>
                     </div>
                     
-                    <div class="mb-3">
+                   <div class="mb-3">
                         <label for="accommodation_info" class="form-label">숙소 정보</label>
                         <textarea class="form-control" id="accommodation_info" name="ac_info" rows="3" required></textarea>
                     </div>
@@ -68,12 +71,6 @@
                         <input type="text" class="form-control" id="accommodation_address" name="checkout" required>
                     </div>
                     
-                    <div>
-                        <input type="hidden" class="form-control" id="accommodation_address" name="bu_name" value="${ bu_name }">
-                    </div>
-                    <div>
-                        <input type="hidden" class="form-control" id="email_id" name="email_id" value="${ email_id }">
-                    </div>
                     
                     <button type="submit" class="btn btn-primary w-100">등록</button>
                 </form>

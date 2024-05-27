@@ -14,6 +14,7 @@ public interface RoomMapper {
 	
 	public List<RoomDTO> searchByac_id(String ac_id);
 	
-	public RoomDTO searchByac_id_And_room_num(RoomDTO room);
-	
+	public RoomDTO searchBy_room_num(RoomDTO room);
+	public void insertro_pic(RoomDTO room);  //사진 업로드 매퍼
+	public RoomDTO latest_room_of_room_num();   //가장 최근의 방 번호를 출력
 }

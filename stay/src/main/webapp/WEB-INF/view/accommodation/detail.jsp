@@ -7,10 +7,27 @@
     <title>Document</title>
     <link href="<c:url value="/resources/css/accommodation_detail.css" />" rel="stylesheet" type="text/css"> 
 	<!--탭메뉴 제작중... -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script>
+	<script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+
+<body>
+	<%@include file="../menu.jsp"%>
+	
+<script>
 	$(function() {
-		$('.review_view').hide();		
+// 		alert("제이쿼리가 실행이 되긴하나..?");
+		<!-- 만약 세션에 일치하는 ac_id와 숙소의 ac_id가 일치하면 비즈니스 뷰를 보여주는 함수 -->
+		var member_email_id= $('.business_view').data('member_email');
+		var session_email_id= $('.business_view').data('session_email_id');
+	    $('.business_view').hide();
+// 	    alert("비즈니스 뷰 숨기는 코드 실행");
+	    $('.review_view').hide();	
+// 	    alert("리뷰 뷰 숨기는 코드 실행");
+	    if (member_email_id === session_email_id) {
+// 	         alert("해당 숙소의 주인이므로 출력");
+	         $('.business_view').show();
+	    }
 	});
 	
 	function switchToReviewView() {
@@ -26,11 +43,11 @@
 // 	    $('.review_view_button').removeClass('active'); 
 	    $('#review_view_button').addClass('active'); 
 	}
-	</script>
-</head>
-
-<body>
-	<%@include file="../menu.jsp"%>
+	
+</script>
+	
+	
+	
 	<div class="_container">
 		<header class="header_container">
 			<div class="accommodation_image">ac_img</div>
@@ -100,7 +117,7 @@
 <!-- 						</td> -->
 						<td class="ro_basic_and_max_and_checkin_checkout">
 							<div>
-								최소 <c:out value="${accommodation.ro_basic_count}"/>인,
+								기준 <c:out value="${accommodation.ro_basic_count}"/>인,
 								최대 <c:out value="${accommodation.ro_max_count}"/>인
 							</div>
 							<br>
@@ -129,39 +146,38 @@
 					</tr>
 				</c:forEach>
 			</table>
-			<div class="review_view">리뷰 - 뷰</div>
+			<div class="review_view"> 
+				리뷰-뷰
+			</div>
 		</section>
 		
-		<p>숙소 추가할때 사업자 아이디를 가지고있는지 확인하는 쿼리 추가 필요</p>
-		<p>방 추가할때 사업자 아이디와 일치하는지 확인하는 쿼리 추가 필요</p>
 		
-		<form action="/stay/room/insert_view" method="post">
-	        <!-- 여기에 ac_id를 hidden으로 전달 -->
-	        <input type="hidden" name="ac_id" value="${accommodation_list[0].ac_id}">
-	        <button type="submit" class="btn btn-warning w-25 h-25">방 추가 View</button>
-	    </form>
-		
-		<form action="/stay/accommodation/modify_and_delete_view" method="post">
-	        <!-- 여기에 ac_id를 hidden으로 전달 -->
-	        <input type="hidden" name="email_id" value="${accommodation_list[0].email_id}">
-	        <input type="hidden" name="bu_name" value="${accommodation_list[0].bu_name}"> 
-	        <input type="hidden" name="ac_id" value="${accommodation_list[0].ac_id}">
-	        <button type="submit" class="btn btn-danger w-25 h-25">숙소 수정 View</button>
-	    </form>
-		
-		<form action="/stay/accommodation/insert_view" method="post">
-	        <!-- 여기에 ac_id를 hidden으로 전달 -->
-	        <input type="hidden" name="email_id" value="${accommodation_list[0].email_id}">
-	        <input type="hidden" name="bu_name" value="${accommodation_list[0].bu_name}"> 
-	        <button type="submit" class="btn btn-success w-25 h-25">숙소 추가 View</button>
-	    </form>
+<!-- 		해당 숙소의 ac_id와 email_id에 입력된 값의 ac_id와 같으면 출력한다 (제이 쿼리 활용)-->
+		<div class="business_view" data-member_email="${accommodation_list[0].email_id}" data-session_email_id="${sessionScope.LoginVO.email_id}">
+			<form action="/stay/room/insert_view" method="post">
+		        <!-- 여기에 ac_id를 hidden으로 전달 -->
+		        <input type="hidden" name="ac_id" value="${accommodation_list[0].ac_id}">
+		        <button type="submit" class="btn btn-info w-100">방 추가 View</button>
+		    </form>
+			
+<!-- 			<form action="/stay/accommodation/modify_and_delete_view" method="post"> -->
+<!-- 		        여기에 ac_id를 hidden으로 전달 -->
+<%-- 		        <input type="hidden" name="email_id" value="${accommodation_list[0].email_id}"> --%>
+<%-- 		        <input type="hidden" name="ac_id" value="${accommodation_list[0].ac_id}"> --%>
+<!-- 		        <button type="submit" class="btn btn-info w-100">숙소 수정 View</button> -->
+<!-- 		    </form> -->
+			
+<!-- 			<form action="/stay/accommodation/insert_view" method="post"> -->
+<!-- 		        여기에 ac_id를 hidden으로 전달 -->
+<%-- 		        <input type="hidden" name="email_id" value="${accommodation_list[0].email_id}"> --%>
+<!-- 		        <button type="submit" class="btn btn-info w-100">숙소 추가 View</button> -->
+<!-- 		    </form> -->
+	    </div>
 	    
-	    
-	</div>
-	
-	
-	
-	
+
+
+
+
 	
 </body>
 </html>

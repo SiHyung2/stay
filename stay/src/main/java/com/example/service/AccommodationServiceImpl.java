@@ -76,7 +76,14 @@ public class AccommodationServiceImpl implements AccommodationService {
 	@Override
 	public List<SearchWordDTO> aside_search(SearchWordDTO searchword) {
 		
+//		1.searchWord 객체에 있는 검색어, 체크인. 체크아웃, ac_type, 인원수 값
+//		2.resultList에 있는 결과값
+//		
+		
 		List<SearchWordDTO> resultList = mapper.aside_search(searchword);
+		
+//		resultList.get(0).setCheckin(searchword.getCheckin());
+//		resultList.get(0).setCheckout(searchword.getCheckout());
 		return resultList;
 	}
 

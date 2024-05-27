@@ -1,6 +1,5 @@
 package com.example.controller;
 
-import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.domain.AccommodationDTO;
+import com.example.domain.LoginVO;
 import com.example.domain.TodoDTO;
 import com.example.domain.accommodation_detailDTO;
 import com.example.service.AccommodationService;
@@ -26,111 +26,90 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class AccommodationController {
 
-    private final AccommodationService accommodationservice;
-    private final RoomService roomservice;
+	private final AccommodationService accommodationservice;
+	private final RoomService roomservice;
+//	private MemberService memberService;
 
-
-    @GetMapping("/list")   //1.모든 목록 조회
+	@GetMapping("/list") // 1.모든 목록 조회
 	public void list(AccommodationDTO accommodation, Model model) {
-    	 model.addAttribute("accommodationlist" ,accommodationservice.getList());
+		model.addAttribute("accommodationlist", accommodationservice.getList());
 //    	 log.info("컨트롤러에서 list 실행 테스트");
 	}
-	
-    
-    
+
 	@PostMapping("/insert")
-	public String InsertRoom(AccommodationDTO accommodation) {
-		log.info("insert: "+accommodation);
+	public String InsertRoom(AccommodationDTO accommodation, LoginVO logino, HttpServletRequest request) {
+		log.info("insert: " + accommodation);
+		
 		accommodationservice.insertaccommodation(accommodation);
 		
-		return "redirect:/base/main";
+//		System.out.println(logino);      logino의 데이터 오는지 확인 (성공)
+		request.getSession().setAttribute("LoginVO", logino);           //숙소 insert 후 로그인 세션 초기화 해결을 위함
+		return "business/main";
 	}
-    
 
 //	
-	
+
 	@GetMapping("/ex03")
 	public String ex03(TodoDTO todo) {
-		
-		log.info("todo: "+todo);
+
+		log.info("todo: " + todo);
 		return "ex02";
 	}
-	
 
-	@PostMapping("/insert_view")//2-1. 추가하는 뷰
-	public void InsertRoom_view2(HttpServletRequest httpServletRequest, Model model) {
-		//방 추가하는 뷰와 연결하기만 하는 메서드
-		
+	@PostMapping("/insert_view") // 2-1. 추가하는 뷰
+	public void InsertRoom_view2(HttpServletRequest httpServletRequest, Model model, accommodation_detailDTO accommodation_detail) {
+		// 방 추가하는 뷰와 연결하기만 하는 메서드
+
 //		POST 방식 매개변수 넘기는 법!!!
-		String email_id = httpServletRequest.getParameter("email_id");
-		String bu_name = httpServletRequest.getParameter("bu_name");
-		
-		System.out.println("email_id : " + email_id);
-		System.out.println("bu_name : " + bu_name);
-		model.addAttribute("email_id", email_id);
-		model.addAttribute("bu_name", bu_name);
+//		String email_id = httpServletRequest.getParameter("email_id");
+//		String bu_name = httpServletRequest.getParameter("bu_name");
+////		ac_id도 넘기는 코드 필요
+//
+//		System.out.println("email_id : " + email_id);
+//		System.out.println("bu_name : " + bu_name);
+//		model.addAttribute("email_id", email_id);
+//		model.addAttribute("bu_name", bu_name);
+		model.addAttribute("accommodation_list", accommodationservice.accommodation_detail(accommodation_detail));
 	}
-	
-	
-	
-	
-	
-	
-	@PostMapping("/modify")   //3. 수정
-	public String ModifyRoom(AccommodationDTO accommodation, Model model) {
-		
+
+	@PostMapping("/modify") // 3. 수정
+	public String ModifyRoom(AccommodationDTO accommodation) {
+//		AccommodationDTO로 받을 때 데이터가 없는 오류가 발생                  accommodation_detailDTO로 받아도 데이터 없음  왜지.. view를 살펴보자
+		System.out.println("ac_modify 실행됨");
+		System.out.println(accommodation);
+		int ac_id= accommodation.getAc_id();
+		System.out.println("ac_id="+ac_id);
 		accommodationservice.updateaccommodation(accommodation);
+		
+		
+		return "business/main";
+	}
+	
+	@PostMapping("/delete")   //4. 삭제
+	public String DeleteRoom(AccommodationDTO accommodation) {
+		
+		accommodationservice.deleteaccommodation(accommodation);
 		 
-		return "redirect:/accommodation/modify";
+		return "business/main";
 	}
- 
-	
-	@PostMapping("/modify_and_delete_view")//2-1. 숙소 수정하는 뷰 (사업자 페이지)
-	public void modify_and_delete_view(HttpServletRequest httpServletRequest, Model model, accommodation_detailDTO accommodation_detail) {
-		//방 추가하는 뷰와 연결하기만 하는 메서드
-		
-//		POST 방식 매개변수 넘기는 법!!!
-		String email_id = httpServletRequest.getParameter("email_id");
-		String bu_name = httpServletRequest.getParameter("bu_name");
-		String ac_id = httpServletRequest.getParameter("ac_id");
-		
-		
-		
-		System.out.println("email_id : " + email_id);
-		System.out.println("bu_name : " + bu_name);
-		System.out.println("bu_name : " + bu_name);
-		
-		model.addAttribute("email_id", email_id);
-		model.addAttribute("bu_name", bu_name);
-		model.addAttribute("ac_id", ac_id);
-		
-		
-		
-		accommodation_detail.setAc_id(ac_id);
-		model.addAttribute("accommodation_list" ,accommodationservice.accommodation_detail(accommodation_detail));
+
+	@PostMapping("/modify_and_delete_view") // 2-1. 숙소 수정하는 뷰 (사업자 페이지)
+	public void modify_and_delete_view(Model model, accommodation_detailDTO accommodation_detail) {
+//		accommodation_detail에 아무 값도 안 넣었는데 잘 작동한다...  ac_id를 넣은 기억이 없는데...
+//		accommodation_detail이 언제 생성된거지...??
+		System.out.println(accommodation_detail);
+		model.addAttribute("accommodation_list", accommodationservice.accommodation_detail(accommodation_detail));
 	}
-	
-	
-//	@GetMapping("/modify_and_delete_view")//3-1.방 수정 및 삭제하는 뷰
-//	public void ModifyRoom_view(HttpServletRequest httpServletRequest, Model model, RoomDTO room) {
-//		String ac_id = httpServletRequest.getParameter("ac_id");
-//		
-//		model.addAttribute("ac_id" ,ac_id);
-//	}
-	
-	
-	
+
 	@GetMapping("/detail")
-	public void All_Room_in_on_Accommodation(Model model, @RequestParam("ac_id") String ac_id, accommodation_detailDTO accommodation_detail) {
-//		log.info("ac_id: "+ac_id);
-		
+	public void All_Room_in_on_Accommodation(Model model, @RequestParam("ac_id") int ac_id,
+			accommodation_detailDTO accommodation_detail) {
+		log.info("ac_id: "+ac_id);
 		accommodation_detail.setAc_id(ac_id);
-		
-		
 		model.addAttribute("accommodation_list" ,accommodationservice.accommodation_detail(accommodation_detail));
 		
+//		List<accommodation_detailDTO> accommodation_list2=accommodationservice.accommodation_detail(accommodation_detail);
 	}
+
 	
-    
-    
 }

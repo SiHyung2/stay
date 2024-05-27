@@ -12,9 +12,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 숙소(사업체) 등록 -->
  	<insert id="insertaccommdation">
 		INSERT INTO ACCOMMODATION
-			(ac_id, email_id, ac_title, ac_type, ac_address, ac_info, checkin, checkout, bu_name)
+			( email_id, ac_title, ac_type, ac_address, ac_info, checkin, checkout)
 		VALUES 
-			(#{ac_id}, #{email_id}, #{ac_title}, #{ac_type}, #{ac_address}, #{ac_info}, #{checkin}, #{checkout}, #{bu_name})
+			( #{email_id}, #{ac_title}, #{ac_type}, #{ac_address}, #{ac_info}, #{checkin}, #{checkout})
  	</insert>
 
 	<update id="updateaccommdation">
@@ -152,9 +152,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="accommodation_detail" resultType="com.example.domain.accommodation_detailDTO">
     	SELECT a.ac_id, r.room_num , a.ac_title, a.ac_info, a.ac_address, r.ro_info, r.ro_name, r.ro_basic_count, r.ro_max_count, 
     		checkin, checkout, r.room_price
-    		, a.email_id, a.bu_name
+    		, a.email_id
 		FROM accommodation a
-		LEFT JOIN room r ON r.ac_id=a.ac_id
+		JOIN room r ON r.ac_id=a.ac_id
 		WHERE a.ac_id=#{ac_id}
     </select>
 

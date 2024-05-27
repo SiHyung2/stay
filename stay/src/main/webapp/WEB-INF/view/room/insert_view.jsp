@@ -16,16 +16,17 @@
                 
         <div class="row justify-content-center mt-5">
             <div class="col-md-6">
-                <form role="form" action="/stay/room/insert" method="post">
+<!--             	파일(사진) 업로드 관련 코드 : enctype="multipart/form-data" -->
+                <form role="form" action="/stay/room/insert" method="post" enctype="multipart/form-data">
 <!--                 	원래는 room_num이 트리거이므로 자동으로 넘어가야하지만  -->
 <!--                 	디버깅용으로 room_num 입력창이 존재 -->
-                    <div class="mb-3">
-                        <label for="room_number" class="form-label">객실 번호</label>
-                        <input type="text" class="form-control" id="room_number" name="room_num">
-                    </div>
+<!--                     <div class="mb-3"> -->
+<!--                         <label for="room_number" class="form-label">객실 번호</label> -->
+<!--                         <input type="text" class="form-control" id="room_number" name="room_num"> -->
+<!--                     </div> -->
                     
                     <div>
-                        <input type="hidden" class="form-control" id="ac_id" name="ac_id" value="${ac_id}" }>
+                        <input type="hidden" class="form-control" id="ac_id" name="ac_id" value="${ac_id}">
                     </div>
                     
                     <div class="mb-3">
@@ -34,7 +35,7 @@
                     </div>
                     
                     <div class="mb-3">
-                        <label for=ro_basic_count class="form-label">최저 인원 수</label>
+                        <label for=ro_basic_count class="form-label">기준 인원 수</label>
                         <input type="number" class="form-control" id="ro_basic_count" name="ro_basic_count" required>
                     </div>
                     
@@ -44,7 +45,7 @@
                     </div>
                     
                     <div class="mb-3">
-                        <label for=""room_info"" class="form-label">방 설명</label>
+                        <label for="room_info" class="form-label">방 설명</label>
                         <input type="text" class="form-control" id="room_info" name="ro_info" required>
                     </div>
                     
@@ -53,62 +54,17 @@
                         <input type="number" class="form-control" id="room_price" name="room_price" required>
                     </div>
                     
+                    <div class="mb-3">
+                        <label for="room_img" class="form-label">사진</label>
+                        <input type='file' class="form-control" id="room_img" name='room_img' multiple>
+                    </div>
+                    
+                    
                     <button type="submit" class="btn btn-primary">등록</button>
                 </form>
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    
-    
-    
-    
-    
-    
-    <!--             	<div class="col-lg-12"> -->
-<!--             		<div class="panel panel-default"> -->
-<!--             			<div class="panel-heading">Room Register</div> -->
-<!--             			<div class="panel-body"> -->
-<!--             				<form role="form" action="/stay/room/insert" method="post"> -->
-<!--             					<div class="form-group"> -->
-<!--             						<label>ro_type</label> <input class="form-control" name='ro_type'> -->
-<!--             					</div> -->
-            					
-<!--             					<div class="form-group"> -->
-<!--             						<label>ac_id</label> <input class="form-control" name='ac_id'> -->
-<!--             					</div> -->
-            					
-            					
-<!--             					<div class="form-group"> -->
-<!--             						<label>ro_name</label> <input class="form-control" name='ro_name'> -->
-<!--             					</div> -->
-            					
-            					
-<!--             					<div class="form-group"> -->
-<!--             						<label>ro_basic_count</label> <input class="form-control" name='ro_basic_count'> -->
-<!--             					</div> -->
-            					
-<!--             					<div class="form-group"> -->
-<!--             						<label>ro_max_count</label> <input class="form-control" name='ro_max_count'> -->
-<!--             					</div> -->
-            					
-<!--             					<div class="form-group"> -->
-<!--             						<label>ro_info</label> <input class="form-control" name='ro_info'> -->
-<!--             					</div> -->
-            					
-<!--             					<div class="form-group"> -->
-<!--             						<label>ro_count</label> <input class="form-control" name='ro_count'> -->
-<!--             					</div> -->
-            					
-            					
-            				
-<!--             					<button type="submit" class="btn btn-default">Submit -->
-<!--             						Button</button> -->
-<!--             					<button type="reset" class="btn btn-default">Reset -->
-<!--             						Button</button> -->
-<!--             				</form> -->
-<!--             			</div> -->
-<!--             		</div> -->
-<!--             	</div> -->   	
+	
 </body>
 </html>

@@ -57,19 +57,19 @@
    			<div class="modify_button_and_delete_button">
 <!--    			이 호텔의 사장님일때 보여준다 -->
 <!-- 				정보 수정 페이지에서 객실 삭제도 가능 -->
-				<form action="/stay/room/insert_view" method="post">
-			        <input type="hidden" name="ac_id" value="${accommodation_list[0].ac_id}">
-			        <button type="submit" class="modify_button" onclick="location.href='/stay/room/modify_and_delete_view?room_num=${room.room_num}'">
-			        	정보 수정
-			        </button>
-			    </form>
+				<div class="business_view" data-member_email="${accommodation_list[0].email_id}" data-session_email_id="${sessionScope.LoginVO.email_id}">
+					<form action="/stay/room/modify_and_delete_view" method="post">
+				        <input type="hidden" name="ac_id" value="${accommodation_list[0].ac_id}">
+				        <input type="hidden" name="room_num" value="${room.room_num}">
+				        <button type="submit" class="modify_button" onclick="location.href='/stay/room/modify_and_delete_view'"
+>				        	정보 수정
+				        </button>
+				    </form>
+				</div>
    			</div>
-<!--    		{% else %} -->
    			<div class="booking_button_div">
-<!--    		평소에는 객실 예약 버튼을 보여준다 -->
    				<button class="booking_button" onclick="location.href=''">객실 예약</button>
    			</div>
-<!--    		{% endif %} -->
    		</div>
    		
    	</div>
@@ -77,8 +77,20 @@
    	
    	
    	
-   	
-   	
+<!-- 만약 세션에 일치하는 ac_id와 숙소의 ac_id가 일치하면 비즈니스 뷰를 보여주는 함수 -->
+<script>
+$(function() {
+// 	모델로 입력된 이메일 아이디를 가져오는법
+	var member_email_id= $('.business_view').data('member_email');
+	var session_email_id= $('.business_view').data('session_email_id');
+    $('.business_view').hide();
+    if (member_email_id === session_email_id) {
+//         alert("해당 숙소의 주인이므로 출력");
+        $('.business_view').show();
+    }
+});
+</script>
+
 
    	
 </body>

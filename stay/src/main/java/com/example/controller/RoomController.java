@@ -3,11 +3,14 @@ package com.example.controller;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
+import java.io.File;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.domain.RoomDTO;
 import com.example.domain.accommodation_detailDTO;
@@ -35,21 +38,22 @@ public class RoomController {
     
     
 	@PostMapping("/insert")//2.방 추가
-	public String InsertRoom(RoomDTO room) {
+	public String InsertRoom(RoomDTO room, MultipartFile[] room_img) {
+		
 		roomservice.insertroom(room);
 		
-//		목록 화면으로 돌아갈 때(리다이랙트 할 때) rttr이 필요하지만 아직 목록화면을 제작하지 않아 주석처리
-//		rttr.addFlashAttribute("result", service.getBno());
-		log.info("insert: "+room);
-		return "redirect:/room/list";
+		roomservice.insertro_pic(room_img);    //사진 업로드 메소드.   ro_pic에 삽입하는 메소드
+	                                   // insertroom 메소드 다음에 insertro_pic이 실행되어야함 왜냐하면 room_num을 가져올 때 문제가 생김
+		
+		int ac_id = room.getAc_id();
+		return "redirect:/accommodation/detail?ac_id="+ac_id;
 	}
 	
 	
 	
 	
 	@PostMapping("/insert_view")//2-1. 추가하는 뷰
-	public void InsertRoom_view2(HttpServletRequest httpServletRequest, Model model) {
-		//방 추가하는 뷰와 연결하기만 하는 메서드
+	public void InsertRoom_view(HttpServletRequest httpServletRequest, Model model) {
 		
 //		POST 방식 매개변수 넘기는 법!!!
 		String ac_id = httpServletRequest.getParameter("ac_id");
@@ -57,66 +61,43 @@ public class RoomController {
 		System.out.println("ac_id : " + ac_id);
 		model.addAttribute("ac_id", ac_id);
 	}
-	
-//	GET방식 테스트 코드
-	@GetMapping("/insert_view")//2-1.방 추가하는 뷰
-	public void InsertRoom_view() {
-		//방 추가하는 뷰와 연결하기만 하는 메서드
-	}
+
 	
 	
 	
 	@PostMapping("/modify")   //3.방 수정
 	public String ModifyRoom(RoomDTO room, Model model) {
-		
+		System.out.println("modify 실행됨");
+		System.out.println(room);
+		int ac_id = room.getAc_id();
 		roomservice.updateroom(room);
-		 
-		return "redirect:/room/list";
+		
+		return "redirect:/accommodation/detail?ac_id="+ac_id;
 	}
 	
 	
 	
 	@PostMapping("/modify_and_delete_view")//3-1.방 수정 및 삭제하는 뷰
 	public void ModifyRoom_view(HttpServletRequest httpServletRequest, Model model, RoomDTO room) {
-		System.out.println("룸 수정 컨트롤러 실행됨");
 		
-		String ac_id = httpServletRequest.getParameter("ac_id");
-		String room_num = httpServletRequest.getParameter("room_num");
-		System.out.println("ac_id : " + ac_id);
+		String room_num_str = httpServletRequest.getParameter("room_num");
+		int room_num = Integer.parseInt(room_num_str);
 		System.out.println("room_num : "+room_num);
 		
-		room.setAc_id(ac_id);
-		model.addAttribute("room" ,roomservice.searchByac_id_And_room_num(room));
-		
-		model.addAttribute("ac_id", ac_id);
+		room.setRoom_num(room_num);
+		model.addAttribute("room" ,roomservice.searchBy_room_num(room));
 	}
 	
 	
 	
-	
-	
-//	@GetMapping("/modify_and_delete_view")//3-1.방 수정 및 삭제하는 뷰
-//	public void ModifyRoom_view(HttpServletRequest httpServletRequest, Model model, RoomDTO room) {
-//		String ac_id = httpServletRequest.getParameter("ac_id");
-//		String room_num = httpServletRequest.getParameter("room_num");
-//		System.out.println("ac_id : " + ac_id);
-//		System.out.println("room_num : "+room_num);
-//		
-//		
-////		room.setAc_id(ac_id);
-////		model.addAttribute("room" ,roomservice.searchByac_id_And_room_num(room));
-////		
-////		
-////		model.addAttribute("ac_id", ac_id);
-//	}
-	
+
 	
 	@PostMapping("/delete")   //4.방 삭제
 	public String DeleteRoom(RoomDTO room, Model model) {
-		
+		int ac_id = room.getAc_id();
 		roomservice.deleteroom(room);
-		 
-		return "redirect:/room/list";
+		
+		return "redirect:/accommodation/detail?ac_id="+ac_id;
 	}
 	
 	
@@ -133,15 +114,12 @@ public class RoomController {
 //	한 숙소의 특정 방을 보여줌 (방 상세 페이지) 
 	@GetMapping("/detail_of_detail")
 	public String One_Room_in_on_Accommodation(Model model, RoomDTO room, accommodation_detailDTO accommodation_detail,
-												@RequestParam("ac_id") String ac_id, 
 												@RequestParam("room_num") int room_num) {
 		
-		log.info("ac_id: "+ac_id);
 		log.info("room_num: "+room_num);
 		
-		room.setAc_id(ac_id);
 		room.setRoom_num(room_num);
-		model.addAttribute("room" ,roomservice.searchByac_id_And_room_num(room));
+		model.addAttribute("room" ,roomservice.searchBy_room_num(room));
 		
 		
 //		accommodation_detail.setAc_id(ac_id);
@@ -150,32 +128,6 @@ public class RoomController {
 		return "room/detail_of_detail";
 	}
 	
-	
-	
-	
-	
-	
-	
-//	캐러셀 테스트중
-//	@GetMapping("/carousel")
-//	public void carousel() {
-//	}
-	
-	
-    
-//	매개변수 테스트 하는데 실패한 코드
-//	@GetMapping("/detail/{ac_id}")   //5.숙소 상세보기(한 숙소의 모든 방을 조회)   @PathVariable을 사용하면 리턴값으로 detail과 연결해주는 작업이 필요하다
-//	public String DetailRoom2(Model model,@PathVariable("ac_id") String ac_id) {
-//		
-//		 log.info("ac_id"+ac_id);
-//    	 model.addAttribute("roomlist" ,service.searchByac_id(ac_id));
-//		 
-//		return "/room/detail";
-//	}
-	
-//	매개변수 넣는 법
-//	에이젝스 json 가져오는법
-    
     
     
 }

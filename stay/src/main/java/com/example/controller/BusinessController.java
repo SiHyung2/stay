@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -22,22 +23,33 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.example.domain.BoByAcDTO;
 import com.example.domain.BookingConfirmDTO;
 import com.example.domain.BookingDTO;
+import com.example.domain.BusinessDTO;
 import com.example.domain.CheckDTO;
 import com.example.mapper.AccommodationMapper;
 import com.example.mapper.BookingMapper;
 import com.example.service.BookingService;
+import com.example.service.BusinessService;
+import com.example.service.RoomService;
+
+import lombok.AllArgsConstructor;
+
 import com.example.service.AccommodationService;
 
 import com.example.domain.BoByAcDTO;
 import com.example.domain.BookingConfirmDTO;
 @Controller
 @RequestMapping("/business")
+@AllArgsConstructor
 public class BusinessController {
     private static final Logger logger = LoggerFactory.getLogger(BusinessController.class);
     
     @Autowired
     private AccommodationMapper accommodationMapper;
 	private BookingMapper bookingMapper;
+	
+	private final BusinessService businessservice;
+	private final AccommodationService accommodationservice;
+    private final RoomService roomservice;
 	
     @RequestMapping(value = "/main", method = RequestMethod.GET)
     public String main(Locale locale, Model model) {
@@ -87,5 +99,21 @@ public class BusinessController {
         return "business/business_checkout";
     }
 
+//    business_accommodation_list
+//    사업자 email_id에 맞는 숙소 리스트 보여주는 list
+    @PostMapping("/bc_ac_list")
+    public void business_accommodation_list(HttpServletRequest httpServletRequest, Model model){
+    	String email_id = httpServletRequest.getParameter("email_id");
+    	List<BusinessDTO> accommodationlist = businessservice.search_by_email_id(email_id);
+    	
+    	model.addAttribute("accommodationlist", accommodationlist);
+    }
+    
+    
+//    이메일로 숙소 가져오는 컨트롤러 연결 테스트
+//    @GetMapping("/search_email_id_test")
+//    public void search_email_id_test(){
+//    	businessservice.search_by_email_id("2");
+//    }
 
 }

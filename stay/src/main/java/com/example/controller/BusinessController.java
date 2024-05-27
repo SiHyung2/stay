@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.domain.BoByAcDTO;
 import com.example.domain.BookingConfirmDTO;
@@ -46,10 +46,13 @@ public class BusinessController {
     @Autowired
     private AccommodationMapper accommodationMapper;
 	private BookingMapper bookingMapper;
+	private BookingService bookingService;
+	private RoomService roomService;
 	
 	private final BusinessService businessservice;
 	private final AccommodationService accommodationservice;
     private final RoomService roomservice;
+    
 	
     @RequestMapping(value = "/main", method = RequestMethod.GET)
     public String main(Locale locale, Model model) {
@@ -70,15 +73,15 @@ public class BusinessController {
         return "business/footer";
     }
     
-    @GetMapping("/business_booking")
-    public String showBusinessBookings(Model model, HttpServletRequest request) {
-    	String email_id = request.getParameter("email_id");
-	    System.out.println("email_id :"+email_id);
-	    List<BookingConfirmDTO> businessbooking = bookingMapper.getBusinessBookingsByEmail(email_id);
-	    System.out.println("businessbooking: " + businessbooking);
+    @PostMapping("/business_booking")
+    public String showBusinessBookings(@RequestParam("email_id") String email_id, Model model) {
+        System.out.println("email_id :" + email_id);
+        List<BookingConfirmDTO> businessbooking = bookingService.getBusinessBookingsByEmail(email_id);
+//        List<RoomDTO> room_name = roomService.getList();
 	    model.addAttribute("businessbooking", businessbooking);
+//	    model.addAttribute("room_name", room_name);
 
-	    return "business/business_booking";
+        return "business/business_booking";
     }
 
     @RequestMapping(value = "/menu", method = RequestMethod.GET)

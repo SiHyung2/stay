@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -78,11 +80,16 @@
 <body>
     <div class="carousel-container">
       <div class="carousel-slide">
-        <div class="img">Slide 1</div>
-        <div class="img">Slide 2</div>
-        <div class="img">Slide 3</div>
-        <div class="img">Slide 4</div>
-        <div class="img">Slide 5</div>
+<!--       	c태그 taglib은 detail of detail에 있음 -->
+      	<c:forEach items="${ro_pic_list}" var="ro_pic">
+	        <div class="img">                     
+	        	<img src="../resources/img/room/${ro_pic.pic_name}" alt="../resources/img/room/${ro_pic.pic_name}">
+	        </div>
+<!-- 	        <div class="img">Slide 2</div> -->
+<!-- 	        <div class="img">Slide 3</div> -->
+<!-- 	        <div class="img">Slide 4</div> -->
+<!-- 	        <div class="img">Slide 5</div> -->
+		</c:forEach>
       </div>
       <button id="prev" class="prev"></button>
       <button id="next" class="next"></button>
@@ -101,13 +108,13 @@
 	  const prev = document.querySelector('#prev');
 	  const next = document.querySelector('#next');
 	
-	  // 터치시 드래그 길이
+	  // í°ì¹ì ëëê·¸ ê¸¸ì´
 	  const threshold = 100;
 	
 	  const slideWidth = carouselImages[0].clientWidth;
 	  const slidesLength = carouselImages.length;
 	
-	  // 첫번째 이미지가 나타나도록 함. (지금 맨처음꺼에 lastClone이 있고 마지막에 firstClone이 있으므로)
+	  // ì²«ë²ì§¸ ì´ë¯¸ì§ê° ëíëëë¡ í¨. (ì§ê¸ ë§¨ì²ìêº¼ì lastCloneì´ ìê³  ë§ì§ë§ì firstCloneì´ ìì¼ë¯ë¡)
 	  carouselSlide.style.transform = `translateX(${-slideWidth}px)`;
 	
 	  let posX1 = 0;
@@ -125,7 +132,7 @@
 	  carouselSlide.insertBefore(cloneLast, firstSlide);
 	
 	  let index = 0;
-	  let allowShift = true; // 벗어나는 거 막음 (안전코드) - 트랜지션이 끝나면 다음 클릭 가능
+	  let allowShift = true; // ë²ì´ëë ê±° ë§ì (ìì ì½ë) - í¸ëì§ìì´ ëëë©´ ë¤ì í´ë¦­ ê°ë¥
 	  let offsetLeft;
 	
 	  const dragStart = (e) => {
@@ -171,7 +178,7 @@
 	  const shiftSlide = (dir, action) => {
 	    carouselSlide.classList.add('shifting');
 	    
-	    if (allowShift) { // 벗어나는 거 막음 (안전코드) - 트랜지션이 끝나면 다음 클릭 가능
+	    if (allowShift) { // ë²ì´ëë ê±° ë§ì (ìì ì½ë) - í¸ëì§ìì´ ëëë©´ ë¤ì í´ë¦­ ê°ë¥
 	      if (!action) { posInitial = (-slideWidth*(index+1)); }
 	      // next
 	      if (dir == 1) {
@@ -198,7 +205,7 @@
 	      index = 0;
 	    }
 	    
-	    allowShift = true; // 벗어나는거 막음 (안전코드)
+	    allowShift = true; // ë²ì´ëëê±° ë§ì (ìì ì½ë)
 	  }
 	
 	  // Mouse events

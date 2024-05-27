@@ -3,6 +3,8 @@ package com.example.controller;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
+import java.io.File;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -36,20 +38,12 @@ public class RoomController {
     
     
 	@PostMapping("/insert")//2.방 추가
-	public String InsertRoom(RoomDTO room, MultipartFile[] uploadFile) {
+	public String InsertRoom(RoomDTO room, MultipartFile[] room_img) {
+		
 		roomservice.insertroom(room);
 		
-//		파일(사진) 업로드
-//		servletconfig 에서 C:\\upload\\temp 로 사진이 저장되고 사진용량도 제한되게 만들었음에 유의
-		System.out.println("사진 업로드 로그 테스트 전");
-		for (MultipartFile multipartFile : uploadFile) {
-//		    여기 안이 출력이 안된다...
-			System.out.println("사진 업로드 로그");
-			log.info("-------------------------------------");
-	    	log.info("Upload File Name: " +multipartFile.getOriginalFilename());
-	    	log.info("Upload File Size: " +multipartFile.getSize());
-	      
-	    }
+		roomservice.insertro_pic(room_img);    //사진 업로드 메소드.   ro_pic에 삽입하는 메소드
+	                                   // insertroom 메소드 다음에 insertro_pic이 실행되어야함 왜냐하면 room_num을 가져올 때 문제가 생김
 		
 		int ac_id = room.getAc_id();
 		return "redirect:/accommodation/detail?ac_id="+ac_id;
@@ -59,8 +53,7 @@ public class RoomController {
 	
 	
 	@PostMapping("/insert_view")//2-1. 추가하는 뷰
-	public void InsertRoom_view2(HttpServletRequest httpServletRequest, Model model) {
-		//방 추가하는 뷰와 연결하기만 하는 메서드
+	public void InsertRoom_view(HttpServletRequest httpServletRequest, Model model) {
 		
 //		POST 방식 매개변수 넘기는 법!!!
 		String ac_id = httpServletRequest.getParameter("ac_id");
@@ -127,7 +120,7 @@ public class RoomController {
 		
 		room.setRoom_num(room_num);
 		model.addAttribute("room" ,roomservice.searchBy_room_num(room));
-		
+		model.addAttribute("ro_pic_list", roomservice.get_list_of_ro_pic(room_num));
 		
 //		accommodation_detail.setAc_id(ac_id);
 //		한개의 데이터가 아니라 리스트를 가져오기에 뷰에서 사용하려면 인덱스가 0인 데이터를 사용해야만 함!!

@@ -78,7 +78,7 @@
 <style>
 .form_seach{
 	width: 810px;
-	height:110px;
+	height:130px;
 	align-items: center; /* 수직 가운데 정렬 */ 
     justify-content: center; /* 수평 가운데 정렬 */ 
     margin-top:-270px;     /* 이미지와 폼이 겹치게 하려고 만든 코드 */ 

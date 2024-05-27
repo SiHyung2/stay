@@ -14,9 +14,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 객실 등록 -->
  	<insert id="insertroom">
 		INSERT INTO 
-			room ( ac_id, ro_name, ro_basic_count, ro_max_count, ro_info, ro_count)
+			room (ac_id, ro_name, ro_basic_count, ro_max_count, ro_info, ro_count)
 		VALUES 
-			( #{ac_id}, #{ro_name}, #{ro_basic_count}, #{ro_max_count}, #{ro_info}, #{ro_count})
+			(#{ac_id}, #{ro_name}, #{ro_basic_count}, #{ro_max_count}, #{ro_info}, #{ro_count})
+ 	</insert>
+ 	
+ 	<!-- 등록한 객실의 사진 주소 등록 -->
+ 	<insert id="insertro_pic">
+		INSERT INTO 
+		     ro_pic (pic_num, room_num, pic_name) 
+		VALUES
+		     (ro_pic_num_seq.nextval, #{room_num}, #{pic_name})
  	</insert>
  	
 
@@ -50,15 +58,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         	room_num=#{room_num}
     </select>
     
-<!--     <select id="room_detail_detail" resultType="com.example.domain.Room_detailDTO"> -->
-<!--         SELECT a.ac_title, r.ro_name, r.room_price,  -->
-<!-- 		        TO_CHAR(a.checkin, 'HH24:MI') AS checkin_string,  -->
-<!-- 		        TO_CHAR(a.checkout, 'HH24:MI') AS checkout_string -->
-<!-- 		FROM accommodation a -->
-<!-- 		LEFT JOIN room r ON a.ac_id = r.ac_id -->
-<!-- 		WHERE a.ac_id=#{ac_id}; -->
-<!--     </select> -->
+    <!-- 가장 최근의 방의 room_num -->
+    <select id="latest_room_of_room_num" resultType="com.example.domain.RoomDTO">
+        select * from room
+        where
+        	room_num=(select max(room_num) from room)
+    </select>
     
+<!--     이미지 주소를 img 태그로 읽을 수 있게 변환해야한다! -->
+    <select id="get_list_of_ro_pic" resultType="com.example.domain.Ro_picDTO">
+    	select pic_num, room_num, 
+    		REPLACE(pic_name,'\','/') AS pic_name from ro_pic where room_num=#{room_num}
+    </select>
     
     
  </mapper>

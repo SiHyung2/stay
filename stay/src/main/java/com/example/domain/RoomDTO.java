@@ -13,4 +13,6 @@ public class RoomDTO {
 	private String ro_info;
 	private int ro_count;
 	private int room_price;
+	
+	private String location;       // ro_pic관련 쿼리들에 사용할 변수.   사진 주소를 의미
 }

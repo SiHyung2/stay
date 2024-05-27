@@ -7,7 +7,7 @@
     <title>Document</title>
     <link href="<c:url value="/resources/css/accommodation_detail.css" />" rel="stylesheet" type="text/css"> 
 	<!--탭메뉴 제작중... -->
-	
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script>
 	$(function() {
 		<!-- 만약 세션에 일치하는 ac_id와 숙소의 ac_id가 일치하면 비즈니스 뷰를 보여주는 함수 -->

@@ -38,14 +38,15 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
 	
 	
 //	파일(사진) 업로드 관련 코드
-//	여기 적힌 주소 위치로는 파일이 저장안됨..
+//	여기 적힌 주소는 404 에러날 때 리소스의 img 폴더에 사진을 저장한다는 의미임
+//	만약 사용자가 요청한 URL에 해당하는 핸들러가 없으면, 예외(오류)를 발생시켜서 바로 알 수 있게 한다. 
 	@Override
 	protected void customizeRegistration(ServletRegistration.Dynamic registration) {
 
 		registration.setInitParameter("throwExceptionIfNoHandlerFound", "true");
 
 		MultipartConfigElement multipartConfig = 
-				new MultipartConfigElement("C:\\upload\\temp", 
+				new MultipartConfigElement("C:\\Users\\it\\git\\stay3\\stay\\src\\main\\webapp\\resources\\img", 
 						20971520, 
 						41943040,
 						20971520);

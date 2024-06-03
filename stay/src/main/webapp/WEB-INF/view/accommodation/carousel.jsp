@@ -1,4 +1,4 @@
-<%-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> --%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -81,10 +81,10 @@
     <div class="carousel-container">
       <div class="carousel-slide">
 <!--       	c태그 taglib은 detail of detail에 있음 -->
-      	<c:forEach items="${ro_pic_list}" var="ro_pic">
-	        <div class="img">
-			    <img src="../resources/img/room/${ro_pic.pic_name}" alt="../resources/img/room/${ro_pic.pic_name}">
-			</div>
+      	<c:forEach items="${ac_pic_list}" var="ac_pic">
+	        <div class="img">                     
+	        	<img src="../resources/img/accommodation/${ac_pic.pic_name}" alt="../resources/img/accommodation/${ac_pic.pic_name}">
+	        </div>
 <!-- 	        <div class="img">Slide 2</div> -->
 <!-- 	        <div class="img">Slide 3</div> -->
 <!-- 	        <div class="img">Slide 4</div> -->

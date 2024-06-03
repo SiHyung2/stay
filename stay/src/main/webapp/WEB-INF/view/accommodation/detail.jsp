@@ -42,7 +42,9 @@
 	<%@include file="../menu.jsp"%>
 	<div class="_container">
 		<header class="header_container">
-			<div class="accommodation_image">ac_img</div>
+			<div class="accommodation_image">
+		    <%@include file="./carousel.jsp"%>
+			</div>
             <div class="accommodation_content">
 <!--             	accommodation_list 은 배열이므로 첫번째 것을 가져온다. -->
 <!--             	첫번째 것을 가져오는 이유는 두번째것이 없을 수도 있기 때문이다 -->
@@ -155,24 +157,11 @@
 		
 		
 <!-- 		해당 숙소의 ac_id와 email_id에 입력된 값의 ac_id와 같으면 출력한다 (제이 쿼리 활용)-->
-		<div class="business_view" data-member_email="${accommodation_list[0].email_id}" data-session_email_id="${sessionScope.LoginVO.email_id}">
+		<div class="business_view" data-member_email="${email_id}" data-session_email_id="${sessionScope.LoginVO.email_id}">
 			<form action="/stay/room/insert_view" method="post">
 		        <!-- 여기에 ac_id를 hidden으로 전달 -->
 		        <input type="hidden" name="ac_id" value="${accommodation_list[0].ac_id}">
 		        <button type="submit" class="btn btn-info w-100">방 추가 View</button>
-		    </form>
-			
-			<form action="/stay/accommodation/modify_and_delete_view" method="post">
-		        <!-- 여기에 ac_id를 hidden으로 전달 -->
-		        <input type="hidden" name="email_id" value="${accommodation_list[0].email_id}">
-		        <input type="hidden" name="ac_id" value="${accommodation_list[0].ac_id}">
-		        <button type="submit" class="btn btn-info w-100">숙소 수정 View</button>
-		    </form>
-			
-			<form action="/stay/accommodation/insert_view" method="post">
-		        <!-- 여기에 ac_id를 hidden으로 전달 -->
-		        <input type="hidden" name="email_id" value="${accommodation_list[0].email_id}">
-		        <button type="submit" class="btn btn-info w-100">숙소 추가 View</button>
 		    </form>
 	    </div>
 	    

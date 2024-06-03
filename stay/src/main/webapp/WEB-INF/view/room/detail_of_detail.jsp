@@ -76,7 +76,7 @@
    	
    	
    	
-   	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!-- 만약 세션에 일치하는 ac_id와 숙소의 ac_id가 일치하면 비즈니스 뷰를 보여주는 함수 -->
 <script>
 $(function() {

@@ -17,6 +17,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			( #{email_id}, #{ac_title}, #{ac_type}, #{ac_address}, #{ac_info}, #{checkin}, #{checkout})
  	</insert>
 
+ 	<!-- 등록한 숙소의 사진 주소 등록 -->
+ 	<insert id="insertac_pic">
+		INSERT INTO 
+		     ac_pic (pic_num, ac_id, pic_name) 
+		VALUES
+		     (ac_pic_num_seq.nextval, #{ac_id}, #{pic_name})
+ 	</insert>	
+
+
 	<update id="updateaccommdation">
 		update 
 			accommodation
@@ -156,6 +165,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM accommodation a
 		JOIN room r ON r.ac_id=a.ac_id
 		WHERE a.ac_id=#{ac_id}
+    </select>
+    
+    
+    
+    
+    <!--     이미지 주소를 img 태그로 읽을 수 있게 변환해야한다! -->
+    <select id="get_list_of_ac_pic" resultType="com.example.domain.Ac_picDTO">
+    	select pic_num, ac_id, 
+    		REPLACE(pic_name,'\','/') AS pic_name from ac_pic where ac_id=#{ac_id}
     </select>
 
 </mapper>

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.domain.BookingConfirmDTO;
 import com.example.domain.BookingDTO;
+import com.example.domain.BookingUpdateConfirmDTO;
 import com.example.mapper.BookingMapper;
 
 import lombok.extern.log4j.Log4j;
@@ -53,4 +54,12 @@ public class BookingServiceImpl implements BookingService {
 	public List<BookingConfirmDTO> getBusinessBookingsByEmail(String email_id) {
 		return bookingMapper.getBusinessBookingsByEmail(email_id);
 	}
+	
+	
+	
+	@Override
+    public void updateBookingStatus(String bo_num, int status) {
+        log.info("Updating booking status for bo_num: " + bo_num + " to status: " + status);
+        bookingMapper.updateBookingStatus(bo_num, status);
+    }
 }

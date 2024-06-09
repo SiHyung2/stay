@@ -15,10 +15,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.domain.BoByAcDTO;
 import com.example.domain.BookingConfirmDTO;
@@ -90,15 +93,38 @@ public class BusinessController {
         return "business/menu";
     }
     
-    @RequestMapping(value = "/business_checkin", method = RequestMethod.GET)
-    public String business_checkin(Locale locale, Model model) {
-        // menu.jsp 실행 로직
+    @PostMapping("/business_checkin")
+    public String showBusinessCheckin(@RequestParam("email_id") String email_id, Model model) {
+        System.out.println("email_id :" + email_id);
+        List<BookingConfirmDTO> businessbooking = bookingService.getBusinessBookingsByEmail(email_id);
+	    model.addAttribute("businessbooking", businessbooking);
+
         return "business/business_checkin";
     }
     
-    @RequestMapping(value = "/business_checkout", method = RequestMethod.GET)
-    public String business_checkout(Locale locale, Model model) {
-        // menu.jsp 실행 로직
+    @PostMapping("//business_checkin_update")
+    public String updateBusinessCheckin(@RequestParam("bo_num") String bo_num, @RequestParam("email_id") String email_id, Model model) {
+        // 예약 상태를 2로 업데이트 (입실완료)
+        System.out.println("Status before updating: " + bo_num);
+        bookingService.updateBookingStatus(bo_num, 2);
+
+        // 업데이트 후 다시 예약 목록 가져오기
+        List<BookingConfirmDTO> businessbooking = bookingService.getBusinessBookingsByEmail(email_id);
+        model.addAttribute("businessbooking", businessbooking);
+        
+        // 로깅 추가
+        System.out.println("Status after updating: " + bo_num);
+
+        // 리다이렉트가 아닌 예약 확인 페이지로 이동
+        return "business/main";
+    }
+
+    @PostMapping("/business_checkout")
+    public String showBusinessCheckout(@RequestParam("email_id") String email_id, Model model) {
+        System.out.println("email_id :" + email_id);
+        List<BookingConfirmDTO> businessbooking = bookingService.getBusinessBookingsByEmail(email_id);
+	    model.addAttribute("businessbooking", businessbooking);
+
         return "business/business_checkout";
     }
 

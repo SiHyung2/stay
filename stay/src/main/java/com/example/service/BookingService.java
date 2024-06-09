@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.example.domain.BookingConfirmDTO;
 import com.example.domain.BookingDTO;
+import com.example.domain.BookingUpdateConfirmDTO;
 
 public interface BookingService {
 
@@ -19,4 +20,5 @@ public interface BookingService {
 	
 	// 사업자 정보
 	public List<BookingConfirmDTO> getBusinessBookingsByEmail(String email_id);
+	public void updateBookingStatus(String bo_num, int status);
 }

@@ -38,12 +38,19 @@
 
 	<select id="getBusinessBookingsByEmail"
 		parameterType="String" resultType="com.example.domain.BookingConfirmDTO">
-    	select bo_num, room_num, checkin_day, checkout_day, tel, b.email_id, status, b.ac_id, name, ac_title
+    	select bo_num, room_num, checkin_day, checkout_day, tel, m.email_id, status, b.ac_id, name, ac_title, status_explain
 		from booking b
 		join accommodation a on b.ac_id = a.ac_id
 		join member m on b.email_id = m.email_id
+		join booking_status_code c on b.status = c.status_code
 		where a.email_id = #{email_id}
 	</select>
+	
+	<update id="updateBookingStatus" parameterType="com.example.domain.BookingDTO">
+	    UPDATE booking
+	    SET status = #{status}
+	    WHERE bo_num = #{bo_num}
+	</update>
 	
 	<select id="getBusinessBookingsByEmailcheck"
 		parameterType="String" resultType="com.example.domain.CheckDTO">
@@ -56,7 +63,8 @@
 		    b.ac_id as ac_id, 
 		    a.ac_title as ac_title, 
 		    r.ro_name as ro_name,
-		    r.room_price as room_price
+		    r.room_price as room_price,
+		    b.status as status
 		FROM booking b
 		JOIN accommodation a ON b.ac_id = a.ac_id
 		JOIN room r ON b.room_num = r.room_num

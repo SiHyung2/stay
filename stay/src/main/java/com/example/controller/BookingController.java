@@ -139,11 +139,13 @@ public class BookingController {
 	    return "booking/bookingcancel";
 	}
 	
-	@GetMapping("/bookingend")
-    public String showbookingend(Model model, HttpServletRequest request) {
-    	
-        return "booking/bookingend";
-    }
+	@PostMapping("/bookingend")
+	public String showbookingend(Model model, @RequestParam("email_id") String email_id) {
+	    // 이메일 주소를 바로 파라미터로 받아와서 사용합니다.
+	    List<CheckDTO> checkBookings = bookingMapper.getBusinessBookingsByEmailcheck(email_id);
+	    model.addAttribute("checkBookings", checkBookings);
+	    return "booking/bookingend";
+	}
 	
 	@PostMapping("/booking_insertview")
 	public void bookinginsertview(Model model,  @RequestParam("email_id") String email_id, @RequestParam("ac_id") int ac_id, 

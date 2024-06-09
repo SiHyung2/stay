@@ -16,5 +16,7 @@ public class BookingConfirmDTO {
     private int status;
     private String ac_title;
     private int room_num;
+    private String status_explain;
+    private String email_id;
     
 }

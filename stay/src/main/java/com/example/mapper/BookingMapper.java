@@ -2,8 +2,11 @@ package com.example.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.example.domain.BookingConfirmDTO;
 import com.example.domain.BookingDTO;
+import com.example.domain.BookingUpdateConfirmDTO;
 import com.example.domain.CheckDTO;
 
 public interface BookingMapper {
@@ -27,4 +30,6 @@ public interface BookingMapper {
     public List<BookingConfirmDTO> getBusinessBookingsByEmail(String email_id);
     
     public List<CheckDTO> getBusinessBookingsByEmailcheck(String email_id);
+    
+    public void updateBookingStatus(String bo_num, int status);
 }

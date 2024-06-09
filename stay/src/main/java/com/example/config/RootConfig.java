@@ -26,7 +26,7 @@ public class RootConfig {
 //	    hikariConfig.setDriverClassName("oracle.jdbc.driver.OracleDriver");
 //	    hikariConfig.setDriverClassName("oracle.jdbc.OracleDriver");
 	    hikariConfig.setDriverClassName("net.sf.log4jdbc.sql.jdbcapi.DriverSpy");
-	    hikariConfig.setJdbcUrl("jdbc:log4jdbc:oracle:thin:@localhost:1522:XE");
+	    hikariConfig.setJdbcUrl("jdbc:log4jdbc:oracle:thin:@localhost:1521:XE");
 
 	    //히카리 드라이버 네트워크타임아웃 안정성을 높이는 코드 (중요하진 않음)
 	    hikariConfig.addDataSourceProperty("connectTimeout", "5000");

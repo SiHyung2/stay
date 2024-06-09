@@ -21,12 +21,12 @@
     					style="color: black; font-size: 20px; margin-right: 30px;">예약 확인</a>
 				</li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="../business/business_checkin" style="color: black;
-                    font-size: 20px; margin-right: 30px;">체크인</a>
+                    <a id="business_checkin" class="nav-link" href="#"
+                    	style="color: black; font-size: 20px; margin-right: 30px;">체크인</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="../business/business_checkout" style="color: black;
-                    font-size: 20px; margin-right: 30px;">체크아웃</a>
+                    <a id="business_checkout" class="nav-link" href="#"
+                    style="color: black; font-size: 20px; margin-right: 30px;">체크아웃</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="../review/business_review" style="color: black;
@@ -93,6 +93,38 @@
 	    	        e.preventDefault(); // 기본 액션 막음. (중복 막음)        
 	    	        var form = $('<form>', {
 	    	            'action': '/stay/business/business_booking',
+	    	            'method': 'post'
+	    	        });
+	    	        form.append($('<input>', {
+	    	            'type': 'hidden',
+	    	            'name': 'email_id',
+	    	            'value': '${sessionScope.LoginVO.email_id}'
+	    	        }));
+	    	        $('body').append(form);
+	    	        form.submit();
+	    	    });
+	    
+	    $('#business_checkin').on('click', function(e) {
+	    	//     	alert("숙소 추가 뷰 링크 함수 실행됨");
+	    	        e.preventDefault(); // 기본 액션 막음. (중복 막음)        
+	    	        var form = $('<form>', {
+	    	            'action': '/stay/business/business_checkin',
+	    	            'method': 'post'
+	    	        });
+	    	        form.append($('<input>', {
+	    	            'type': 'hidden',
+	    	            'name': 'email_id',
+	    	            'value': '${sessionScope.LoginVO.email_id}'
+	    	        }));
+	    	        $('body').append(form);
+	    	        form.submit();
+	    	    });
+	    
+	    $('#business_checkout').on('click', function(e) {
+	    	//     	alert("숙소 추가 뷰 링크 함수 실행됨");
+	    	        e.preventDefault(); // 기본 액션 막음. (중복 막음)        
+	    	        var form = $('<form>', {
+	    	            'action': '/stay/business/business_checkout',
 	    	            'method': 'post'
 	    	        });
 	    	        form.append($('<input>', {

@@ -46,7 +46,7 @@ public class BookingControllerTest {
     }
     
 //    @Test
-    public void testGetAllBooking() throws Exception {
+    public void testGetAllBooking() throws Exception { 
         mockMvc.perform(get("/booking/list"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("booking/list"))

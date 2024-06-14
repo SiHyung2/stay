@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.example.domain.BookingConfirmDTO;
 import com.example.domain.BookingDTO;
 import com.example.domain.BookingUpdateConfirmDTO;
+import com.example.domain.BookingUpdateDTO;
 import com.example.mapper.BookingMapper;
 
 import lombok.extern.log4j.Log4j;
@@ -58,8 +59,7 @@ public class BookingServiceImpl implements BookingService {
 	
 	
 	@Override
-    public void updateBookingStatus(String bo_num, int status) {
-        log.info("Updating booking status for bo_num: " + bo_num + " to status: " + status);
-        bookingMapper.updateBookingStatus(bo_num, status);
+	public void updateBookingStatus(BookingUpdateDTO bookingUpdateDTO) {
+        bookingMapper.updateBookingStatus(bookingUpdateDTO);
     }
 }

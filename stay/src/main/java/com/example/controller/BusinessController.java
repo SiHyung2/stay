@@ -26,6 +26,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.example.domain.BoByAcDTO;
 import com.example.domain.BookingConfirmDTO;
 import com.example.domain.BookingDTO;
+import com.example.domain.BookingUpdateDTO;
 import com.example.domain.BusinessDTO;
 import com.example.domain.CheckDTO;
 import com.example.mapper.AccommodationMapper;
@@ -102,21 +103,28 @@ public class BusinessController {
         return "business/business_checkin";
     }
     
-    @PostMapping("//business_checkin_update")
+    @PostMapping("/business_checkin_update")
     public String updateBusinessCheckin(@RequestParam("bo_num") String bo_num, @RequestParam("email_id") String email_id, Model model) {
         // 예약 상태를 2로 업데이트 (입실완료)
         System.out.println("Status before updating: " + bo_num);
-        bookingService.updateBookingStatus(bo_num, 2);
+
+        // BookingDTO 객체 생성
+        BookingUpdateDTO bookingDto = new BookingUpdateDTO();
+        bookingDto.setBo_num(bo_num);
+        bookingDto.setStatus(2);
+
+        bookingService.updateBookingStatus(bookingDto);
 
         // 업데이트 후 다시 예약 목록 가져오기
+        // 예시로 `getBusinessBookingsByEmail` 메서드가 있다고 가정합니다.
         List<BookingConfirmDTO> businessbooking = bookingService.getBusinessBookingsByEmail(email_id);
         model.addAttribute("businessbooking", businessbooking);
-        
+
         // 로깅 추가
         System.out.println("Status after updating: " + bo_num);
 
         // 리다이렉트가 아닌 예약 확인 페이지로 이동
-        return "business/main";
+        return "business/business_checkin";
     }
 
     @PostMapping("/business_checkout")
@@ -125,6 +133,30 @@ public class BusinessController {
         List<BookingConfirmDTO> businessbooking = bookingService.getBusinessBookingsByEmail(email_id);
 	    model.addAttribute("businessbooking", businessbooking);
 
+        return "business/business_checkout";
+    }
+    
+    @PostMapping("/business_checkout_update")
+    public String updateBusinessCheckout(@RequestParam("bo_num") String bo_num, @RequestParam("email_id") String email_id, Model model) {
+        // 예약 상태를 2로 업데이트 (입실완료)
+        System.out.println("Status before updating: " + bo_num);
+
+        // BookingDTO 객체 생성
+        BookingUpdateDTO bookingDto = new BookingUpdateDTO();
+        bookingDto.setBo_num(bo_num);
+        bookingDto.setStatus(3);
+
+        bookingService.updateBookingStatus(bookingDto);
+
+        // 업데이트 후 다시 예약 목록 가져오기
+        // 예시로 `getBusinessBookingsByEmail` 메서드가 있다고 가정합니다.
+        List<BookingConfirmDTO> businessbooking = bookingService.getBusinessBookingsByEmail(email_id);
+        model.addAttribute("businessbooking", businessbooking);
+
+        // 로깅 추가
+        System.out.println("Status after updating: " + bo_num);
+
+        // 리다이렉트가 아닌 예약 확인 페이지로 이동
         return "business/business_checkout";
     }
 

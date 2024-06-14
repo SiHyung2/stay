@@ -22,6 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.example.domain.BoByAcDTO;
 import com.example.domain.BookingConfirmDTO;
 import com.example.domain.BookingDTO;
+import com.example.domain.BookingUpdateDTO;
 import com.example.domain.CheckDTO;
 import com.example.domain.MemberDTO;
 import com.example.domain.RoomDTO;
@@ -136,6 +137,16 @@ public class BookingController {
 	public String cancelBooking(Model model, @RequestParam("email_id") String email_id) {
 	    List<CheckDTO> checkBookings = bookingMapper.getBusinessBookingsByEmailcheck(email_id);
 	    model.addAttribute("checkBookings", checkBookings);
+	    return "booking/bookingcancel";
+	}
+	
+	@PostMapping("/bookingcancel_delete")
+	public String bookingcaneldelete(@RequestParam("bo_num") String bo_num, @RequestParam("email_id") String email_id, Model model) {
+	    // 예약 상태를 삭제로 업데이트
+	    System.out.println("Deleting booking with bo_num: " + bo_num);
+	    bookingService.deleteBooking(bo_num);
+	    
+	    // 삭제 후 예약 취소 페이지로 이동
 	    return "booking/bookingcancel";
 	}
 	

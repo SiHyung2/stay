@@ -46,7 +46,7 @@
 		where a.email_id = #{email_id}
 	</select>
 	
-	<update id="updateBookingStatus" parameterType="com.example.domain.BookingDTO">
+	<update id="updateBookingStatus" parameterType="com.example.domain.BookingUpdateDTO">
 	    UPDATE booking
 	    SET status = #{status}
 	    WHERE bo_num = #{bo_num}

@@ -68,13 +68,10 @@ body {
 				</tr>
 				<tr>
 					<td class="room_info"><strong>가격:</strong> <c:out
-							value="${booking.room_price}" />원 <strong>가격:</strong> <c:out
-							value="${booking.bo_num}" />예약번호
-						<form action="/stay/booking/bookingcancel/atction" method="post">
-							<input type="hidden" name="bo_num" value="${booking.bo_num}">
-							<button type="submit">예약 취소</button>
-						</form>
-					</td>
+							value="${booking.room_price}" />원
+						<div class="float-right">
+							<button type='button' class="btn btn-primary btn-sm checkout-btn">예약 취소</button>
+						</div></td>
 				</tr>
 			</c:forEach>
 		</table>

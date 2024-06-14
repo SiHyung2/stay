@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import com.example.domain.BookingConfirmDTO;
 import com.example.domain.BookingDTO;
 import com.example.domain.BookingUpdateConfirmDTO;
+import com.example.domain.BookingUpdateDTO;
 import com.example.domain.CheckDTO;
 
 public interface BookingMapper {
@@ -31,5 +32,5 @@ public interface BookingMapper {
     
     public List<CheckDTO> getBusinessBookingsByEmailcheck(String email_id);
     
-    public void updateBookingStatus(String bo_num, int status);
+    public void updateBookingStatus(BookingUpdateDTO bookingUpdateDTO);
 }

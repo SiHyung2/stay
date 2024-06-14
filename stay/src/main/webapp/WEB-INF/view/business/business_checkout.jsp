@@ -56,7 +56,7 @@
             </thead>
             <tbody>
                 <c:forEach var="booking" items="${businessbooking}">
-                    <c:if test="${booking.status == 3}">
+                    <c:if test="${booking.status == 2}">
                         <tr>
                             <td>${booking.bo_num}</td>
                             <td>${booking.ro_name}</td>
@@ -65,8 +65,8 @@
                             <td>${booking.name}</td>
                             <td>${booking.tel}</td>
                             <td>
-                                <button type="button" class="btn btn-primary btn-sm checkout-btn" data-bo-num="${booking.bo_num}">체크인</button>
-                                <span class="checkout-text">입실완료</span>
+                                <button type="button" class="btn btn-primary btn-sm checkout-btn" data-bo-num="${booking.bo_num}">체크아웃</button>
+                                <span class="checkout-text">퇴실완료</span>
                             </td>
                         </tr>
                     </c:if>
@@ -88,7 +88,7 @@
             </thead>
             <tbody>
                 <c:forEach var="booking" items="${businessbooking}">
-                    <c:if test="${booking.status == 4}">
+                    <c:if test="${booking.status == 3}">
                         <tr>
                             <td>${booking.bo_num}</td>
                             <td>${booking.ro_name}</td>
@@ -96,7 +96,7 @@
                             <td>${booking.checkout_day}</td>
                             <td>${booking.name}</td>
                             <td>${booking.tel}</td>
-                            <td>입실완료</td>
+                            <td>퇴실완료</td>
                         </tr>
                     </c:if>
                 </c:forEach>
@@ -113,29 +113,28 @@
             console.log("예약번호: " + bo_num);
 
             var form = $('<form>', {
-                'action': /stay/business/business_checkin_update',
+                'action': '/stay/business/business_checkout_update',
                 'method': 'post'
             });
 
             form.append($('<input>', {
                 'type': 'hidden',
                 'name': 'bo_num',
-                'value': bo_num
+                'value': $(this).data('bo-num') // 클릭한 버튼의 data-bo-num 속성 값을 사용합니다.
             }));
             
             form.append($('<input>', {
-	            'type': 'hidden',
-	            'name': 'email_id',
-	            'value': '${sessionScope.LoginVO.email_id}'
-	        }));
+                'type': 'hidden',
+                'name': 'email_id',
+                'value': '${sessionScope.LoginVO.email_id}'
+            }));
             
             form.append($('<input>', {
                 'type': 'hidden',
                 'name': 'status',
-                'value': '2' // 예약 상태를 여기에 추가
+                'value': '3' // 예약 상태를 여기에 추가
             }));
             
-
             $('body').append(form);
             form.submit();
 

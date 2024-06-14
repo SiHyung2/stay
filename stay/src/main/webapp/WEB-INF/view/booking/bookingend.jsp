@@ -42,7 +42,7 @@
 <div class="container">
   <table class="room_view">
     <c:forEach var="booking" items="${checkBookings}">
-    <c:if test="${booking.status == 4}">
+    <c:if test="${booking.status == 3}">
       <tr>
         <td rowspan='5' class="ac_image">
           <img src="ro_image_url" alt="Room Image">

@@ -56,7 +56,7 @@
             </thead>
             <tbody>
                 <c:forEach var="booking" items="${businessbooking}">
-                    <c:if test="${booking.status == 2}">
+                    <c:if test="${booking.status == 1}">
                         <tr>
                             <td>${booking.bo_num}</td>
                             <td>${booking.ro_name}</td>
@@ -88,7 +88,7 @@
             </thead>
             <tbody>
                 <c:forEach var="booking" items="${businessbooking}">
-                    <c:if test="${booking.status == 3}">
+                    <c:if test="${booking.status == 2}">
                         <tr>
                             <td>${booking.bo_num}</td>
                             <td>${booking.ro_name}</td>
@@ -113,21 +113,21 @@
             console.log("예약번호: " + bo_num);
 
             var form = $('<form>', {
-                'action': /stay/business/business_checkin_update',
+                'action': '/stay/business/business_checkin_update',
                 'method': 'post'
             });
 
             form.append($('<input>', {
                 'type': 'hidden',
                 'name': 'bo_num',
-                'value': bo_num
+                'value': $(this).data('bo-num') // 클릭한 버튼의 data-bo-num 속성 값을 사용합니다.
             }));
             
             form.append($('<input>', {
-	            'type': 'hidden',
-	            'name': 'email_id',
-	            'value': '${sessionScope.LoginVO.email_id}'
-	        }));
+                'type': 'hidden',
+                'name': 'email_id',
+                'value': '${sessionScope.LoginVO.email_id}'
+            }));
             
             form.append($('<input>', {
                 'type': 'hidden',
@@ -135,7 +135,6 @@
                 'value': '2' // 예약 상태를 여기에 추가
             }));
             
-
             $('body').append(form);
             form.submit();
 

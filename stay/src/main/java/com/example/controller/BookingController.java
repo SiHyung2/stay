@@ -23,6 +23,7 @@ import com.example.domain.BoByAcDTO;
 import com.example.domain.BookingConfirmDTO;
 import com.example.domain.BookingDTO;
 import com.example.domain.BookingUpdateDTO;
+import com.example.domain.BookingcancelDTO;
 import com.example.domain.CheckDTO;
 import com.example.domain.MemberDTO;
 import com.example.domain.RoomDTO;
@@ -137,6 +138,28 @@ public class BookingController {
 	public String cancelBooking(Model model, @RequestParam("email_id") String email_id) {
 	    List<CheckDTO> checkBookings = bookingMapper.getBusinessBookingsByEmailcheck(email_id);
 	    model.addAttribute("checkBookings", checkBookings);
+	    return "booking/bookingcancel";
+	}
+	
+	@PostMapping("/bookingcancel_button")
+	public String bookingcancelButton(@RequestParam("bo_num") String bo_num, @RequestParam("email_id") String email_id, Model model) {
+	    // 업데이트 전에 상태 로그 출력
+	    log.info("업데이트 전 상태: " + bo_num);
+
+	    // BookingcancelDTO 객체 생성 및 bo_num 설정
+	    BookingcancelDTO bookingcancelDTO = new BookingcancelDTO();
+	    bookingcancelDTO.setBo_num(bo_num);
+
+	    // 예약 취소 서비스 호출
+	    bookingService.deleteBookingcancel(bookingcancelDTO);
+
+	    // 업데이트 후 상태 로그 출력
+	    log.info("업데이트 후 상태: " + bo_num);
+	    
+	    List<CheckDTO> checkBookings = bookingMapper.getBusinessBookingsByEmailcheck(email_id);
+	    model.addAttribute("checkBookings", checkBookings);
+
+	    // 예약 취소 페이지로 이동
 	    return "booking/bookingcancel";
 	}
 	

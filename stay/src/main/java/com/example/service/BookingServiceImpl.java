@@ -9,6 +9,7 @@ import com.example.domain.BookingConfirmDTO;
 import com.example.domain.BookingDTO;
 import com.example.domain.BookingUpdateConfirmDTO;
 import com.example.domain.BookingUpdateDTO;
+import com.example.domain.BookingcancelDTO;
 import com.example.mapper.BookingMapper;
 
 import lombok.extern.log4j.Log4j;
@@ -61,5 +62,10 @@ public class BookingServiceImpl implements BookingService {
 	@Override
 	public void updateBookingStatus(BookingUpdateDTO bookingUpdateDTO) {
         bookingMapper.updateBookingStatus(bookingUpdateDTO);
+    }
+	
+	@Override
+	public void deleteBookingcancel(BookingcancelDTO bookingcancelDTO) {
+        bookingMapper.deleteBookingcancel(bookingcancelDTO);
     }
 }

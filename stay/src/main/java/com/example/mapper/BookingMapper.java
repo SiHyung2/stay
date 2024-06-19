@@ -8,6 +8,7 @@ import com.example.domain.BookingConfirmDTO;
 import com.example.domain.BookingDTO;
 import com.example.domain.BookingUpdateConfirmDTO;
 import com.example.domain.BookingUpdateDTO;
+import com.example.domain.BookingcancelDTO;
 import com.example.domain.CheckDTO;
 
 public interface BookingMapper {
@@ -33,4 +34,6 @@ public interface BookingMapper {
     public List<CheckDTO> getBusinessBookingsByEmailcheck(String email_id);
     
     public void updateBookingStatus(BookingUpdateDTO bookingUpdateDTO);
+    
+    public void deleteBookingcancel(BookingcancelDTO bookingcancelDTO);
 }

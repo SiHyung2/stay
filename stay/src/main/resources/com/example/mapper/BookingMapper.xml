@@ -52,6 +52,11 @@
 	    WHERE bo_num = #{bo_num}
 	</update>
 	
+	<delete id="deleteBookingcancel" parameterType="com.example.domain.BookingcancelDTO">
+	    DELETE FROM booking
+	    WHERE bo_num = #{bo_num}
+	</delete>
+	
 	<select id="getBusinessBookingsByEmailcheck"
 		parameterType="String" resultType="com.example.domain.CheckDTO">
 		SELECT

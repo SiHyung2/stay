@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class BookingConfirmDTO {
 
-    private String bo_num;
+    private int bo_num;
     private int ro_name;
     private String checkin_day;
     private String checkout_day;

@@ -7,6 +7,6 @@ import lombok.Data;
 @Data
 public class BookingUpdateDTO {
 
-    private String bo_num;
+    private int bo_num;
     private int status;
 }

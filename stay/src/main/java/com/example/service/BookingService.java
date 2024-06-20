@@ -12,11 +12,11 @@ public interface BookingService {
 
 	public void addBooking(BookingDTO booking);
 
-	public BookingDTO getBooking(String bo_num);
+	public BookingDTO getBooking(int bo_num);
 
 	public void updateBooking(BookingDTO booking);
 
-	public void deleteBooking(String bo_num);
+	public void deleteBooking(int bo_num);
 
 	public List<BookingDTO> getAllBooking(); 
 	
@@ -24,4 +24,7 @@ public interface BookingService {
 	public List<BookingConfirmDTO> getBusinessBookingsByEmail(String email_id);
 	public void updateBookingStatus(BookingUpdateDTO bookingUpdateDTO);
 	public void deleteBookingcancel(BookingcancelDTO bookingcancelDTO);
+	public void insertBooking(BookingDTO booking);
+	
+	public List<BookingDTO> getBookingsByEmail(String email_id);
 }

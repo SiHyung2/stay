@@ -57,6 +57,12 @@
 	    WHERE bo_num = #{bo_num}
 	</delete>
 	
+	<insert id="insertBooking" parameterType="com.example.domain.BookingDTO">
+		INSERT INTO booking (bo_num, email_id, room_num, ac_id, checkin_day,
+		checkout_day, status, payment_code, reg_date)
+		VALUES (bo_num_seq.NEXTVAL, #{email_id}, #{room_num}, #{ac_id}, #{checkin_day}, #{checkout_day}, #{status}, #{payment_code}, #{reg_date})
+	</insert>
+	
 	<select id="getBusinessBookingsByEmailcheck"
 		parameterType="String" resultType="com.example.domain.CheckDTO">
 		SELECT

@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class BookingDTO {
 
-    private String bo_num;
+    private int bo_num;
     private String email_id;
     private int room_num;
     private int ac_id;

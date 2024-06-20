@@ -14,7 +14,7 @@ import com.example.domain.CheckDTO;
 public interface BookingMapper {
 
     // 예약 정보 조회
-	public BookingDTO getBooking(String bo_num);
+	public BookingDTO getBooking(int bo_num);
 
     // 모든 예약 정보 조회
     public List<BookingDTO> getAllBooking();
@@ -26,7 +26,7 @@ public interface BookingMapper {
     public void updateBooking(BookingDTO booking);
 
     // 예약 삭제
-    public void deleteBooking(String bo_num);
+    public void deleteBooking(int bo_num);
     
     // 사업자 정보
     public List<BookingConfirmDTO> getBusinessBookingsByEmail(String email_id);
@@ -36,4 +36,8 @@ public interface BookingMapper {
     public void updateBookingStatus(BookingUpdateDTO bookingUpdateDTO);
     
     public void deleteBookingcancel(BookingcancelDTO bookingcancelDTO);
+    
+    public void insertBooking(BookingDTO booking);
+    
+    public List<BookingDTO> selectBookingsByEmail(String email_id);
 }

@@ -104,7 +104,7 @@ public class BusinessController {
     }
     
     @PostMapping("/business_checkin_update")
-    public String updateBusinessCheckin(@RequestParam("bo_num") String bo_num, @RequestParam("email_id") String email_id, Model model) {
+    public String updateBusinessCheckin(@RequestParam("bo_num") int bo_num, @RequestParam("email_id") String email_id, Model model) {
         // 예약 상태를 2로 업데이트 (입실완료)
         System.out.println("Status before updating: " + bo_num);
 
@@ -137,7 +137,7 @@ public class BusinessController {
     }
     
     @PostMapping("/business_checkout_update")
-    public String updateBusinessCheckout(@RequestParam("bo_num") String bo_num, @RequestParam("email_id") String email_id, Model model) {
+    public String updateBusinessCheckout(@RequestParam("bo_num") int bo_num, @RequestParam("email_id") String email_id, Model model) {
         // 예약 상태를 2로 업데이트 (입실완료)
         System.out.println("Status before updating: " + bo_num);
 

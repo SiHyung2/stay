@@ -118,7 +118,7 @@ public class AccommodationServiceImpl implements AccommodationService {
 		System.out.println("가장 최근의 ac_id : "+ac_id);
 		
 		
-		String uploadFolder="C:\\Users\\it\\git\\stay3\\stay\\src\\main\\webapp\\resources\\img\\accommodation";   //사진(파일) 저장 위치. 컴퓨터마다 위치가 다름
+		String uploadFolder="C:\\Users\\it\\git\\stay\\stay\\src\\main\\webapp\\resources\\accommodation";   //사진(파일) 저장 위치. 컴퓨터마다 위치가 다름
 	    for (MultipartFile multipartFile : ac_img) {
 	        log.info("Upload File Name: " +multipartFile.getOriginalFilename());
 	        log.info("Upload File Size: " +multipartFile.getSize());

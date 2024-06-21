@@ -42,7 +42,7 @@
                     <td>${booking.checkout_day}</td>
                     <td>${booking.name}</td>
                     <td>${booking.tel}</td>
-                    <td>${booking.status}</td>
+                    <td>${booking.status_explain}</td>
                 </tr>
             </c:forEach>
         </tbody>

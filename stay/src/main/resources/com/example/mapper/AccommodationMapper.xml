@@ -12,9 +12,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 숙소(사업체) 등록 -->
  	<insert id="insertaccommdation">
 		INSERT INTO ACCOMMODATION
-			( email_id, ac_title, ac_type, ac_address, ac_info, checkin, checkout)
+			( ac_id, email_id, ac_title, ac_type, ac_address, ac_info, checkin, checkout)
 		VALUES 
-			( #{email_id}, #{ac_title}, #{ac_type}, #{ac_address}, #{ac_info}, #{checkin}, #{checkout})
+			( accommodation_ac_id_seq.nextval, #{email_id}, #{ac_title}, #{ac_type}, #{ac_address}, #{ac_info}, #{checkin}, #{checkout})
  	</insert>
 
  	<!-- 등록한 숙소의 사진 주소 등록 -->

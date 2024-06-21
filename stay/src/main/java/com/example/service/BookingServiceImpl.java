@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 
 import com.example.domain.BookingConfirmDTO;
 import com.example.domain.BookingDTO;
+import com.example.domain.BookingUpdateConfirmDTO;
+import com.example.domain.BookingUpdateDTO;
+import com.example.domain.BookingcancelDTO;
 import com.example.mapper.BookingMapper;
 
 import lombok.extern.log4j.Log4j;
@@ -25,7 +28,7 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public BookingDTO getBooking(String bo_num) {
+    public BookingDTO getBooking(int bo_num) {
         log.info("Getting booking by booking number: " + bo_num);
         return bookingMapper.getBooking(bo_num);
     }
@@ -37,7 +40,7 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public void deleteBooking(String bo_num) {
+    public void deleteBooking(int bo_num) {
         log.info("Deleting booking with booking number: " + bo_num);
         bookingMapper.deleteBooking(bo_num);
     }
@@ -52,5 +55,27 @@ public class BookingServiceImpl implements BookingService {
 	@Override
 	public List<BookingConfirmDTO> getBusinessBookingsByEmail(String email_id) {
 		return bookingMapper.getBusinessBookingsByEmail(email_id);
+	}
+	
+	
+	
+	@Override
+	public void updateBookingStatus(BookingUpdateDTO bookingUpdateDTO) {
+        bookingMapper.updateBookingStatus(bookingUpdateDTO);
+    }
+	
+	@Override
+	public void deleteBookingcancel(BookingcancelDTO bookingcancelDTO) {
+        bookingMapper.deleteBookingcancel(bookingcancelDTO);
+    }
+	
+	@Override
+	public void insertBooking(BookingDTO bookingDTO) {
+        bookingMapper.insertBooking(bookingDTO);
+    }
+	
+	@Override
+	public List<BookingDTO> getBookingsByEmail(String email_id) {
+		return bookingMapper.selectBookingsByEmail(email_id);
 	}
 }

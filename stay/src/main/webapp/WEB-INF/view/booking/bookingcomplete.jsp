@@ -42,12 +42,14 @@
 <div class="container">
   <table class="room_view">
     <c:forEach var="booking" items="${checkBookings}">
+    <c:if test="${booking.status == 1 || booking.status == 2}">
       <tr>
         <td rowspan='5' class="ac_image">
           <img src="ro_image_url" alt="Room Image">
         </td>
         <td class="room_title">
           <c:out value="${booking.ac_title}"/>
+          
         </td>
       </tr>
       <tr>
@@ -68,11 +70,9 @@
       <tr>
         <td class="room_info">
           <strong>가격:</strong> <c:out value="${booking.room_price}"/>원
-          <div class="float-right">
-            <button type='button' class="btn btn-primary btn-sm checkout-btn">객실 정보</button>
-          </div>
         </td>
       </tr>
+      </c:if>
     </c:forEach>
   </table>
 </div>

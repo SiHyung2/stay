@@ -44,53 +44,45 @@
             <div class="col-md-6">
                 <h3>숙소 정보</h3>
                 <div class="accommodation-info">
-                        <table class="table table-bordered">
-                            <c:forEach var="accommodation" items="${accommodation_list}">
-    <tr>
-        <th>숙소이름</th>
-        <td><c:out value="${accommodation.ac_title}" /></td>
-    </tr>
-    <tr>
-        <th>방이름</th>
-        <td><c:out value="${accommodation.ro_name}" /></td>
-    </tr>
-    </c:forEach>
-    <tr>
-        <th>체크인</th>
-        <td><c:out value="${param.checkin}" /></td>
-    </tr>
-    <tr>
-        <th>체크아웃</th>
-        <td><c:out value="${param.checkout}" /></td>
-    </tr>
-    <c:forEach var="accommodation" items="${accommodation_list}">
-    <tr>
-        <th>방가격</th>
-        <td><c:out value="${accommodation.room_price}" /></td>
-    </tr>
-	</c:forEach>
-             </table>
-             <form action="/stay/booking/booking_insertview/payment" method="post" onsubmit="setDates()">
-                <input type="hidden" name="email_id" value="${sessionScope.LoginVO.email_id}">
-                <input type="hidden" name="room_num" value="${accommodation.room_num}">
-                <input type="hidden" name="ac_id" value="${accommodation.ac_id}">
-                <input type="hidden" name="checkin" value="${param.checkin}">
-                <input type="hidden" name="checkout" value="${param.checkout}">
-                <button type="submit" class="btn btn-primary">예약하기</button>
-            </form>
+                    <table class="table table-bordered">
+                        <c:forEach var="accommodation" items="${accommodation_list}">
+                            <tr>
+                                <th>숙소이름</th>
+                                <td><c:out value="${accommodation.ac_title}" /></td>
+                            </tr>
+                            <tr>
+                                <th>방이름</th>
+                                <td><c:out value="${accommodation.ro_name}" /></td>
+                            </tr>
+                        </c:forEach>
+                        <tr>
+                            <th>체크인</th>
+                            <td><c:out value="${param.checkin}" /></td>
+                        </tr>
+                        <tr>
+                            <th>체크아웃</th>
+                            <td><c:out value="${param.checkout}" /></td>
+                        </tr>
+                        <c:forEach var="accommodation" items="${accommodation_list}">
+                            <tr>
+                                <th>방가격</th>
+                                <td><c:out value="${accommodation.room_price}" /></td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                    <form action="/stay/booking/booking_insert" method="post">
+                        <input type="hidden" name="email_id" value="${sessionScope.LoginVO.email_id}">
+                        <c:forEach var="accommodation" items="${accommodation_list}">
+                            <input type="hidden" name="room_num" value="${accommodation.room_num}">
+                            <input type="hidden" name="ac_id" value="${accommodation.ac_id}">
+                        </c:forEach>
+                        <input type="hidden" name="checkin" value="${param.checkin}">
+                        <input type="hidden" name="checkout" value="${param.checkout}">
+                        <button type="submit" class="btn btn-primary btn-sm">예약하기</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-    <script>
-    document.querySelectorAll('form').forEach(form => {
-        form.addEventListener('submit', function(event) {
-            let checkin = document.getElementById('checkin').value;
-            let checkout = document.getElementById('checkout').value;
-            this.querySelector('#hidden_checkin').value = checkin;
-            this.querySelector('#hidden_checkout').value = checkout;
-        });
-    });
-	</script>
 </body>
 </html>

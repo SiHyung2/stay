@@ -1,6 +1,8 @@
 package com.example.controller;
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.domain.AccommodationDTO;
 import com.example.domain.LoginVO;
@@ -37,10 +40,14 @@ public class AccommodationController {
 	}
 
 	@PostMapping("/insert")
-	public String InsertRoom(AccommodationDTO accommodation, LoginVO logino, HttpServletRequest request) {
+	public String InsertRoom(AccommodationDTO accommodation, LoginVO logino, HttpServletRequest request, MultipartFile[] ac_img) {
 		log.info("insert: " + accommodation);
-		
+		log.info(ac_img);
 		accommodationservice.insertaccommodation(accommodation);
+		
+		accommodationservice.insertac_pic(ac_img);    //사진 업로드 메소드.   ac_pic에 삽입하는 메소드
+		
+        // insertaccommodation 메소드 다음에 insertro_pic이 실행되어야함 왜냐하면 ac_id를 가져올 때 문제가 생김
 		
 //		System.out.println(logino);      logino의 데이터 오는지 확인 (성공)
 		request.getSession().setAttribute("LoginVO", logino);           //숙소 insert 후 로그인 세션 초기화 해결을 위함
@@ -57,19 +64,12 @@ public class AccommodationController {
 	}
 
 	@PostMapping("/insert_view") // 2-1. 추가하는 뷰
-	public void InsertRoom_view2(HttpServletRequest httpServletRequest, Model model, accommodation_detailDTO accommodation_detail) {
+	public void InsertRoom_view2(HttpServletRequest httpServletRequest, Model model, AccommodationDTO accommodation) {
 		// 방 추가하는 뷰와 연결하기만 하는 메서드
 
 //		POST 방식 매개변수 넘기는 법!!!
-//		String email_id = httpServletRequest.getParameter("email_id");
-//		String bu_name = httpServletRequest.getParameter("bu_name");
-////		ac_id도 넘기는 코드 필요
-//
-//		System.out.println("email_id : " + email_id);
-//		System.out.println("bu_name : " + bu_name);
-//		model.addAttribute("email_id", email_id);
-//		model.addAttribute("bu_name", bu_name);
-		model.addAttribute("accommodation_list", accommodationservice.accommodation_detail(accommodation_detail));
+		String email_id = httpServletRequest.getParameter("email_id");
+		model.addAttribute("email_id", email_id);
 	}
 
 	@PostMapping("/modify") // 3. 수정
@@ -94,9 +94,13 @@ public class AccommodationController {
 	}
 
 	@PostMapping("/modify_and_delete_view") // 2-1. 숙소 수정하는 뷰 (사업자 페이지)
-	public void modify_and_delete_view(Model model, accommodation_detailDTO accommodation_detail) {
+	public void modify_and_delete_view(HttpServletRequest httpServletRequest, Model model, accommodation_detailDTO accommodation_detail) {
 //		accommodation_detail에 아무 값도 안 넣었는데 잘 작동한다...  ac_id를 넣은 기억이 없는데...
 //		accommodation_detail이 언제 생성된거지...??
+		String ac_id_str = httpServletRequest.getParameter("ac_id");
+		int ac_id = Integer.parseInt(ac_id_str);
+		
+		accommodation_detail.setAc_id(ac_id);
 		System.out.println(accommodation_detail);
 		model.addAttribute("accommodation_list", accommodationservice.accommodation_detail(accommodation_detail));
 	}
@@ -106,9 +110,14 @@ public class AccommodationController {
 			accommodation_detailDTO accommodation_detail) {
 		log.info("ac_id: "+ac_id);
 		accommodation_detail.setAc_id(ac_id);
-		model.addAttribute("accommodation_list" ,accommodationservice.accommodation_detail(accommodation_detail));
 		
-//		List<accommodation_detailDTO> accommodation_list2=accommodationservice.accommodation_detail(accommodation_detail);
+		AccommodationDTO accommodation = new AccommodationDTO();
+		accommodation.setAc_id(ac_id);
+		String email_id = accommodationservice.searchByac_id(accommodation).get(0).getEmail_id();
+		
+		model.addAttribute("ac_pic_list", accommodationservice.get_list_of_ac_pic(ac_id));
+		model.addAttribute("accommodation_list" ,accommodationservice.accommodation_detail(accommodation_detail));
+		model.addAttribute("email_id", email_id);
 	}
 
 	

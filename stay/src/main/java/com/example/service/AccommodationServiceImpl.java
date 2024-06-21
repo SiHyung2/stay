@@ -1,17 +1,23 @@
 package com.example.service;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.example.domain.Ac_picDTO;
 import com.example.domain.AccommodationDTO;
 import com.example.domain.SearchWordDTO;
 import com.example.domain.accommodation_detailDTO;
 import com.example.mapper.AccommodationMapper;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
 
 @Service
+@Log4j
 @AllArgsConstructor
 public class AccommodationServiceImpl implements AccommodationService {
 
@@ -44,8 +50,7 @@ public class AccommodationServiceImpl implements AccommodationService {
 
 	@Override
 	public List<AccommodationDTO> searchByac_id(AccommodationDTO accommdation) {
-		mapper.searchByac_id(accommdation);
-		return null;
+		return mapper.searchByac_id(accommdation);
 	}
 
 	@Override
@@ -91,6 +96,52 @@ public class AccommodationServiceImpl implements AccommodationService {
 	public List<accommodation_detailDTO> accommodation_detail(accommodation_detailDTO accommodation_detail) {
 		List<accommodation_detailDTO> resultList = mapper.accommodation_detail(accommodation_detail);
 		return resultList;
+	}
+
+	
+//	사진 업로드 메소드
+	@Override
+	public void insertac_pic(MultipartFile[] ac_img) {
+		
+//		작성중.,..
+		Ac_picDTO ac_pic = new Ac_picDTO();
+		
+		List<AccommodationDTO> ac_list=mapper.getList();          //  가장 최근에 생성된 숙소의 번호를 가져오려한다.
+										// room 에서는 쿼리로 최근의 번호를 가져왔지만 accommodation 에서는 자바로 최근의 번호를 가져오려고한다.!
+		int ac_id=0;
+		for(AccommodationDTO ac : ac_list) {
+			if(ac.getAc_id() > ac_id) {
+				ac_id=ac.getAc_id();
+			}
+		}
+		
+		System.out.println("가장 최근의 ac_id : "+ac_id);
+		
+		
+		String uploadFolder="C:\\Users\\it\\git\\stay\\stay\\src\\main\\webapp\\resources\\accommodation";   //사진(파일) 저장 위치. 컴퓨터마다 위치가 다름
+	    for (MultipartFile multipartFile : ac_img) {
+	        log.info("Upload File Name: " +multipartFile.getOriginalFilename());
+	        log.info("Upload File Size: " +multipartFile.getSize());
+	        
+	        
+		    File saveFile = new File(uploadFolder, multipartFile.getOriginalFilename());
+			try {
+			  multipartFile.transferTo(saveFile);      //에러가 없으면 사진을 저장
+			} catch (Exception e) {
+			  log.error(e.getMessage());
+			}
+			
+			ac_pic.setAc_id(ac_id);
+			ac_pic.setPic_name(multipartFile.getOriginalFilename());
+			mapper.insertac_pic(ac_pic);
+	     }
+		
+	}
+
+	@Override
+	public List<Ac_picDTO> get_list_of_ac_pic(int ac_id) {
+		
+		return mapper.get_list_of_ac_pic(ac_id);
 	}
 
 }

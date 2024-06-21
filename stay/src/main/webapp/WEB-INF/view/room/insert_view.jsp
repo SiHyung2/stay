@@ -66,9 +66,24 @@
         </div>
     </div>
 	
+	
+<!-- 	파일 유효성 검사 스크립트 미구현됨  -->
 	<script>
 		function img_valid_message(){
+			var extension = extension("(.*?)\.(png|jpeg|pdf|ai|tiff|emp|eps|svg)$");   //이미지 확장자만 업로드 가능
+			var maxSize=5242880;   // 5MB까지 업로드 가능
+			
 			alert("16:9 비율의 사진을 업로드하지않을 시 깨질 수 있습니다!");
+			
+			if(fileSize >= maxSize){
+				alert("파일 사이즈 초과");
+				return false;
+			}
+			if(extension.test(fileName)){
+				alert("다음의 이미지 파일만 업로드할 수 있습니다.");
+				alert("허용되는 파일 : (png|jpeg|pdf|ai|tiff|emp|eps|svg)");
+				return false;
+			}
 		}
 	</script>
 	

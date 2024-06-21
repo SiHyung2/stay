@@ -12,13 +12,13 @@
 
 		
 <!-- 		post 매개변수 테스트 -->
-<%-- 		${ bu_name }  ${ email_id } --%>
+<%-- 		${ email_id } --%>
 		
     <div class="container">
         <h1 class="text-center mt-5">숙소 등록</h1>
         <div class="row justify-content-center mt-5">
             <div class="col-md-6">
-                <form name="form1" role="form" action="/stay/accommodation/insert" method="post">
+                <form name="form1" role="form" action="/stay/accommodation/insert" method="post" enctype="multipart/form-data">
                
 <!--                		숙소 아이디는 트리거로 해야만함! (무결성 제약조건 위배될 가능성 있음)  -->
 <!-- 						사실 여기서 입력하지않아도 트리거니까 넘어가야함. 아래의 ac_id 입력창은 디버깅용 코드임 -->
@@ -27,7 +27,7 @@
 <!--                         <input type="text" class="form-control" id="accommodation_id" name="ac_id"> -->
 <!--                     </div> -->
                     <div>
-                        <input type="hidden" class="form-control" id="email_id" name="email_id" value="${accommodation_list[0].email_id}">
+                        <input type="hidden" class="form-control" id="email_id" name="email_id" value="${email_id}">
                     </div>
                     
                     <div class="mb-3">
@@ -71,6 +71,10 @@
                         <input type="text" class="form-control" id="accommodation_address" name="checkout" required>
                     </div>
                     
+                    <div class="mb-3">
+                        <label for="room_img" class="form-label">사진</label>
+                        <input type='file' class="form-control" id="ac_img" name='ac_img' multiple>
+                    </div>
                     
                     <button type="submit" class="btn btn-primary w-100">등록</button>
                 </form>

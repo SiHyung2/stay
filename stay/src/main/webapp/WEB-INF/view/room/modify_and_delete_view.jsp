@@ -60,6 +60,13 @@
                         <label for="room_price" class="form-label">가격</label>
                         <input type="number" class="form-control" id="room_price" name="room_price" value="${ room.room_price}" required>
                     </div>
+                    
+                    <div class="mb-3">
+                        <label for="room_img" class="form-label">사진</label>
+                        <input type='file' class="form-control" id="room_img" name='room_img' onclick="img_valid_message()" multiple>
+                    </div>
+<!--                     16:9 비율의 사진을 업로드하지않을 시 깨질 수 있습니다! -->
+                    
                     <button id="modify" type="submit" class="btn btn-warning" onclick="javascript: form.action='/stay/room/modify';">수정</button>
 					<button id="delete" type="submit" class="btn btn-danger" onclick="javascript: form.action='/stay/room/delete';">삭제</button>
                 </form>
@@ -68,6 +75,13 @@
     </div>
 
 </div>
+
+<script>
+	function img_valid_message(){
+		alert("이미 업로드 사진을 포함하여 모든 사진을 올리십시오.");
+		alert("16:9 비율의 사진을 업로드하지않을 시 깨질 수 있습니다!");
+	}
+</script>
 
 </body>
 

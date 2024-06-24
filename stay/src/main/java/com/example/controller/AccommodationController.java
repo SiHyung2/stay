@@ -15,6 +15,8 @@ import com.example.domain.LoginVO;
 import com.example.domain.TodoDTO;
 import com.example.domain.accommodation_detailDTO;
 import com.example.service.AccommodationService;
+import com.example.service.ReplyService;
+import com.example.service.ReviewService;
 import com.example.service.RoomService;
 
 import lombok.AllArgsConstructor;
@@ -28,6 +30,8 @@ public class AccommodationController {
 
 	private final AccommodationService accommodationservice;
 	private final RoomService roomservice;
+    private  ReviewService reviewService;
+    private ReplyService replyService;
 //	private MemberService memberService;
 
 	@GetMapping("/list") // 1.모든 목록 조회
@@ -102,14 +106,17 @@ public class AccommodationController {
 	}
 
 	@GetMapping("/detail")
-	public void All_Room_in_on_Accommodation(Model model, @RequestParam("ac_id") int ac_id,
-			accommodation_detailDTO accommodation_detail) {
-		log.info("ac_id: "+ac_id);
-		accommodation_detail.setAc_id(ac_id);
-		model.addAttribute("accommodation_list" ,accommodationservice.accommodation_detail(accommodation_detail));
+	public void All_Room_in_on_Accommodation(Model model, @RequestParam("ac_id") int ac_id, accommodation_detailDTO accommodation_detail) {
+//		log.info("ac_id: "+ac_id);
 		
-//		List<accommodation_detailDTO> accommodation_list2=accommodationservice.accommodation_detail(accommodation_detail);
+		accommodation_detail.setAc_id(ac_id);
+		
+		 model.addAttribute("replys", replyService.readReply());
+		model.addAttribute("accommodation_list" ,accommodationservice.accommodation_detail(accommodation_detail));
+		model.addAttribute("reviews" ,reviewService.findByAccommodationAcid(ac_id));
 	}
+	
+    
 
 	
 }

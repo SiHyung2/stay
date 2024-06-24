@@ -38,7 +38,9 @@ public interface ReviewMapper {
 
 	
 
-	  public List<ReviewDTO> findByAccommodationAcid(String ac_id);
+	  public List<ReviewDTO> findByAccommodationAcid(long ac_id);
+	  
+
 	 
 
 }  

@@ -29,6 +29,7 @@ import com.example.mapper.AccommodationMapper;
 import com.example.mapper.BookingMapper;
 import com.example.service.BookingService;
 import com.example.service.BusinessService;
+import com.example.service.ReviewService;
 import com.example.service.RoomService;
 
 import lombok.AllArgsConstructor;
@@ -48,6 +49,7 @@ public class BusinessController {
 	private BookingMapper bookingMapper;
 	private BookingService bookingService;
 	private RoomService roomService;
+	private ReviewService reviewService;
 	
 	private final BusinessService businessservice;
 	private final AccommodationService accommodationservice;

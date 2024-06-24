@@ -20,4 +20,5 @@ public interface AccommodationMapper {
 	public List<SearchWordDTO> rest_room_search(SearchWordDTO searchword); 
 	
 	public List<accommodation_detailDTO> accommodation_detail(accommodation_detailDTO accommodation_detail);  //숙소 상세페이지를 출력하기위한 매퍼
+
 }

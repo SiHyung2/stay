@@ -29,7 +29,7 @@
                     font-size: 20px; margin-right: 30px;">체크아웃</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="../review/business_review" style="color: black;
+                    <a id="review_manage_link" class="nav-link" style="color: black;
                     font-size: 20px; margin-right: 20px;">리뷰관리</a>
                 </li>
             </ul>
@@ -39,6 +39,23 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 	$(document).ready(function() {
+		
+		$('#review_manage_link').on('click', function(e) {
+			//     	alert("숙소 수정 뷰 링크 함수 실행됨");
+			    e.preventDefault(); // 기본 액션 막음. (중복 막음)        
+			    var form = $('<form>', {
+			        'action': '../review/business_review',
+			        'method': 'post'
+			    });
+			    form.append($('<input>', {
+			        'type': 'hidden',
+			        'name': 'email_id',
+			        'value': '${sessionScope.LoginVO.email_id}'
+			    }));
+			
+			    $('body').append(form);
+			    form.submit();
+			});
 		
 		//숙소 list 링크 함수 modify_accommodation_link
 		$('#addition_list_link').on('click', function(e) {

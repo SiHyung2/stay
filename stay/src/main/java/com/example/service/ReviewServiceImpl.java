@@ -114,7 +114,7 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public List<ReviewDTO> findByAccommodationAcid(String ac_id) {
+	public List<ReviewDTO> findByAccommodationAcid(long ac_id) {
 		// TODO Auto-generated method stub
 		return mapper.findByAccommodationAcid(ac_id);
 	}
@@ -126,5 +126,5 @@ public class ReviewServiceImpl implements ReviewService {
 //		return null;
 //	}
 } 
- 
+  
 

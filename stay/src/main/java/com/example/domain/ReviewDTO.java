@@ -10,7 +10,7 @@ import lombok.Data;
 @Data 
 public class ReviewDTO {
 
-	private String ac_id;
+	private long ac_id;
     private long rev_Num;
     private String bo_Num; 
     private String ac_Title;
@@ -21,9 +21,19 @@ public class ReviewDTO {
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date update_Date; 
     private String email_Id;
+    
+    public String getBo_Num() {
+        return bo_Num;
+    }
 
 
+    public String getEmailId() {
+        return email_Id;
+    }
 
+    public void setEmailId(String email_Id) {
+        this.email_Id = email_Id;
+    }
 		
 }
 

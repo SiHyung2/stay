@@ -152,7 +152,44 @@
 					</tr>
 				</c:forEach>
 			</table>
-			<div class="review_view">리뷰 - 뷰</div>
+			<div class="review_view">
+				<table align="center" width="50%">
+					<c:forEach items="${reviews}" var="review">
+
+						<tr>
+							<td><c:out value="${review.email_Id}" /> -room<c:out
+									value="${review.room_Num}" /></td>
+							<td></td>
+							<td style="text-align: right;"><c:out
+									value="${review.update_Date}" /></td>
+						</tr>
+						<tr>
+							<td><strong><c:out value="${review.content}" /></strong></td>
+						</tr>
+						<tr>
+							<td colspan="3"><c:forEach items="${replys}" var="reply">
+									<c:if test="${review.rev_Num == reply.rev_Num}">
+										<tr>
+											<td style="padding-left: 20px;">
+                        &#10145; <strong><td style="text-align: right;"><strong><c:out
+														value="${reply.reply_Content}" /></strong></td>
+										</tr>
+									</c:if>
+								</c:forEach> <!-- 				<form action="/review_insert" method="GET">
+									<textarea name="reviewContent" rows="3" cols="50"
+										placeholder="리뷰를 입력하세요..."></textarea>
+									<br> <input type="submit" value="리뷰 남기기">
+								</form> --></td>
+						</tr>
+						<tr>
+							<td colspan="2">&nbsp;</td>
+							<!-- 리뷰 간의 간격을 위한 빈 행 추가 -->
+						</tr>
+					</c:forEach>
+				</table>
+
+
+			</div>
 		</section>
 		
 		

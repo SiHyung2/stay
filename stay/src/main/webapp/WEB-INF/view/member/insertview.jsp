@@ -9,7 +9,7 @@
 <body>
 
 			
-								<form role="form" action="/stay/member/insert" method="post">
+								<form role="form" action="/stay/member/insert" method="GET">
 						
 									
 									<div class="form-group">

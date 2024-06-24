@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+         "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 <mapper namespace="com.example.mapper.ReviewMapper">
 
-	<insert id="insert" parameterType="com.example.domain.ReviewDTO">
-		INSERT INTO review (REV_NUM, BO_NUM, AC_TITLE, ROOM_NUM, CONTENT,
-		REVIEW_DATE, UPDATE_DATE)
-		VALUES (#{rev_Num}, #{bo_Num}, #{ac_Title}, #{room_Num}, #{content},
-		SYSDATE, SYSDATE)
-	</insert>
+<!-- <insert id="insert" parameterType="com.example.domain.ReviewDTO"> -->
+<!--     INSERT INTO review (REV_NUM, BO_NUM, AC_TITLE, ROOM_NUM, CONTENT, -->
+<!--                         REVIEW_DATE, UPDATE_DATE) -->
+<!--     VALUES (#{rev_Num, jdbcType=INTEGER}, #{bo_Num, jdbcType=number}, #{ac_Title, jdbcType=VARCHAR}, -->
+<!--             #{room_Num, jdbcType=INTEGER}, #{content, jdbcType=VARCHAR}, -->
+<!--             SYSDATE, SYSDATE) -->
+<!-- </insert> -->
+
 
 
 
@@ -46,10 +48,15 @@
 	</select>
   
 
+	<select id="readReply"  resultType="com.example.domain.ReplyDTO">
+    
+      SELECT reply_content AS reply_Content, reply_num AS reply_Num,
+             rev_num AS rev_Num FROM reply
+    
+   </select>
 
 
-
- <select id="findByAccommodationAcid" parameterType="java.lang.String" resultType="com.example.domain.ReviewDTO">
+ <select id="findByAccommodationAcid"  resultType="com.example.domain.ReviewDTO">
     SELECT r.rev_num, r.bo_num, r.ac_title, r.room_num, r.content, r.review_date, r.update_date, b.email_id AS customer_email
     FROM review r
     JOIN booking b ON r.bo_num = b.bo_num
@@ -60,13 +67,6 @@
 </select>
 
 
-   <select id="accommodation_detail" resultType="com.example.domain.accommodation_detailDTO">
-    	SELECT a.ac_id, r.room_num , a.ac_title, a.ac_info, a.ac_address, r.ro_info, r.ro_name, r.ro_basic_count, r.ro_max_count, 
-    		checkin, checkout, r.room_price
-    		, a.email_id, a.bu_name
-		FROM accommodation a
-		LEFT JOIN room r ON r.ac_id=a.ac_id
-		WHERE a.ac_id=#{ac_id}
-    </select>
+  
 
 </mapper>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.mapper.ReplyMapper">
+	<select id="readReply"  resultType="com.example.domain.ReplyDTO">
+    
+      SELECT reply_content AS reply_Content, reply_num AS reply_Num,
+             rev_num AS rev_Num FROM reply
+    
+   </select>
+
+  <insert id="addReply" parameterType="com.example.domain.ReplyDTO">
+    <![CDATA[
+      INSERT INTO reply (REPLY_CONTENT, REV_NUM, REPLY_NUM) 
+      VALUES (#{reply_Content}, #{rev_Num}, REPLY_NUM_SEQ.NEXTVAL)
+    ]]>
+  </insert>
+
+
+<!-- <insert id="addReply" parameterType="com.example.domain.ReplyDTO"> -->
+<!--   <![CDATA[ -->
+<!--    INSERT INTO reply (REPLY_CONTENT, REV_NUM, REPLY_NUM)  -->
+<!--    VALUES (:reply_Content, :rev_Num, default)  -->
+<!--    ]]>  -->
+<!-- </insert> -->
+</mapper>
+
+

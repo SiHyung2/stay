@@ -18,6 +18,8 @@ import com.example.domain.LoginVO;
 import com.example.domain.TodoDTO;
 import com.example.domain.accommodation_detailDTO;
 import com.example.service.AccommodationService;
+import com.example.service.ReplyService;
+import com.example.service.ReviewService;
 import com.example.service.RoomService;
 
 import lombok.AllArgsConstructor;
@@ -31,6 +33,8 @@ public class AccommodationController {
 
 	private final AccommodationService accommodationservice;
 	private final RoomService roomservice;
+	private  ReviewService reviewService;
+    private ReplyService replyService;
 //	private MemberService memberService;
 
 	@GetMapping("/list") // 1.모든 목록 조회
@@ -115,9 +119,11 @@ public class AccommodationController {
 		accommodation.setAc_id(ac_id);
 		String email_id = accommodationservice.searchByac_id(accommodation).get(0).getEmail_id();
 		
+		model.addAttribute("replys", replyService.readReply());
 		model.addAttribute("ac_pic_list", accommodationservice.get_list_of_ac_pic(ac_id));
 		model.addAttribute("accommodation_list" ,accommodationservice.accommodation_detail(accommodation_detail));
 		model.addAttribute("email_id", email_id);
+		model.addAttribute("reviews" ,reviewService.findByAccommodationAcid(ac_id));
 	}
 
 	

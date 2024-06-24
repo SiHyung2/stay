@@ -38,7 +38,7 @@ public interface ReviewService {
 	public Object getPageDTO(Criteria cri, int total);
 	public List<ReviewDTO> selectBusiness_Reviews();
 	
-	List<ReviewDTO> findByAccommodationAcid(String ac_id);
+	List<ReviewDTO> findByAccommodationAcid(long ac_id);
 
 	
 	

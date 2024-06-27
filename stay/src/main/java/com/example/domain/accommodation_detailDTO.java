@@ -28,4 +28,8 @@ public class accommodation_detailDTO {
 	private String email_id;  
 	
 	
+//	사진 출력하는 용도
+	private int pic_num;
+	private String pic_name;
+	
 }

@@ -83,7 +83,7 @@
 <!--       	c태그 taglib은 detail of detail에 있음 -->
       	<c:forEach items="${ac_pic_list}" var="ac_pic">
 	        <div class="img">                     
-	        	<img src="../resources/img/accommodation/${ac_pic.pic_name}" alt="../resources/img/accommodation/${ac_pic.pic_name}">
+	        	<img src="../resources/img/accommodation/${ac_pic.pic_name}" alt="no image">
 	        </div>
 <!-- 	        <div class="img">Slide 2</div> -->
 <!-- 	        <div class="img">Slide 3</div> -->

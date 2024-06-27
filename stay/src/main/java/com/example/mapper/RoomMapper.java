@@ -18,4 +18,5 @@ public interface RoomMapper {
 	public void insertro_pic(Ro_picDTO ro_pic);  //사진 업로드 매퍼
 	public RoomDTO latest_room_of_room_num();   //가장 최근의 방 번호를 출력
 	public List<Ro_picDTO> get_list_of_ro_pic(int room_num);  // 선택한 방의 모든 사진 조회
+	public List<Ro_picDTO> get_list_of_ro_pic_with_ac_id(int room_num);  // 선택한 숙소의 모든 방 사진 조회
 }

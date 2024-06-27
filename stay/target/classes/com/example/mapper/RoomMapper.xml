@@ -14,9 +14,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 객실 등록 -->
  	<insert id="insertroom">
 		INSERT INTO 
-			room (ac_id, ro_name, ro_basic_count, ro_max_count, ro_info, ro_count)
+			room (room_num, ac_id, ro_name, ro_basic_count, ro_max_count, ro_info, ro_count, room_price)
 		VALUES 
-			(#{ac_id}, #{ro_name}, #{ro_basic_count}, #{ro_max_count}, #{ro_info}, #{ro_count})
+			(ROOM_NUM_SEQ.NEXTVAL, #{ac_id}, #{ro_name}, #{ro_basic_count}, #{ro_max_count}, #{ro_info}, #{ro_count}, #{room_price})
  	</insert>
  	
  	<!-- 등록한 객실의 사진 주소 등록 -->
@@ -71,6 +71,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     		REPLACE(pic_name,'\','/') AS pic_name from ro_pic where room_num=#{room_num}
     </select>
     
+    <select id="get_list_of_ro_pic_with_ac_id" resultType="com.example.domain.Ro_picDTO">
+    	select rp.pic_num, rp.room_num, 
+		    REPLACE(rp.pic_name,'\','/') AS pic_name from ro_pic rp
+		    JOIN room r ON r.room_num = rp.room_num  where ac_id = #{ac_id}
+    </select>
     
  </mapper>
  

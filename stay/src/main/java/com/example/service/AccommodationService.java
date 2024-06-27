@@ -6,6 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.example.domain.Ac_picDTO;
 import com.example.domain.AccommodationDTO;
+import com.example.domain.Ro_picDTO;
 import com.example.domain.SearchWordDTO;
 import com.example.domain.accommodation_detailDTO;
 
@@ -23,5 +24,5 @@ public interface AccommodationService {
 	public List<SearchWordDTO> rest_room_search(SearchWordDTO searchword);
 	public List<accommodation_detailDTO> accommodation_detail(accommodation_detailDTO accommodation_detail);
 	public void insertac_pic(MultipartFile[] ac_img);
-	public List<Ac_picDTO> get_list_of_ac_pic(int ac_id);
+	public List<Ac_picDTO> get_list_of_ac_pic(int room_num);
 }

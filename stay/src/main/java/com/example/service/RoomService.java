@@ -18,5 +18,5 @@ public interface RoomService {
 	public RoomDTO searchBy_room_num(RoomDTO room);
 	public void insertro_pic(MultipartFile[] room_img);
 	public List<Ro_picDTO> get_list_of_ro_pic(int room_num);
-	
+	public List<Ro_picDTO> get_list_of_ro_pic_with_ac_id(int ac_id);
 }

@@ -62,7 +62,7 @@ public class RoomServicelmpl implements RoomService {
 		Ro_picDTO ro_pic = new Ro_picDTO();
 		int room_num=mapper.latest_room_of_room_num().getRoom_num();   //가장 최근에 생성된 방의 번호를 가져옴
 //        String uploadFolder="C:\\upload\\tmp";    //사진(파일) 저장 위치.   이부분 없어도 작동하게 만들어야함..
-		String uploadFolder="C:\\Users\\it\\git\\stay\\stay\\src\\main\\webapp\\resources\\room";   //사진(파일) 저장 위치. 컴퓨터마다 위치가 다름
+		String uploadFolder="C:\\Users\\it\\git\\stay\\stay\\src\\main\\webapp\\resources\\img\\room";   //사진(파일) 저장 위치. 컴퓨터마다 위치가 다름
 	    for (MultipartFile multipartFile : room_img) {
 	        log.info("Upload File Name: " +multipartFile.getOriginalFilename());
 	        log.info("Upload File Size: " +multipartFile.getSize());
@@ -87,6 +87,11 @@ public class RoomServicelmpl implements RoomService {
 	@Override
 	public List<Ro_picDTO> get_list_of_ro_pic(int room_num) {
 		return mapper.get_list_of_ro_pic(room_num);
+	}
+
+	@Override
+	public List<Ro_picDTO> get_list_of_ro_pic_with_ac_id(int ac_id) {
+		return mapper.get_list_of_ro_pic_with_ac_id(ac_id);
 	}
 
 }

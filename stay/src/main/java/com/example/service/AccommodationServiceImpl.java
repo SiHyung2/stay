@@ -1,7 +1,6 @@
 package com.example.service;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -9,9 +8,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.example.domain.Ac_picDTO;
 import com.example.domain.AccommodationDTO;
+import com.example.domain.Ro_picDTO;
 import com.example.domain.SearchWordDTO;
 import com.example.domain.accommodation_detailDTO;
 import com.example.mapper.AccommodationMapper;
+import com.example.mapper.RoomMapper;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -22,6 +23,7 @@ import lombok.extern.log4j.Log4j;
 public class AccommodationServiceImpl implements AccommodationService {
 
 	private AccommodationMapper mapper;
+	private RoomMapper roommapper;
 	
 	@Override
 	public List<AccommodationDTO> getList() {
@@ -43,8 +45,22 @@ public class AccommodationServiceImpl implements AccommodationService {
 	}
 
 	@Override
-	public void deleteaccommodation(AccommodationDTO accommdation) {
-		mapper.deleteaccommdation(accommdation);
+	public void deleteaccommodation(AccommodationDTO accommodation) {
+		int ac_id = accommodation.getAc_id();
+		
+		List<Ac_picDTO> ac_pic_list = mapper.get_list_of_ac_pic(ac_id);
+//		방사진도 지워지게 해야함
+//		List<Ro_picDTO> ro_pic_list = mapper.get
+		
+		
+		String path="C:\\Users\\it\\git\\stay\\stay\\src\\main\\webapp\\resources\\img\\accommodation";
+		for (Ac_picDTO ac_pic : ac_pic_list) {
+			//삭제 성공하면 파일도 지우기
+			File file=new File(path+"/"+ac_pic.getPic_name());
+			file.delete();
+		}
+		
+		mapper.deleteaccommdation(accommodation);
 		
 	}
 
@@ -118,7 +134,7 @@ public class AccommodationServiceImpl implements AccommodationService {
 		System.out.println("가장 최근의 ac_id : "+ac_id);
 		
 		
-		String uploadFolder="C:\\Users\\it\\git\\stay\\stay\\src\\main\\webapp\\resources\\accommodation";   //사진(파일) 저장 위치. 컴퓨터마다 위치가 다름
+		String uploadFolder="C:\\Users\\it\\git\\stay\\stay\\src\\main\\webapp\\resources\\img\\accommodation";   //사진(파일) 저장 위치. 컴퓨터마다 위치가 다름
 	    for (MultipartFile multipartFile : ac_img) {
 	        log.info("Upload File Name: " +multipartFile.getOriginalFilename());
 	        log.info("Upload File Size: " +multipartFile.getSize());

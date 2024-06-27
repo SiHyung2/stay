@@ -119,7 +119,7 @@
         <div class="container">
                     
 			
-			<form role="form" class="form_seach" action="/stay/base/ac_list" method="GET">
+			<form role="form" class="form_seach" action="/stay/accommodation/ac_list" method="GET">
 				<div>
 					<div class="custom-radio">
 				        <input type="radio" id="hotel"  name="ac_type" value="1"  checked/>

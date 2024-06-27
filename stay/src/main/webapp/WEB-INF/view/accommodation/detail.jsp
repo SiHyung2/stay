@@ -90,10 +90,11 @@
 			<!-- 이제 테이블로 만들고 체크인, 체크아웃을 문자열로 만들면 될거같다 -->
 			<table class="room_view">
 				<c:forEach items="${accommodation_list}" var="accommodation">
-<!-- 					1번째 줄 -->
+<!--					1번째 줄 -->
 					<tr>
 						<td  rowspan='3' class="ac_image">
-							ro_image
+<!-- 							쿼리에서 가장 max(pic_name)을 사용하여 사진 한개만 나오도록 만들었다  -->
+							<img src="../resources/img/room/${accommodation.pic_name}" alt="no image">
 						</td>
 						<td class="room_title">
 							<c:out value="${accommodation.ro_name}"/>
@@ -118,6 +119,7 @@
 					</tr>
 <!-- 					2번째 줄 -->
 					<tr>
+<!-- 						여기서부터 td들 주석 쳐둔 것은 테이블 레이아웃 css설명하는 것임 -->
 <!-- 						<td>     -->
 <!-- 							룸 이미지 -->
 <!-- 						</td> -->

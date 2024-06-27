@@ -113,7 +113,7 @@
 /* 숙소 목록 디자인 */
 .accommodation-list{
     margin-left: 120px;
-    width: 600px;
+    width: 800px;
     height: auto;
 /*     border:1px double red; */
 /*     float:left; */
@@ -138,12 +138,13 @@
 
 /* 숙소 목록 안의 박스 안의 이미지 디지인 */
 .accommodation-list .accommodation-img{
-    width: 180px;
+    width: 280px;
     height: 100%;
     margin-right: 30px;
+    overflow: hidden;
 }
 
-/* 숙소 목록 안의 박스 안의 왼쪽 박스 디자인 */
+/* 숙소 목록 안의 박스 안의 오른쪽 박스 디자인 */
 .accommodation-list .accommodation-content{
     width: 100%;
 }
@@ -170,7 +171,7 @@
 
 
 .accommodation-list .accommodation-button{
-    width: 73.2%;
+    width: 515px;
     height: 45px;
     /* 하단 고정을 위해 position과 bottom속성 사용 */
     position: absolute;

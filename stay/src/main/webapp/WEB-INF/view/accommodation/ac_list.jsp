@@ -8,11 +8,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!--     c태그를 이용하여 절대주소로 css파일과 연결되었다 -->
-	<link href="<c:url value="/resources/css/search.css" />" rel="stylesheet" type="text/css">
+	<link href="<c:url value="/resources/css/ac_list.css" />" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-	<%@include file="../base/menu.jsp" %> 
+	<%@include file="../menu.jsp" %> 
 <%-- 	<%@include file="<c:url value="/WEB-INF/base/menu.jsp" />" %>  --%>
     <div class="container">
 <!--     	미완 -->
@@ -36,16 +36,18 @@
 	            </div>
 	            <div>
 	                <h2>인원수</h2>
-	                <div class="people_number">
-	                    <input type="text" id="people_number_input" class="input-field" value="0" readonly>
-	                    <button type="button" class="people_number_button" id="increment" name="ro_basic_count">+</button>
-	                    <button type="button" class="people_number_button" id="decrement" name="ro_basic_count">-</button>
-	                </div>
+				    <div class="people_number">
+				        <input type="text" id="people_number_input" class="input-field" name="ro_basic_count" value="0" readonly>
+				        <button type="button" class="people_number_button" id="increment">+</button>
+				        <button type="button" class="people_number_button" id="decrement">-</button>
+				        <!-- hidden input 요소 추가 -->
+				        <input type="hidden" id="ro_basic_count" name="ro_basic_count">
+				    </div>
 	            </div>
 	            
 	            <!-- 인원 수 선택창  (이 스크립트는 반드시 인원수 html코드 밑에 위치해야한다) -->
 	            <script>
-	                const input = document.getElementById('people_number_input');
+		            const input = document.getElementById('people_number_input');
 	                const incrementBtn = document.getElementById('increment');
 	                const decrementBtn = document.getElementById('decrement');
 	
@@ -60,7 +62,6 @@
 	                        input.value = value - 1;
 	                    }
 	                });
-	
 	            </script>
 	            <div>
 	                <h2>검색</h2>
@@ -72,30 +73,34 @@
 	            <!-- 체크박스 form으로 컨트롤러로 데이터 전송하는 법
 	            https://ktae23.tistory.com/187
 	            값은 value값이 들어간다 -->
+	            
+<!-- 	            체크박스 앞에 Ac_type_checkbox 값들이 전부 0으로 되도록 설계해야한다 -->
+	            
 	            <div>
 	                <h2>숙소 유형</h2>
 	                <div>
-	                    <input type="checkbox" id="hotel" name="ac_type" value="1" checked>
 	                    <!-- label의 for속성값과 input의 id을 일치시켜서 input과 label이 연결되었다 라벨을 클릭해도 체크박스가 체크된다 -->
+	                    <input type="checkbox" id="hotel" name="ac_type_checkbox1" value="1" checked>
 	                    <label for="hotel">호텔</label><br>
-	                    <input type="checkbox" id="motel" name="ac_type" value="2" >
+	                    <input type="checkbox" id="motel" name="ac_type_checkbox2" value="2" checked>
 	                    <label for="motel">모텔</label><br>
-	                    <input type="checkbox" id="pension" name="ac_type" value="3">
+	                    <input type="checkbox" id="pension" name="ac_type_checkbox3" value="3" checked>
 	                    <label for="pension">펜션</label><br>
-	                    <input type="checkbox" id="resort" name="ac_type" value="4">
+	                    <input type="checkbox" id="resort" name="ac_type_checkbox4" value="4">
 	                    <label for="resort">리조트</label><br>
-	                    <input type="checkbox" id="home_villa" name="ac_type" value="5">
+	                    <input type="checkbox" id="home_villa" name="ac_type_checkbox5" value="5">
 	                    <label for="home_villa">홈&빌라</label><br>
-	                    <input type="checkbox" id="guest_house" name="ac_type" value="6">
+	                    <input type="checkbox" id="guest_house" name="ac_type_checkbox6" value="6">
 	                    <label for="guest_house">게하</label><br> 
-	                    <input type="checkbox" id="camping" name="ac_type" value="7">
+	                    <input type="checkbox" id="camping" name="ac_type_checkbox7" value="7">
 	                    <label for="camping">캠핑</label><br>
 	                    
 	                </div>
 	            </div>
+	            
 				
 				<input type="hidden" name="what_type_of_search" value="aside_search"/>
-	            <button id="search_button" class="search_button" name="search_button" onclick="javascript: form.action='/stay/base/ac_list';">검색</button>
+	            <button id="search_button" class="search_button" name="search_button" onclick="javascript: form.action='/stay/accommodation/ac_list';">검색</button>
 	            
 	        </aside>
     	</form>
@@ -103,26 +108,28 @@
 		
 	        <section class="accommodation-list">
 	        	<c:forEach items="${accommodation_list}" var="accommodation">
-	            <div>
-	                <asdie class="accommodation-img">
-	                    숙소 이미지
-	                </asdie>
-		                <div class="accommodation-content">
-		                    <div class="accommodation-title">
-		                    	<h3>${accommodation.ac_title} &nbsp; ${accommodation.ac_address}</h3>
-		                    </div>
-		                    <div class="accommodation-infomation">
-		                    	<h4>${accommodation.ac_info}    &nbsp;&nbsp;지도 보기(미구현)</h4>
-		                    </div>
-		                    <div class="accommodation-price">
-		                    	<h1>${accommodation.min_room_price} 원</h1>
-		                    </div>
-		                    <button class="accommodation-button" 
-		                        onclick="location.href='/stay/accommodation/detail?ac_id=${accommodation.ac_id}'">
-		                    	숙소로 이동
-		                    </button>
-		                </div>
-	            </div>
+		            <div>
+		                <asdie class="accommodation-img">
+		                    <img src="../resources/img/accommodation/${accommodation.pic_name}" alt="no image">
+		                </asdie>
+			                <div class="accommodation-content">
+			                    <div class="accommodation-title">
+			                    	<h3>${accommodation.ac_title} &nbsp; ${accommodation.ac_address}</h3>
+			                    </div>
+			                    <div class="accommodation-infomation">
+			                    	<h5>${accommodation.ac_info}    &nbsp;&nbsp;</h5>
+			                    	<h6>지도 보기(미구현)<h6>
+			                    </div>
+			                    <div class="accommodation-price">
+			                    	<h1>${accommodation.min_room_price} 원</h1>
+			                    </div>
+			                    <button class="accommodation-button" 
+			                        onclick="location.href='/stay/accommodation/detail?ac_id=${accommodation.ac_id}'">
+			                    	숙소로 이동
+			                    </button>
+			                </div>
+		            </div>
+		            <hr/>
 	            </c:forEach>
 	        </section>        
         

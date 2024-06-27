@@ -143,7 +143,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                 SUBSTR(a.ac_address, 1, INSTR(a.ac_address, ' ') - 1) AS ac_address,
                 a.ac_info,
                 a.ac_id,
-                r2.min_room_price
+                r2.min_room_price, ap.pic_name
 	    FROM accommodation a
 	    LEFT JOIN room r ON r.ac_id = a.ac_id
 	    LEFT JOIN (
@@ -151,6 +151,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	        FROM room 
 	        GROUP BY ac_id
 	    ) r2 ON r2.ac_id = a.ac_id
+        LEFT JOIN (SELECT ac_pic.ac_id, max(ac_pic.pic_name) pic_name FROM ac_pic GROUP BY ac_id) ap ON ap.ac_id = a.ac_id
 	    WHERE a.ac_type LIKE '%' || #{ac_type} || '%'
 	    	AND(    a.ac_title LIKE '%' || #{ac_title} || '%'
 	            OR a.ac_address LIKE '%' || #{ac_title} || '%')
@@ -160,10 +161,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <select id="accommodation_detail" resultType="com.example.domain.accommodation_detailDTO">
     	SELECT a.ac_id, r.room_num , a.ac_title, a.ac_info, a.ac_address, r.ro_info, r.ro_name, r.ro_basic_count, r.ro_max_count, 
-    		checkin, checkout, r.room_price
-    		, a.email_id
+		        checkin, checkout, r.room_price
+		        , a.email_id, rp.room_num, 
+		        REPLACE(pic_name,'\','/') AS pic_name
 		FROM accommodation a
-		JOIN room r ON r.ac_id=a.ac_id
+		LEFT JOIN room r ON r.ac_id=a.ac_id
+		LEFT JOIN (SELECT ro_pic.room_num, max(ro_pic.pic_name) pic_name FROM ro_pic GROUP BY room_num) rp ON rp.room_num = r.room_num
 		WHERE a.ac_id=#{ac_id}
     </select>
     

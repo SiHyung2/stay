@@ -10,4 +10,5 @@ public class Ro_picDTO {
 	private int room_num;
 	private String pic_name;
 	
+	private int ac_id;    // 한숙소의 모든 방 사진을 찾을 때 필요함
 }

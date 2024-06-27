@@ -40,6 +40,8 @@ public class RoomController {
 	@PostMapping("/insert")//2.방 추가
 	public String InsertRoom(RoomDTO room, MultipartFile[] room_img) {
 		
+		System.out.println("1번째 디버깅");
+		
 		roomservice.insertroom(room);
 		
 		roomservice.insertro_pic(room_img);    //사진 업로드 메소드.   ro_pic에 삽입하는 메소드

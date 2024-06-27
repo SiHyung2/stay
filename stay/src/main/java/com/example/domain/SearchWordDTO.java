@@ -33,4 +33,5 @@ public class SearchWordDTO {
 	private int ro_basic_count; //출력용
 	private int max_ro_basic_count; //출력용
 	private String what_type_of_search;    //어떤 검색인지 구분하는 용도   aside_search 할 때 구분하려고 사용
+	private String pic_name;   //사진이름(확장자 포함) 출력하는 용도
 }

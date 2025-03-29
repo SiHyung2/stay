@@ -15,7 +15,8 @@
   + Spring, Apach 기반
   + html, css, js
   + jQuery
-  + DB
+  + DB - Oracle
+    + 공부를 위해 클라우드 DB 대신 로컬 DB를 사용하였음
 + 본인이 제작한 화면및 설명
 
 
